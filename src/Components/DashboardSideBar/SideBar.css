@@ -1,4 +1,4 @@
- .trigger {
+.trigger {
     padding: 0 24px;
     font-size: 18px;
     line-height: 64px;
@@ -20,4 +20,10 @@
     background: #fff;
     display: flex;
     align-items: center;
+  }
+  .header-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
   }

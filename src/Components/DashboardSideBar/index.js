@@ -4,14 +4,13 @@ import {
     UploadOutlined,
     UserOutlined,
     FileOutlined,
-    VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import './SideBar.css';
 const { Header, Sider, Content } = Layout;
 
-const SideBar = () => {
+const DashboardSideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
     return (
         <Layout>
@@ -56,7 +55,7 @@ const SideBar = () => {
                         className: 'trigger',
                         onClick: () => setCollapsed(!collapsed),
                     })}
-                    <div>
+                    <div className="header-menu">
                         <a href='#'>Role Name</a>
                           <a href='#'>Logout</a>
                     </div>
@@ -76,4 +75,4 @@ const SideBar = () => {
     );
 };
 
-export default SideBar;
+export default DashboardSideBar;

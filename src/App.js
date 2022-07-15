@@ -1,11 +1,16 @@
 import './App.css';
-import SideBar from './Dashboard/SideBar';
+// import { Switch, Route, useLocation } from 'react-router-dom';
 import 'antd/dist/antd.min.css';
+import AdminDashboard from './Pages/AdminDashboard';
 function App() {
   return (
-    <div className="App">
-    <SideBar/>
-    </div>
+    <>
+    <AdminDashboard/>
+      {/* <Switch>
+        <Route path="/" element={<AdminDashboard />} />
+      </Switch> */}
+
+    </>
   );
 }
 
