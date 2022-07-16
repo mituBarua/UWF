@@ -10,13 +10,14 @@ import { store, persistor } from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <Router>
-      <PersistGate persistor={persistor}>
+  // <Provider store={store}>
+   
+   <Router>
+      {/* <PersistGate persistor={persistor}> */}
         <App />
-      </PersistGate>
+      {/* </PersistGate> */}
     </Router>
-  </Provider>
+  // </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

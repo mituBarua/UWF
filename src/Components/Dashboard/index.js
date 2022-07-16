@@ -4,18 +4,19 @@ import {
     UploadOutlined,
     UserOutlined,
     FileOutlined,
-    VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import './SideBar.css';
+import './style.css';
 const { Header, Sider, Content } = Layout;
 
-const SideBar = () => {
+const Dashboard = ({children}) => {
     const [collapsed, setCollapsed] = useState(false);
     return (
         <Layout>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
+            <Sider trigger={null} collapsible collapsed={collapsed} style={{
+                height:'100vh'
+            }}>
                 <div className="logo" />
                 <Menu
                     theme="dark"
@@ -56,7 +57,7 @@ const SideBar = () => {
                         className: 'trigger',
                         onClick: () => setCollapsed(!collapsed),
                     })}
-                    <div>
+                    <div className="header-menu">
                         <a href='#'>Role Name</a>
                           <a href='#'>Logout</a>
                     </div>
@@ -66,14 +67,14 @@ const SideBar = () => {
                     style={{
                         margin: '24px 16px',
                         padding: 24,
-                        minHeight: '100vh',
+                    
                     }}
                 >
-                    Content
+                    {children}
                 </Content>
             </Layout>
         </Layout>
     );
 };
 
-export default SideBar;
+export default Dashboard;

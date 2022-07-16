@@ -1,11 +1,21 @@
 import './App.css';
-import SideBar from './Dashboard/SideBar';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import 'antd/dist/antd.min.css';
+import Dashboard from './Components/Dashboard';
+
+
+
 function App() {
   return (
-    <div className="App">
-    <SideBar/>
-    </div>
+    <>
+
+      <Routes>
+        <Route path="/" exact element={<Dashboard>
+          <h2>Welcome to Dashboard!</h2>
+        </Dashboard>} />
+      </Routes>
+
+    </>
   );
 }
 

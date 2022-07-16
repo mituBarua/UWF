@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore } from 'redux-persist';
 
 const reducer = combineReducers({
+    user : {}
 });
 
 const middleware = [thunk];
