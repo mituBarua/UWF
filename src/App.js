@@ -1,14 +1,19 @@
 import './App.css';
-// import { Switch, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import 'antd/dist/antd.min.css';
-import AdminDashboard from './Pages/AdminDashboard';
+import Dashboard from './Components/Dashboard';
+
+
+
 function App() {
   return (
     <>
-    <AdminDashboard/>
-      {/* <Switch>
-        <Route path="/" element={<AdminDashboard />} />
-      </Switch> */}
+
+      <Routes>
+        <Route path="/" exact element={<Dashboard>
+          <h2>Welcome to Dashboard!</h2>
+        </Dashboard>} />
+      </Routes>
 
     </>
   );
