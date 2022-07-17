@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "antd/dist/antd.min.css";
 import Dashboard from "./Components/Dashboard";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           }
         />
         <Route path="/login" exact element={<Login />} />
+        <Route path="/register" exact element={<Register />} />
       </Routes>
     </>
   );
