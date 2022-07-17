@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Spin } from "antd";
 import Spinner from "../../Components/Spinner";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -27,6 +27,7 @@ const Login = () => {
     }
   }, [loading, isAuthenticated, error]);
 
+  if (loading) return <Spinner />;
   return (
     <div
       style={{
@@ -36,7 +37,6 @@ const Login = () => {
         height: "100vh",
       }}
     >
-      {loading && <Spinner />}
       <Form
         name="basic"
         labelCol={{

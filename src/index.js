@@ -13,10 +13,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <Router>
-      {/* <PersistGate persistor={persistor}> */}
-      <App />
-      <ToastContainer />
-      {/* </PersistGate> */}
+      <PersistGate persistor={persistor}>
+        <App />
+        <ToastContainer />
+      </PersistGate>
     </Router>
   </Provider>
 );
