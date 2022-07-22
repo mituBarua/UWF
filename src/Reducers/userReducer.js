@@ -5,6 +5,7 @@ import {
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAIL,
+  CLEAR_ERRORS
 } from "../Constants/userConstants";
 
 export const userReducer = (state = { user: {} }, { type, payload }) => {
@@ -29,6 +30,11 @@ export const userReducer = (state = { user: {} }, { type, payload }) => {
         isAuthenticated: false,
         user: null,
         error: payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
     default:
       return state;

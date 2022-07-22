@@ -5,9 +5,9 @@ import Spinner from "../../Components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { loginUser } from "../../Actions/userAction";
+import { clearErrors, loginUser } from "../../Actions/userAction";
 import { toast } from "react-toastify";
-import './style.css';
+import "./style.css";
 const Login = () => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, user } = useSelector(
@@ -20,10 +20,11 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.success(user.message);
+      toast.success("success");
       navigate("/");
     } else if (error) {
       toast.error(error.message);
+      dispatch(clearErrors());
     }
   }, [loading, isAuthenticated, error]);
 
@@ -37,7 +38,8 @@ const Login = () => {
         height: "100vh",
       }}
     >
-      <Form className="login-form"
+      <Form
+        className="login-form"
         name="basic"
         labelCol={{
           span: 8,
@@ -48,7 +50,9 @@ const Login = () => {
         onFinish={onSubmit}
         //onFinishFailed={onFinishFailed}
         autoComplete="off"
-      > <h2 className="text-login">Login</h2>
+      >
+        {" "}
+        <h2 className="text-login">Login</h2>
         <Form.Item
           label="Email"
           name="email"
@@ -65,7 +69,6 @@ const Login = () => {
         >
           <Input />
         </Form.Item>
-
         <Form.Item
           label="Password"
           name="password"
@@ -85,7 +88,7 @@ const Login = () => {
           }}
         >
           <Button className="login-btn" htmlType="submit">
-           Login
+            Login
           </Button>
         </Form.Item>
       </Form>
