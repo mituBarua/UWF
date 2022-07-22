@@ -49,9 +49,7 @@ const Dashboard = ({ children }) => {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        style={{
-          height: "100vh",
-        }}
+       
       >
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
@@ -87,6 +85,7 @@ const Dashboard = ({ children }) => {
           style={{
             margin: "24px 16px",
             padding: 24,
+            height:'100vh'
           }}
         >
           {children}
