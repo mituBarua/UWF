@@ -5,6 +5,7 @@ import {
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAIL,
+  CLEAR_ERRORS,
 } from "../Constants/userConstants";
 import { api } from "../Utils/api";
 
@@ -18,13 +19,10 @@ export const loginUser = (userData) => async (dispatch) => {
       },
     };
 
-    const { data } = await api.post("/authaccount/login", userData, config);
-
-    if (data.message == "success")
-      dispatch({ type: LOGIN_USER_SUCCESS, payload: data });
-    else dispatch({ type: LOGIN_USER_FAIL, payload: data });
+    const { data } = await api.post("/login", userData, config);
+    dispatch({ type: LOGIN_USER_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: LOGIN_USER_FAIL, payload: error });
+    dispatch({ type: LOGIN_USER_FAIL, payload: error.response.data });
   }
 };
 
@@ -50,4 +48,8 @@ export const registerUser = (userData) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: REGISTER_USER_FAIL, payload: error });
   }
+};
+
+export const clearErrors = () => async (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
 };
