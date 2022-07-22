@@ -37,7 +37,7 @@ const Register = () => {
         height: "100vh",
       }}
     >
-      <Form
+      <Form  className="login-form"
         name="basic"
         labelCol={{
           span: 8,
@@ -49,6 +49,7 @@ const Register = () => {
         //onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
+       <h2 className="text-login">Register</h2>
         <Form.Item
           label="Username"
           name="name"
@@ -96,8 +97,8 @@ const Register = () => {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
-            Submit
+          <Button className="login-btn" htmlType="submit">
+            Register
           </Button>
         </Form.Item>
       </Form>
