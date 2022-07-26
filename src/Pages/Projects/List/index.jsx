@@ -58,7 +58,10 @@ const List = () => {
       render: (row) => {
         const { id } = row;
         return (
-          <Button type="primary" onClick={() => navigate("/user/list")}>
+          <Button
+            type="primary"
+            onClick={() => navigate(`/project/${id}`)}
+          >
             Details
           </Button>
         );

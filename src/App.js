@@ -6,6 +6,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserList from "./Pages/UserList";
 import ProjectList from "./Pages/Projects/List";
+import ProjectView from "./Pages/Projects/View";
 
 function App() {
   return (
@@ -31,12 +32,21 @@ function App() {
             </Dashboard>
           }
         />
-         <Route
+        <Route
           path="/project/list"
           exact
           element={
             <Dashboard>
               <ProjectList />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/project/:id"
+          exact
+          element={
+            <Dashboard>
+              <ProjectView />
             </Dashboard>
           }
         />

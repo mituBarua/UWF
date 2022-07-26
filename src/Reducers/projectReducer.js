@@ -4,11 +4,15 @@ import {
   PROJECT_REQUEST,
   PROJECT_LIST_SUCCESS,
   PROJECT_LIST_FAIL,
+  PROJECT_BY_ID_SUCCESS,
+  PROJECT_BY_ID_FAIL,
   CLEAR_ERRORS,
 } from "../Constants/projectConstants";
-import { api } from "../Utils/api";
 
-export const projectReducer = (state = { projectList: [] }, { type, payload }) => {
+export const projectReducer = (
+  state = { projectList: [] },
+  { type, payload }
+) => {
   switch (type) {
     case PROJECT_REQUEST:
       return {
@@ -19,11 +23,17 @@ export const projectReducer = (state = { projectList: [] }, { type, payload }) =
         loading: false,
         projectList: payload,
       };
+    case PROJECT_BY_ID_SUCCESS:
+      return {
+        loading: false,
+        project: payload,
+      };
     case PROJECT_LIST_FAIL:
-    case PROJECT_LIST_FAIL:
+    case PROJECT_BY_ID_FAIL:
       return {
         loading: false,
         projectList: [],
+        project: null,
         error: payload,
       };
     case CLEAR_ERRORS:
