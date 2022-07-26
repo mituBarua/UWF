@@ -24,6 +24,12 @@ const menuItems = [
     label: "Users",
     ref: "/user/list",
   },
+  {
+    key: "3",
+    icon: <UserOutlined />,
+    label: "Projects",
+    ref: "/project/list",
+  },
   //   {
   //     key: "2",
   //     icon: <FileOutlined />,
@@ -45,12 +51,7 @@ const Dashboard = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Layout>
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-       
-      >
+      <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           {menuItems.map(({ key, icon, label, ref }) => (
@@ -85,7 +86,7 @@ const Dashboard = ({ children }) => {
           style={{
             margin: "24px 16px",
             padding: 24,
-            height:'100vh'
+            height: "100vh",
           }}
         >
           {children}

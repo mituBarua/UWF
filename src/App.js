@@ -5,6 +5,7 @@ import Dashboard from "./Components/Dashboard";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserList from "./Pages/UserList";
+import ProjectList from "./Pages/Projects/List";
 
 function App() {
   return (
@@ -27,6 +28,15 @@ function App() {
           element={
             <Dashboard>
               <UserList />
+            </Dashboard>
+          }
+        />
+         <Route
+          path="/project/list"
+          exact
+          element={
+            <Dashboard>
+              <ProjectList />
             </Dashboard>
           }
         />
