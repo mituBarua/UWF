@@ -6,7 +6,9 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserList from "./Pages/UserList";
 import ProjectList from "./Pages/Projects/List";
+import ProjectCreate from "./Pages/Projects/Create";
 import ProjectView from "./Pages/Projects/View";
+import ProjectEdit from "./Pages/Projects/Edit";
 
 function App() {
   return (
@@ -38,6 +40,24 @@ function App() {
           element={
             <Dashboard>
               <ProjectList />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/project/create"
+          exact
+          element={
+            <Dashboard>
+              <ProjectCreate />
+            </Dashboard>
+          }
+        />
+         <Route
+          path="/project/edit/:id"
+          exact
+          element={
+            <Dashboard>
+              <ProjectEdit />
             </Dashboard>
           }
         />

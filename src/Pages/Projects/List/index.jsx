@@ -2,13 +2,38 @@ import React, { useEffect } from "react";
 
 import { Table, Tag, Button } from "antd";
 
-import { getProjectList } from "../../../Actions/projectAction";
+import {
+  clearSuccess,
+  clearErrors,
+  deleteProject,
+  getProjectList,
+} from "../../../Actions/projectAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const {
+    user: { accessToken },
+  } = useSelector((state) => state.user);
+  const { projectList, error, success, loading } = useSelector(
+    (state) => state.project
+  );
+
+  useEffect(() => {
+    if (success && success.type == "project_delete_success") {
+      toast.success("Project Deleted Successfully");
+      dispatch(clearSuccess());
+      navigate("/project/list");
+      window.location.reload();
+    } else if (error) {
+      toast.error(error.message);
+      dispatch(clearErrors());
+    }
+  }, [loading, error, success]);
 
   const columns = [
     {
@@ -58,25 +83,33 @@ const List = () => {
       render: (row) => {
         const { id } = row;
         return (
-          <Button
-            type="primary"
-            onClick={() => navigate(`/project/${id}`)}
-          >
-            Details
-          </Button>
+          <>
+            <Button type="primary" onClick={() => navigate(`/project/${id}`)}>
+              Details
+            </Button>
+            <Button type="info" onClick={() => navigate(`/project/edit/${id}`)}>
+              Edit
+            </Button>
+            <Button
+              type="danger"
+              onClick={() => dispatch(deleteProject(accessToken, id))}
+            >
+              Delete
+            </Button>
+          </>
         );
       },
     },
   ];
-
-  const {
-    user: { accessToken },
-  } = useSelector((state) => state.user);
-  const { projectList } = useSelector((state) => state.project);
   useEffect(() => {
     dispatch(getProjectList(accessToken));
   }, []);
-  return <Table columns={columns} dataSource={projectList} />;
+  return (
+    <>
+      <Button onClick={() => navigate("/project/create")}>Create</Button>
+      <Table columns={columns} dataSource={projectList} />
+    </>
+  );
 };
 
 export default List;
