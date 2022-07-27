@@ -5,9 +5,11 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { userReducer } from "./Reducers/userReducer";
+import { projectReducer } from "./Reducers/projectReducer";
 
 const reducer = combineReducers({
   user: userReducer,
+  project: projectReducer,
 });
 
 const middleware = [thunk];

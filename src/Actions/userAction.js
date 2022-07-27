@@ -20,12 +20,10 @@ export const loginUser = (userData) => async (dispatch) => {
     };
 
     const { data } = await api.post("/login", userData, config);
-    console.log(data);
     dispatch({ type: LOGIN_USER_SUCCESS, payload: data });
   } catch (error) {
     
     dispatch({ type: LOGIN_USER_FAIL, payload: error.response.data });
-    console.log(error);
   }
 };
 
