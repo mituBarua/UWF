@@ -50,7 +50,9 @@ const menuItems = [
 const Dashboard = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout>
+    <Layout  style={{
+      minHeight: '100vh',
+    }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
@@ -86,7 +88,7 @@ const Dashboard = ({ children }) => {
           style={{
             margin: "24px 16px",
             padding: 24,
-            height: "100vh",
+            height: "100%",
           }}
         >
           {children}

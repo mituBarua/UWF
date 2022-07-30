@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { createProject, clearErrors } from "../../../Actions/projectAction";
 import Spinner from "../../../Components/Spinner";
 import { useNavigate } from "react-router-dom";
-
+import './style.css';
 const { RangePicker } = DatePicker;
 
 const getBase64 = (file) =>
@@ -91,6 +91,8 @@ const Create = () => {
   };
   if (loading) return <Spinner />;
   return (
+    <div className="formLayout">
+    <div className="form-design">
     <Form
       name="basic"
       form={form}
@@ -291,6 +293,8 @@ const Create = () => {
         <Button htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
+    </div>
+    </div>
   );
 };
 

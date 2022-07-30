@@ -33,8 +33,8 @@ const Register = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        alignItems: "center"
+      
       }}
     >
       <Form  className="login-form"

@@ -5,7 +5,7 @@ import { Checkbox, Form, Input, Image, Row, Col, Card } from "antd";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectByID } from "../../../Actions/projectAction";
-
+import '../Create/style.css';
 const View = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -30,6 +30,8 @@ const View = () => {
     });
   }, [project]);
   return (
+    <div  className="formLayout">
+    <div className="form-designView">
     <Form
       name="basic"
       form={form}
@@ -82,10 +84,13 @@ const View = () => {
         <Checkbox />
       </Form.Item>
       <h2>Media</h2>
+      <div style={{textAlign:"center"}}>
       {project?.media_list.map(({ id, url }) => (
         <Image key={id} width={200} src={url} />
       ))}
+      </div>
       <h2>Paragraphs</h2>
+    
       <Row gutter={16}>
         {project?.paragraphs.map(({ title, body }) => (
           <Col span={8}>
@@ -95,7 +100,10 @@ const View = () => {
           </Col>
         ))}
       </Row>
+     
     </Form>
+    </div>
+    </div>
   );
 };
 
