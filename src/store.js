@@ -7,10 +7,14 @@ import storage from "redux-persist/lib/storage";
 import { userReducer } from "./Reducers/userReducer";
 import { projectReducer } from "./Reducers/projectReducer";
 import { campaignReducer } from "./Reducers/campaignReducer";
-
+import { appealReducer } from "./Reducers/appealReducer";
+import { newsReducer } from "./Reducers/newsReducer";
+  
 const reducer = combineReducers({
   user: userReducer,
   project: projectReducer,
+  appeal:appealReducer,
+  news:newsReducer,
   campaign: campaignReducer
 });
 

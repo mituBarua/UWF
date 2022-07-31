@@ -16,6 +16,15 @@ import CampaignCreate from "./Pages/Campaigns/Create";
 import CampaignView from "./Pages/Campaigns/View";
 import CampaignEdit from "./Pages/Campaigns/Edit";
 
+import AppealList from "./Pages/Appeal/List";
+import AppealCreate from "./Pages/Appeal/Create";
+import AppealView from "./Pages/Appeal/View";
+import AppealEdit from "./Pages/Appeal/Edit";
+import NewsList from "./Pages/News/List";
+import NewsCreate from "./Pages/News/Create";
+import NewsView from "./Pages/News/View";
+import NewsEdit from "./Pages/News/Edit";
+
 function App() {
   return (
     <>
@@ -73,6 +82,78 @@ function App() {
           element={
             <Dashboard>
               <ProjectView />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/appeal/list"
+          exact
+          element={
+            <Dashboard>
+              <AppealList />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/appeal/create"
+          exact
+          element={
+            <Dashboard>
+              <AppealCreate />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/appeal/edit/:id"
+          exact
+          element={
+            <Dashboard>
+              <AppealEdit />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/appeal/:id"
+          exact
+          element={
+            <Dashboard>
+              <AppealView />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/news/list"
+          exact
+          element={
+            <Dashboard>
+              <NewsList />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/news/create"
+          exact
+          element={
+            <Dashboard>
+              <NewsCreate />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/news/edit/:id"
+          exact
+          element={
+            <Dashboard>
+              <NewsEdit />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/news/:id"
+          exact
+          element={
+            <Dashboard>
+              <NewsView />
             </Dashboard>
           }
         />

@@ -4,8 +4,8 @@ import { Checkbox, Form, Input, Image, Row, Col, Card } from "antd";
 
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectByID } from "../../../Actions/projectAction";
-import '../Create/style.css';
+import { getNewsByID } from "../../../Actions/newsAction";
+import '../../Projects/Create/style.css';
 const View = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -16,19 +16,19 @@ const View = () => {
     user: { accessToken },
   } = useSelector((state) => state.user);
 
-  const { project } = useSelector((state) => state.project);
+  const { news } = useSelector((state) => state.news);
 
   useEffect(() => {
-    dispatch(getProjectByID(accessToken, id));
+    dispatch(getNewsByID(accessToken, id));
   }, []);
 
   useEffect(() => {
     form.setFieldsValue({
-      title: project?.title,
-      description: project?.description,
-      is_active: project?.is_active,
+      title: news?.title,
+      description: news?.description,
+      is_active: news?.is_active,
     });
-  }, [project]);
+  }, [news]);
   return (
     <div  className="formLayout">
     <div className="form-designView">
@@ -85,14 +85,14 @@ const View = () => {
       </Form.Item>
       <h2>Media</h2>
       <div style={{textAlign:"center"}}>
-      {project?.media_list.map(({ id, url }) => (
+      {news?.media_list.map(({ id, url }) => (
         <Image key={id} width={200} src={url} />
       ))}
       </div>
       <h2>Paragraphs</h2>
     <br/>
       <Row gutter={16}>
-        {project?.paragraphs.map(({ title, body }) => (
+        {news?.paragraphs.map(({ title, body }) => (
           <Col span={8}>
             <Card title={title} bordered={false}>
               {body}

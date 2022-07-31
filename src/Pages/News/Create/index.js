@@ -7,14 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { toast } from "react-toastify";
 
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  getProjectByID,
-  clearErrors,
-  updateProject,
-} from "../../../Actions/projectAction";
+import {clearErrors, createNews } from "../../../Actions/newsAction";
 import Spinner from "../../../Components/Spinner";
-import '../Create/style.css';
+import { useNavigate } from "react-router-dom";
+import '../../Projects/Create/style.css';
 const { RangePicker } = DatePicker;
 
 const getBase64 = (file) =>
@@ -27,33 +23,16 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
-const Edit = () => {
+const Create = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [form] = Form.useForm();
-
-  const { id } = useParams();
 
   const {
     user: { accessToken },
   } = useSelector((state) => state.user);
 
-  const { loading, error, project, success } = useSelector(
-    (state) => state.project
-  );
-
-  useEffect(() => {
-    dispatch(getProjectByID(accessToken, id));
-  }, []);
-
-  useEffect(() => {
-    form.setFieldsValue({
-      title: project?.title,
-      description: project?.description,
-      is_active: project?.is_active,
-      date: [moment(project?.start_date), moment(project?.end_date)],
-    });
-  }, [project]);
+  const { loading, error, success } = useSelector((state) => state.news);
 
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
@@ -90,9 +69,9 @@ const Edit = () => {
   );
 
   useEffect(() => {
-    if (success && success.type == "project_update_success") {
-      toast.success("Project Updated Successfully");
-      navigate("/project/list");
+    if (success && success.type == "news_create_success") {
+      toast.success("News Created Successfully");
+      navigate("/news/list");
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
@@ -108,7 +87,7 @@ const Edit = () => {
     data.end_date = moment(fieldsValue.date[1]).format("YYYY-MM-DD");
     // data.media_list = fileList;
     // data.paragraphs = fieldsValue.paragraphs;
-    dispatch(updateProject(accessToken, id, data));
+    dispatch(createNews(accessToken, data));
   };
   if (loading) return <Spinner />;
   return (
@@ -311,7 +290,7 @@ const Edit = () => {
           span: 16,
         }}
       >
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button  type="primary" htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
     </div>
@@ -319,4 +298,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default Create;
