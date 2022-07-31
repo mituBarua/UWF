@@ -36,6 +36,12 @@ const menuItems = [
     label: "Appeal",
     ref: "/appeal/list",
   },
+  {
+    key: "5",
+    icon: <UploadOutlined />,
+    label: "News",
+    ref: "/news/list",
+  },
   //   {
   //     key: "2",
   //     icon: <FileOutlined />,

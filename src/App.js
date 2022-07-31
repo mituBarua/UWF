@@ -13,6 +13,10 @@ import AppealList from "./Pages/Appeal/List";
 import AppealCreate from "./Pages/Appeal/Create";
 import AppealView from "./Pages/Appeal/View";
 import AppealEdit from "./Pages/Appeal/Edit";
+import NewsList from "./Pages/News/List";
+import NewsCreate from "./Pages/News/Create";
+import NewsView from "./Pages/News/View";
+import NewsEdit from "./Pages/News/Edit";
 function App() {
   return (
     <>
@@ -106,6 +110,42 @@ function App() {
           element={
             <Dashboard>
               <AppealView />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/news/list"
+          exact
+          element={
+            <Dashboard>
+              <NewsList />
+            </Dashboard>
+          }
+        />
+         <Route
+          path="/news/create"
+          exact
+          element={
+            <Dashboard>
+              <NewsCreate />
+            </Dashboard>
+          }
+        />
+         <Route
+          path="/news/edit/:id"
+          exact
+          element={
+            <Dashboard>
+              <NewsEdit />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/news/:id"
+          exact
+          element={
+            <Dashboard>
+              <NewsView />
             </Dashboard>
           }
         />
