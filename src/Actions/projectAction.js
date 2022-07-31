@@ -70,7 +70,7 @@ export const createProject = (accessToken, projectData) => async (dispatch) => {
     };
 
     const { data } = await api.post("/project_new", projectData, config);
-    console.log(data);
+   
     dispatch({
       type: PROJECT_SUCCESS,
       payload: {
@@ -122,7 +122,7 @@ export const deleteProject = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.delete(`/project_delete/${id}`, config);
-    console.log(data);
+  
     dispatch({
       type: PROJECT_DELETE_SUCCESS,
       payload: {

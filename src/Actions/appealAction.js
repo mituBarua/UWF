@@ -70,7 +70,7 @@ import {
       };
   
       const { data } = await api.post("/appeal_new", appealData, config);
-      console.log(data);
+     
       dispatch({
         type: APPEAL_SUCCESS,
         payload: {
@@ -122,7 +122,7 @@ import {
       };
   
       const { data } = await api.delete(`/appeal_delete/${id}`, config);
-      console.log(data);
+     
       dispatch({
         type: APPEAL_DELETE_SUCCESS,
         payload: {
