@@ -9,12 +9,12 @@ import { toast } from "react-toastify";
 
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  getProjectByID,
+  getAppealByID,
   clearErrors,
-  updateProject,
-} from "../../../Actions/projectAction";
+  updateAppeal,
+} from "../../../Actions/appealAction";
 import Spinner from "../../../Components/Spinner";
-import '../Create/style.css';
+import '../../Projects/Create/style.css';
 const { RangePicker } = DatePicker;
 
 const getBase64 = (file) =>
@@ -38,22 +38,22 @@ const Edit = () => {
     user: { accessToken },
   } = useSelector((state) => state.user);
 
-  const { loading, error, project, success } = useSelector(
-    (state) => state.project
+  const { loading, error, appeal, success } = useSelector(
+    (state) => state.appeal
   );
 
   useEffect(() => {
-    dispatch(getProjectByID(accessToken, id));
+    dispatch(getAppealByID(accessToken, id));
   }, []);
 
   useEffect(() => {
     form.setFieldsValue({
-      title: project?.title,
-      description: project?.description,
-      is_active: project?.is_active,
-      date: [moment(project?.start_date), moment(project?.end_date)],
+      title: appeal?.title,
+      description: appeal?.description,
+      is_active: appeal?.is_active,
+      date: [moment(appeal?.start_date), moment(appeal?.end_date)],
     });
-  }, [project]);
+  }, [appeal]);
 
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
@@ -90,9 +90,9 @@ const Edit = () => {
   );
 
   useEffect(() => {
-    if (success && success.type == "project_update_success") {
-      toast.success("Project Updated Successfully");
-      navigate("/project/list");
+    if (success && success.type == "appeal_update_success") {
+      toast.success("Appeal Updated Successfully");
+      navigate("/appeal/list");
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
@@ -108,7 +108,7 @@ const Edit = () => {
     data.end_date = moment(fieldsValue.date[1]).format("YYYY-MM-DD");
     // data.media_list = fileList;
     // data.paragraphs = fieldsValue.paragraphs;
-    dispatch(updateProject(accessToken, id, data));
+    dispatch(updateAppeal(accessToken, id, data));
   };
   if (loading) return <Spinner />;
   return (
@@ -314,8 +314,8 @@ const Edit = () => {
         <Button type="primary" htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
-    </div>
-    </div>
+   </div>
+   </div>
   );
 };
 

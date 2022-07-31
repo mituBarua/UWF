@@ -9,7 +9,10 @@ import ProjectList from "./Pages/Projects/List";
 import ProjectCreate from "./Pages/Projects/Create";
 import ProjectView from "./Pages/Projects/View";
 import ProjectEdit from "./Pages/Projects/Edit";
-
+import AppealList from "./Pages/Appeal/List";
+import AppealCreate from "./Pages/Appeal/Create";
+import AppealView from "./Pages/Appeal/View";
+import AppealEdit from "./Pages/Appeal/Edit";
 function App() {
   return (
     <>
@@ -67,6 +70,42 @@ function App() {
           element={
             <Dashboard>
               <ProjectView />
+            </Dashboard>
+          }
+        />
+          <Route
+          path="/appeal/list"
+          exact
+          element={
+            <Dashboard>
+              <AppealList />
+            </Dashboard>
+          }
+        />
+         <Route
+          path="/appeal/create"
+          exact
+          element={
+            <Dashboard>
+              <AppealCreate />
+            </Dashboard>
+          }
+        />
+         <Route
+          path="/appeal/edit/:id"
+          exact
+          element={
+            <Dashboard>
+              <AppealEdit />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/appeal/:id"
+          exact
+          element={
+            <Dashboard>
+              <AppealView />
             </Dashboard>
           }
         />

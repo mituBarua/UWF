@@ -30,6 +30,12 @@ const menuItems = [
     label: "Projects",
     ref: "/project/list",
   },
+  {
+    key: "4",
+    icon: <UploadOutlined />,
+    label: "Appeal",
+    ref: "/appeal/list",
+  },
   //   {
   //     key: "2",
   //     icon: <FileOutlined />,
@@ -40,17 +46,13 @@ const menuItems = [
   //     icon: <UploadOutlined />,
   //     label: "Campaign",
   //   },
-  //   {
-  //     key: "4",
-  //     icon: <UploadOutlined />,
-  //     label: "Appeal",
-  //   },
+  //   
 ];
 
 const Dashboard = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout  style={{
+    <Layout style={{
       minHeight: '100vh',
     }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
