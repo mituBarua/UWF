@@ -6,10 +6,12 @@ import storage from "redux-persist/lib/storage";
 
 import { userReducer } from "./Reducers/userReducer";
 import { projectReducer } from "./Reducers/projectReducer";
+import { campaignReducer } from "./Reducers/campaignReducer";
 
 const reducer = combineReducers({
   user: userReducer,
   project: projectReducer,
+  campaign: campaignReducer
 });
 
 const middleware = [thunk];

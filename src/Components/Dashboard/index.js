@@ -30,6 +30,12 @@ const menuItems = [
     label: "Projects",
     ref: "/project/list",
   },
+  {
+    key: "6",
+    icon: <UserOutlined />,
+    label: "Campaigns",
+    ref: "/campaign/list",
+  },
   //   {
   //     key: "2",
   //     icon: <FileOutlined />,

@@ -5,10 +5,16 @@ import Dashboard from "./Components/Dashboard";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserList from "./Pages/UserList";
+
 import ProjectList from "./Pages/Projects/List";
 import ProjectCreate from "./Pages/Projects/Create";
 import ProjectView from "./Pages/Projects/View";
 import ProjectEdit from "./Pages/Projects/Edit";
+
+import CampaignList from "./Pages/Campaigns/List";
+import CampaignCreate from "./Pages/Campaigns/Create";
+import CampaignView from "./Pages/Campaigns/View";
+import CampaignEdit from "./Pages/Campaigns/Edit";
 
 function App() {
   return (
@@ -52,7 +58,7 @@ function App() {
             </Dashboard>
           }
         />
-         <Route
+        <Route
           path="/project/edit/:id"
           exact
           element={
@@ -67,6 +73,42 @@ function App() {
           element={
             <Dashboard>
               <ProjectView />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/campaign/list"
+          exact
+          element={
+            <Dashboard>
+              <CampaignList />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/campaign/create"
+          exact
+          element={
+            <Dashboard>
+              <CampaignCreate />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/campaign/edit/:id"
+          exact
+          element={
+            <Dashboard>
+              <CampaignEdit />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/campaign/:id"
+          exact
+          element={
+            <Dashboard>
+              <CampaignView />
             </Dashboard>
           }
         />
