@@ -24,13 +24,14 @@ import NewsList from "./Pages/News/List";
 import NewsCreate from "./Pages/News/Create";
 import NewsView from "./Pages/News/View";
 import NewsEdit from "./Pages/News/Edit";
-
+import LandingPage from "./Pages/LandingPage";
 function App() {
   return (
     <>
       <Routes>
+      <Route path="/" exact element={<LandingPage />} />
         <Route
-          path="/"
+          path="/dashboard"
           exact
           element={
             <Dashboard>
