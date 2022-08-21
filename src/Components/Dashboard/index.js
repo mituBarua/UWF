@@ -16,7 +16,7 @@ const menuItems = [
     key: "1",
     icon: <UserOutlined />,
     label: "Dashboard",
-    ref: "/",
+    ref: "/dashboard",
   },
   {
     key: "2",

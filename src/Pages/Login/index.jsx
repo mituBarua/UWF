@@ -21,7 +21,7 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated) {
       toast.success("success");
-      navigate("/");
+      navigate("/dashboard");
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
