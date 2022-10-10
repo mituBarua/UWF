@@ -1,0 +1,27 @@
+.helpUs-bg{
+    background-image: url('../../../assets/P-2.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 20px;
+    margin: 100px 0;
+ 
+ }
+ .helpUs-text h2,h4{
+     color:white;
+ }
+ .helpUs-bg p{
+     color:white;
+ }
+ .helpUs-icon{
+     color: white;
+     font-size: 40px;
+     border: 1px solid white;
+     padding: 3px;
+     margin-bottom: 10px;
+ }
+ .donator{
+     margin: 0px 16px;
+     border-right: 1px solid white;
+ }
+ 

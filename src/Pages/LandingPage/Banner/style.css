@@ -1,0 +1,22 @@
+.carousel-caption{
+    right: 42%;
+    top: 42%;
+    text-align: left;
+}
+.carousel-caption h2{
+    color: #ffffff;
+    font-size: 48px;
+}
+.carousel-caption p{
+    font-size: 15px;
+}
+.custom-btn{
+    background-color: #C1272D!important;
+}
+.custom-btn-outline {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+.carousel-indicators{
+    display: none;
+}

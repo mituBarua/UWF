@@ -16,7 +16,7 @@ const menuItems = [
     key: "1",
     icon: <UserOutlined />,
     label: "Dashboard",
-    ref: "/dashboard",
+    ref: "/",
   },
   {
     key: "2",
@@ -47,6 +47,12 @@ const menuItems = [
     icon: <UserOutlined />,
     label: "Campaigns",
     ref: "/campaign/list",
+  },
+  {
+    key: "7",
+    icon: <UserOutlined />,
+    label: "Volunteer",
+    ref: "/volunteer/list",
   },
   //   {
   //     key: "2",

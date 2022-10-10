@@ -1,9 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "antd/dist/antd.min.css";
-
-import ProtectedRoute from "./Routes/ProtectedRoute";
-
 import Dashboard from "./Components/Dashboard";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -28,20 +26,23 @@ import NewsCreate from "./Pages/News/Create";
 import NewsView from "./Pages/News/View";
 import NewsEdit from "./Pages/News/Edit";
 import LandingPage from "./Pages/LandingPage";
+
+import VolunteerList from "./Pages/Volunteers/List";
+import VolunteerView from "./Pages/Volunteers/View";
+import VolunteerEdit from "./Pages/Volunteers/Edit";
+
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" exact element={<LandingPage />} />
+      <Route path="/" exact element={<LandingPage />} />
         <Route
           path="/dashboard"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <h2>Welcome to Dashboard!</h2>
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <h2>Welcome to Dashboard!</h2>
+            </Dashboard>
           }
         />
         <Route path="/login" exact element={<Login />} />
@@ -50,77 +51,63 @@ function App() {
           path="/user/list"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <UserList />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <UserList />
+            </Dashboard>
           }
         />
         <Route
           path="/project/list"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <ProjectList />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <ProjectList />
+            </Dashboard>
           }
         />
         <Route
           path="/project/create"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <ProjectCreate />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <ProjectCreate />
+            </Dashboard>
           }
         />
         <Route
           path="/project/edit/:id"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <ProjectEdit />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <ProjectEdit />
+            </Dashboard>
           }
         />
         <Route
           path="/project/:id"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <ProjectView />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <ProjectView />
+            </Dashboard>
           }
         />
         <Route
           path="/appeal/list"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <AppealList />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <AppealList />
+            </Dashboard>
           }
         />
         <Route
           path="/appeal/create"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <AppealCreate />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <AppealCreate />
+            </Dashboard>
           }
         />
         <Route
@@ -136,102 +123,111 @@ function App() {
           path="/appeal/:id"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <AppealView />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <AppealView />
+            </Dashboard>
           }
         />
         <Route
           path="/news/list"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <NewsList />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <NewsList />
+            </Dashboard>
           }
         />
         <Route
           path="/news/create"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <NewsCreate />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <NewsCreate />
+            </Dashboard>
           }
         />
         <Route
           path="/news/edit/:id"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <NewsEdit />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <NewsEdit />
+            </Dashboard>
           }
         />
         <Route
           path="/news/:id"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <NewsView />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <NewsView />
+            </Dashboard>
           }
         />
         <Route
           path="/campaign/list"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <CampaignList />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <CampaignList />
+            </Dashboard>
           }
         />
         <Route
           path="/campaign/create"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <CampaignCreate />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <CampaignCreate />
+            </Dashboard>
           }
         />
         <Route
           path="/campaign/edit/:id"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <CampaignEdit />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <CampaignEdit />
+            </Dashboard>
           }
         />
         <Route
           path="/campaign/:id"
           exact
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard>
-                <CampaignView />
-              </Dashboard>
-            </ProtectedRoute>
+            <Dashboard>
+              <CampaignView />
+            </Dashboard>
           }
         />
-        <Route path="*" element={<h1>Not found</h1>} />
+           <Route
+          path="/volunteer/list"
+          exact
+          element={
+            <Dashboard>
+              <VolunteerList />
+            </Dashboard>
+          }
+        />
+       
+        <Route
+          path="/volunteer/edit/:id"
+          exact
+          element={
+            <Dashboard>
+              <VolunteerEdit />
+            </Dashboard>
+          }
+        />
+        <Route
+          path="/volunteer/:id"
+          exact
+          element={
+            <Dashboard>
+              <VolunteerView />
+            </Dashboard>
+          }
+        />
       </Routes>
     </>
   );
