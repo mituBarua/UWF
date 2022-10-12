@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spin } from "antd";
 import Spinner from "../../Components/Spinner";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { clearErrors, loginUser } from "../../Actions/userAction";
+import { clearErrors, ForgotPassword } from "../../Actions/forgotPasswordAction";
 import { toast } from "react-toastify";
 import "./style.css";
-const Login = () => {
+
+const ForgetPassword = () => {
   const dispatch = useDispatch();
-  const { loading, isAuthenticated, error, user } = useSelector(
-    (state) => state.user
+  const { loading,success,error } = useSelector(
+    (state) => state.forgotPassword
   );
   const navigate = useNavigate();
   const onSubmit = (fieldsValue) => {
-    dispatch(loginUser(fieldsValue));
+    dispatch(ForgotPassword(fieldsValue));
   };
-
   useEffect(() => {
-    if (isAuthenticated) {
+    if (success) {
       toast.success("success");
-      navigate("/dashboard");
+      navigate("/resetPassword");
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
     }
-  }, [loading, isAuthenticated, error]);
+  }, [loading,success, error]);
+
 
   if (loading) return <Spinner />;
   return (
@@ -52,34 +52,19 @@ const Login = () => {
         autoComplete="off"
       >
         {" "}
-        <h2 className="text-login">Login</h2>
+        <h2 className="text-login">Forgot Password</h2>
+
         <Form.Item
-          label="Email"
-          name="email"
+          label="Phone Number"
+          name="phone"
           rules={[
             {
-              type: "email",
-              message: "Please input your valid email!",
-            },
-            {
               required: true,
-              message: "Please input your email!",
+              message: "Please input your phone no!",
             },
           ]}
         >
           <Input />
-        </Form.Item>
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-        >
-          <Input.Password />
         </Form.Item>
         <Form.Item
           wrapperCol={{
@@ -88,16 +73,15 @@ const Login = () => {
           }}
         >
           <Button className="login-btn" htmlType="submit">
-            Login
+            Submit
           </Button>
-          <br/>
-          <Link to="/forgetPassword" relative="path">
-            Forgot Password?
-          </Link>
+          <br />
+        
+
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default Login;
+export default ForgetPassword;

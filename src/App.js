@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "antd/dist/antd.min.css";
 import Dashboard from "./Components/Dashboard";
 import Login from "./Pages/Login";
+import ForgetPassword from "./Pages/ForgetPassword";
+import ResetPassword from "./Pages/ResetPassword";
 import Register from "./Pages/Register";
 import UserList from "./Pages/UserList";
 
@@ -46,6 +48,8 @@ function App() {
           }
         />
         <Route path="/login" exact element={<Login />} />
+        <Route path="/forgetPassword" exact element={<ForgetPassword />} />
+        <Route path="/resetPassword" exact element={<ResetPassword />} />
         <Route path="/register" exact element={<Register />} />
         <Route
           path="/user/list"
