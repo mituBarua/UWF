@@ -10,13 +10,17 @@ import { campaignReducer } from "./Reducers/campaignReducer";
 import { appealReducer } from "./Reducers/appealReducer";
 import { newsReducer } from "./Reducers/newsReducer";
 import { volunteerReducer } from "./Reducers/volunteerReducer"; 
+import { resetPasswordReducer } from "./Reducers/resetPasswordReducer"; 
+import { forgotPasswordReducer } from "./Reducers/forgotPasswordReducer"; 
 const reducer = combineReducers({
   user: userReducer,
   project: projectReducer,
   appeal:appealReducer,
   news:newsReducer,
   campaign: campaignReducer,
-  volunteer:volunteerReducer
+  volunteer:volunteerReducer,
+  forgotPassword:forgotPasswordReducer,
+  resetPassword:resetPasswordReducer
 });
 
 const middleware = [thunk];
