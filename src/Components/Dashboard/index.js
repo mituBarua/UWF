@@ -7,7 +7,10 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
+import { logoutUser } from "../../Actions/userAction";
 import "./style.css";
 const { Header, Sider, Content } = Layout;
 
@@ -69,6 +72,17 @@ const menuItems = [
 
 const Dashboard = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const {
+    user: {
+      dashboard: {
+        profile: { role },
+      },
+    },
+  } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <Layout
       style={{
@@ -101,8 +115,15 @@ const Dashboard = ({ children }) => {
             }
           )}
           <div className="header-menu">
-            <a href="#">Role Name</a>
-            <a href="#">Logout</a>
+            <a href="#">{role}</a>
+            <a
+              onClick={() => {
+                dispatch(logoutUser());
+                navigate("/login");
+              }}
+            >
+              Logout
+            </a>
           </div>
         </Header>
         <Content

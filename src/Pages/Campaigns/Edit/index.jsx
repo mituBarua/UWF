@@ -47,10 +47,12 @@ const Edit = () => {
   }, []);
 
   useEffect(() => {
+    console.log(campaign);
     form.setFieldsValue({
       title: campaign?.title,
       description: campaign?.description,
       is_active: campaign?.is_active,
+      is_verified: campaign?.is_verified,
       date: [moment(campaign?.start_date), moment(campaign?.end_date)],
     });
   }, [campaign]);
@@ -104,10 +106,12 @@ const Edit = () => {
     data.title = fieldsValue.title;
     data.description = fieldsValue.description;
     data.is_active = fieldsValue.is_active == true ? 1 : 0;
+    data.is_verified = fieldsValue.is_verified == true ? 1: 0;
     data.start_date = moment(fieldsValue.date[0]).format("YYYY-MM-DD");
     data.end_date = moment(fieldsValue.date[1]).format("YYYY-MM-DD");
     // data.media_list = fileList;
     // data.paragraphs = fieldsValue.paragraphs;
+
     dispatch(updateCampaign(accessToken, id, data));
   };
   if (loading) return <Spinner />;
@@ -158,6 +162,19 @@ const Edit = () => {
           {
             required: false,
             message: "Please input your status!",
+          },
+        ]}
+      >
+        <Checkbox />
+      </Form.Item>
+      <Form.Item
+        label="Verify"
+        name="is_verified"
+        valuePropName="checked"
+        rules={[
+          {
+            required: false,
+            message: "Please verify!",
           },
         ]}
       >
