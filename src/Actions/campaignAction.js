@@ -10,6 +10,14 @@ import {
   CAMPAIGN_UPDATE_FAIL,
   CAMPAIGN_DELETE_SUCCESS,
   CAMPAIGN_DELETE_FAIL,
+  CAMPAIGN_MEDIA_DELETE_SUCCESS,
+  CAMPAIGN_MEDIA_DELETE_FAIL,
+  CAMPAIGN_PARAGRAPH_DELETE_SUCCESS,
+  CAMPAIGN_PARAGRAPH_DELETE_FAIL,
+  CAMPAIGN_MEDIA_SUCCESS,
+  CAMPAIGN_MEDIA_FAIL,
+  CAMPAIGN_PARAGRAPH_FAIL,
+  CAMPAIGN_PARAGRAPH_SUCCESS,
   CLEAR_ERRORS,
   CLEAR_SUCCESS,
 } from "../Constants/campaignConstants";
@@ -63,7 +71,6 @@ export const getCampaignInfo = () => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-       
       },
     };
 
@@ -98,29 +105,30 @@ export const getCampaignByID = (accessToken, id) => async (dispatch) => {
   }
 };
 
-export const createCampaign = (accessToken, campaignData) => async (dispatch) => {
-  try {
-    dispatch({ type: CAMPAIGN_REQUEST });
+export const createCampaign =
+  (accessToken, campaignData) => async (dispatch) => {
+    try {
+      dispatch({ type: CAMPAIGN_REQUEST });
 
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
 
-    const { data } = await api.post("/campaign_new", campaignData, config);
-    console.log(data);
-    dispatch({
-      type: CAMPAIGN_SUCCESS,
-      payload: {
-        type: "campaign_create_success",
-      },
-    });
-  } catch (error) {
-    dispatch({ type: CAMPAIGN_FAIL, payload: error.response.data });
-  }
-};
+      const { data } = await api.post("/campaign_new", campaignData, config);
+      console.log(data);
+      dispatch({
+        type: CAMPAIGN_SUCCESS,
+        payload: {
+          type: "campaign_create_success",
+        },
+      });
+    } catch (error) {
+      dispatch({ type: CAMPAIGN_FAIL, payload: error.response.data });
+    }
+  };
 
 export const updateCampaign =
   (accessToken, id, campaignData) => async (dispatch) => {
@@ -172,6 +180,113 @@ export const deleteCampaign = (accessToken, id) => async (dispatch) => {
     dispatch({ type: CAMPAIGN_DELETE_FAIL, payload: error.response.data });
   }
 };
+
+export const addCampaignMedia =
+  (accessToken, mediaData) => async (dispatch) => {
+    try {
+      dispatch({ type: CAMPAIGN_REQUEST });
+
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+      const { data } = await api.post("/media", mediaData, config);
+      dispatch({
+        type: CAMPAIGN_MEDIA_SUCCESS,
+        payload: {
+          type: "campaign_media_success",
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: CAMPAIGN_MEDIA_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };
+
+export const deleteCampaignMedia = (accessToken, id) => async (dispatch) => {
+  try {
+    dispatch({ type: CAMPAIGN_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const { data } = await api.post(`/media_delete/${id}`, config);
+    dispatch({
+      type: CAMPAIGN_MEDIA_DELETE_SUCCESS,
+      payload: {
+        type: "campaign_delete_media_success",
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: CAMPAIGN_MEDIA_DELETE_FAIL,
+      payload: error.response.data,
+    });
+  }
+};
+
+export const addCampaignParagraph =
+  (accessToken, paragraphData) => async (dispatch) => {
+    try {
+      dispatch({ type: CAMPAIGN_REQUEST });
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+      const { data } = await api.post("/paragraph_new", paragraphData, config);
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_SUCCESS,
+        payload: {
+          type: "campaign_paragraph_success",
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };
+
+export const deleteCampaignParagraph =
+  (accessToken, id) => async (dispatch) => {
+    try {
+      dispatch({ type: CAMPAIGN_REQUEST });
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+      const { data } = await api.post(`/paragraph_delete/${id}`, config);
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_DELETE_SUCCESS,
+        payload: {
+          type: "campaign_paragraph_delete_success",
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_DELETE_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };
 
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
