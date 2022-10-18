@@ -18,6 +18,8 @@ import {
   CAMPAIGN_MEDIA_FAIL,
   CAMPAIGN_PARAGRAPH_FAIL,
   CAMPAIGN_PARAGRAPH_SUCCESS,
+  CAMPAIGN_PARAGRAPH_UPDATE_FAIL,
+  CAMPAIGN_PARAGRAPH_UPDATE_SUCCESS,
   CLEAR_ERRORS,
   CLEAR_SUCCESS,
 } from "../Constants/campaignConstants";
@@ -35,6 +37,8 @@ export const getCampaignList = (accessToken) => async (dispatch) => {
     };
 
     const { data } = await api.get("/campaigns", config);
+    const response = await api.get("/campaigns", config);
+
     dispatch({
       type: CAMPAIGN_LIST_SUCCESS,
       payload: data.data,
@@ -95,7 +99,7 @@ export const getCampaignByID = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/campaign/${id}`, config);
-    // console.table(data.data);
+
     dispatch({
       type: CAMPAIGN_BY_ID_SUCCESS,
       payload: data.data,
@@ -256,6 +260,37 @@ export const addCampaignParagraph =
     } catch (error) {
       dispatch({
         type: CAMPAIGN_PARAGRAPH_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };
+
+export const updateCampaignParagraph =
+  (accessToken, paragraphData, id) => async (dispatch) => {
+    try {
+      dispatch({ type: CAMPAIGN_REQUEST });
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+      const { data } = await api.post(
+        `/paragraph_edit/${id}`,
+        paragraphData,
+        config
+      );
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_UPDATE_SUCCESS,
+        payload: {
+          type: "campaign_paragraph_update_success",
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_UPDATE_FAIL,
         payload: error.response.data,
       });
     }

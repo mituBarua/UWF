@@ -14,7 +14,7 @@ import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
 
 import { toast } from "react-toastify";
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCampaignMedia,
@@ -42,9 +42,9 @@ const View = () => {
   const {
     user: { accessToken },
   } = useSelector((state) => state.user);
-  const { loading, error, success } = useSelector((state) => state.campaign);
-
-  const { campaign } = useSelector((state) => state.campaign);
+  const { campaign, loading, error, success } = useSelector(
+    (state) => state.campaign
+  );
 
   useEffect(() => {
     dispatch(getCampaignByID(accessToken, id));
@@ -318,7 +318,9 @@ const View = () => {
           // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <h3>Paragraph</h3>
+          <h3>
+            Paragraph <Link to={`/campaign/paragraph/list/${id}`}>list</Link>
+          </h3>
           <Form.Item
             label="Title"
             name="p_title"

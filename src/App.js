@@ -19,11 +19,13 @@ import CampaignList from "./Pages/Campaigns/List";
 import CampaignCreate from "./Pages/Campaigns/Create";
 import CampaignView from "./Pages/Campaigns/View";
 import CampaignEdit from "./Pages/Campaigns/Edit";
+import CampaignParagraphList from "./Pages/Campaigns/Paragraph/List";
 
 import AppealList from "./Pages/Appeal/List";
 import AppealCreate from "./Pages/Appeal/Create";
 import AppealView from "./Pages/Appeal/View";
 import AppealEdit from "./Pages/Appeal/Edit";
+
 import NewsList from "./Pages/News/List";
 import NewsCreate from "./Pages/News/Create";
 import NewsView from "./Pages/News/View";
@@ -202,6 +204,17 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <CampaignList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/campaign/paragraph/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <CampaignParagraphList />
               </Dashboard>
             </ProtectedRoute>
           }
