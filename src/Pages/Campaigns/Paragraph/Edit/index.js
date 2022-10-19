@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  Checkbox,
-  Form,
-  Input,
-  InputNumber,
-  Button,
-  Modal,
-  Upload,
-  Select,
-} from "antd";
-import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
+import { Form, Input, InputNumber, Button, Select } from "antd";
 
 import { toast } from "react-toastify";
 
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, getCampaignByID } from "../../../Actions/campaignAction";
-import "../Create/style.css";
+import {
+  clearErrors,
+  getCampaignPargraphByID,
+  updateCampaignParagraph,
+} from "../../../../Actions/campaignAction";
+import "../../Create/style.css";
 
-import Spinner from "../../../Components/Spinner";
+import Spinner from "../../../../Components/Spinner";
 
 const { Option } = Select;
 
@@ -33,18 +27,18 @@ const ParagraphEdit = () => {
   const {
     user: { accessToken },
   } = useSelector((state) => state.user);
-  const { campaign, loading, error, success } = useSelector(
+  const { campaignParagraph, loading, error, success } = useSelector(
     (state) => state.campaign
   );
 
   useEffect(() => {
-    dispatch(getCampaignByID(accessToken, id));
+    dispatch(getCampaignPargraphByID(accessToken, id));
   }, []);
 
   useEffect(() => {
     if (success && success.type == "campaign_paragraph_update_success") {
       toast.success("Campaign Paragraph Updated");
-      navigate("/campaign/list");
+      navigate(`/campaign/${success.modelId}`);
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
@@ -53,11 +47,11 @@ const ParagraphEdit = () => {
 
   useEffect(() => {
     paragraphForm.setFieldsValue({
-      p_title: campaign?.title,
-      p_description: campaign?.description,
-      p_is_active: campaign?.is_active,
+      p_title: campaignParagraph?.title,
+      p_body: campaignParagraph?.body,
+      p_serial_number: campaignParagraph?.serial_number,
     });
-  }, [campaign]);
+  }, [campaignParagraph]);
 
   const onParagraphSubmit = (fieldsValue) => {
     let data = {};
@@ -65,10 +59,9 @@ const ParagraphEdit = () => {
     data.title = p_title;
     data.body = p_body;
     data.serial_number = p_serial_number;
-    data.model_id = id;
-    data.model_name = "Campaign";
 
-    dispatch(addCampaignParagraph(accessToken, data));
+    let modelId = campaignParagraph?.model_id;
+    dispatch(updateCampaignParagraph(accessToken, data, id, modelId));
   };
 
   if (loading) return <Spinner />;

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
   getCampaignByID,
+  deleteCampaignParagraph,
 } from "../../../../Actions/campaignAction";
 import "../../Create/style.css";
 
@@ -36,25 +37,22 @@ const ParagraphList = (props) => {
   useEffect(() => {
     if (success && success.type == "campaign_paragraph_delete_success") {
       toast.success("Campaign Paragraph Deleted");
-      navigate("/campaign/list");
+      navigate(`/campaign/${id}`);
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
     }
   }, [loading, error, success]);
 
-  const genExtra = () => (
+  const handleDelete = (idx) => {
+    // console.log(idx);
+    dispatch(deleteCampaignParagraph(accessToken, idx));
+  };
+
+  const genExtra = (idx) => (
     <>
-      <EditFilled
-        onClick={(event) => {
-          event.stopPropagation();
-        }}
-      />
-      <DeleteFilled
-        onClick={(event) => {
-          event.stopPropagation();
-        }}
-      />
+      <EditFilled onClick={() => navigate(`/campaign/paragraph/edit/${idx}`)} />
+      <DeleteFilled onClick={() => handleDelete(idx)} />
     </>
   );
 
@@ -62,8 +60,8 @@ const ParagraphList = (props) => {
   return (
     <>
       <Collapse expandIconPosition="start">
-        {campaign?.paragraphs.map(({ title, body, index }) => (
-          <Panel header={title} key={index} extra={genExtra()}>
+        {campaign?.paragraphs.map(({ title, body, index, id }) => (
+          <Panel header={title} key={index} extra={genExtra(id)}>
             <div>{body}</div>
           </Panel>
         ))}

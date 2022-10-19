@@ -20,6 +20,8 @@ import CampaignCreate from "./Pages/Campaigns/Create";
 import CampaignView from "./Pages/Campaigns/View";
 import CampaignEdit from "./Pages/Campaigns/Edit";
 import CampaignParagraphList from "./Pages/Campaigns/Paragraph/List";
+import CampaignMediaList from "./Pages/Campaigns/Media/List";
+import CampaignParagraphEdit from "./Pages/Campaigns/Paragraph/Edit";
 
 import AppealList from "./Pages/Appeal/List";
 import AppealCreate from "./Pages/Appeal/Create";
@@ -215,6 +217,28 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <CampaignParagraphList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/campaign/paragraph/edit/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <CampaignParagraphEdit />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/campaign/media/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <CampaignMediaList />
               </Dashboard>
             </ProtectedRoute>
           }

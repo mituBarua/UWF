@@ -20,6 +20,8 @@ import {
   CAMPAIGN_PARAGRAPH_SUCCESS,
   CAMPAIGN_PARAGRAPH_UPDATE_FAIL,
   CAMPAIGN_PARAGRAPH_UPDATE_SUCCESS,
+  CAMPAIGN_PARAGRAPH_BY_ID_FAIL,
+  CAMPAIGN_PARAGRAPH_BY_ID_SUCCESS,
   CLEAR_ERRORS,
   CLEAR_SUCCESS,
 } from "../Constants/campaignConstants";
@@ -224,6 +226,7 @@ export const deleteCampaignMedia = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.post(`/media_delete/${id}`, config);
+    console.log(data);
     dispatch({
       type: CAMPAIGN_MEDIA_DELETE_SUCCESS,
       payload: {
@@ -265,8 +268,34 @@ export const addCampaignParagraph =
     }
   };
 
+export const getCampaignPargraphByID =
+  (accessToken, id) => async (dispatch) => {
+    try {
+      dispatch({ type: CAMPAIGN_REQUEST });
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+      const { data } = await api.get(`/paragraph/${id}`, config);
+
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_BY_ID_SUCCESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: CAMPAIGN_PARAGRAPH_BY_ID_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };
+
 export const updateCampaignParagraph =
-  (accessToken, paragraphData, id) => async (dispatch) => {
+  (accessToken, paragraphData, id, modelId) => async (dispatch) => {
     try {
       dispatch({ type: CAMPAIGN_REQUEST });
 
@@ -286,6 +315,7 @@ export const updateCampaignParagraph =
         type: CAMPAIGN_PARAGRAPH_UPDATE_SUCCESS,
         payload: {
           type: "campaign_paragraph_update_success",
+          modelId,
         },
       });
     } catch (error) {
@@ -308,7 +338,7 @@ export const deleteCampaignParagraph =
         },
       };
 
-      const { data } = await api.post(`/paragraph_delete/${id}`, config);
+      const response = await api.delete(`/paragraph_delete/${id}`, config);
       dispatch({
         type: CAMPAIGN_PARAGRAPH_DELETE_SUCCESS,
         payload: {

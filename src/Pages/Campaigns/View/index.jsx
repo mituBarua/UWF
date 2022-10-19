@@ -10,7 +10,7 @@ import {
   Upload,
   Select,
 } from "antd";
-import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
 
 import { toast } from "react-toastify";
 
@@ -53,7 +53,7 @@ const View = () => {
   useEffect(() => {
     if (success && success.type == "campaign_paragraph_success") {
       toast.success("Campaign Paragraph Added");
-      navigate("/campaign/list");
+      navigate(`/campaign/paragraph/list/${id}`);
     } else if (success && success.type == "campaign_media_success") {
       toast.success("Campaign Media Added");
       navigate("/campaign/list");
@@ -77,12 +77,10 @@ const View = () => {
     data.append("model_name", "Campaign");
     data.append("model_id", id);
 
-    console.log(fileList);
-
-    fileList.forEach((item) => {
-      data.append("the_file", item);
-    });
-
+    data.append("the_file", fileList[0], fileList[0].name);
+    // fileList.forEach((file) => {
+    //   data.append("the_file[]", file, file.name);
+    // });
     dispatch(addCampaignMedia(accessToken, data));
   };
 
@@ -141,7 +139,7 @@ const View = () => {
     if (!isValid && mediaType) {
       toast.error(`${file.type} is not valid`);
     }
-    return isValid || Upload.LIST_IGNORE;
+    return isValid;
   };
 
   const uploadButton = (
@@ -230,7 +228,9 @@ const View = () => {
           // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <h3>Media</h3>
+          <h3>
+            Media <Link to={`/campaign/media/list/${id}`}>list</Link>
+          </h3>
           <Form.Item
             label="Media type"
             name="type"
@@ -270,11 +270,21 @@ const View = () => {
             ]}
           >
             <Upload
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              accept={".png,.jpeg,.jpg,.doc"}
+              multiple
+              action={"http://localhost:3000/"}
               listType="picture-card"
               fileList={fileList}
               onPreview={handlePreview}
-              beforeUpload={beforeUpload}
+              onRemove={(file) => {
+                const index = fileList.indexOf(file);
+                const newFileList = fileList.slice();
+                newFileList.splice(index, 1);
+                setFileList(newFileList);
+              }}
+              beforeUpload={() => {
+                return false;
+              }}
               onChange={handleChange}
             >
               {fileList.length >= 8 ? null : uploadButton}

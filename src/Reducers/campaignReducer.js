@@ -16,6 +16,10 @@ import {
   CAMPAIGN_MEDIA_FAIL,
   CAMPAIGN_PARAGRAPH_UPDATE_SUCCESS,
   CAMPAIGN_PARAGRAPH_UPDATE_FAIL,
+  CAMPAIGN_PARAGRAPH_DELETE_SUCCESS,
+  CAMPAIGN_PARAGRAPH_DELETE_FAIL,
+  CAMPAIGN_PARAGRAPH_BY_ID_FAIL,
+  CAMPAIGN_PARAGRAPH_BY_ID_SUCCESS,
   CLEAR_ERRORS,
   CLEAR_SUCCESS,
 } from "../Constants/campaignConstants";
@@ -39,10 +43,16 @@ export const campaignReducer = (
         loading: false,
         campaign: payload,
       };
+    case CAMPAIGN_PARAGRAPH_BY_ID_SUCCESS:
+      return {
+        loading: false,
+        campaignParagraph: payload,
+      };
     case CAMPAIGN_DELETE_SUCCESS:
     case CAMPAIGN_UPDATAE_SUCCESS:
     case CAMPAIGN_PARAGRAPH_SUCCESS:
     case CAMPAIGN_PARAGRAPH_UPDATE_SUCCESS:
+    case CAMPAIGN_PARAGRAPH_DELETE_SUCCESS:
     case CAMPAIGN_MEDIA_SUCCESS:
     case CAMPAIGN_SUCCESS:
       return {
@@ -55,12 +65,15 @@ export const campaignReducer = (
     case CAMPAIGN_MEDIA_FAIL:
     case CAMPAIGN_PARAGRAPH_UPDATE_FAIL:
     case CAMPAIGN_PARAGRAPH_FAIL:
+    case CAMPAIGN_PARAGRAPH_DELETE_FAIL:
+    case CAMPAIGN_PARAGRAPH_BY_ID_FAIL:
     case CAMPAIGN_LIST_FAIL:
     case CAMPAIGN_BY_ID_FAIL:
       return {
         loading: false,
         campaignList: [],
         campaign: null,
+        campaignParagraph: null,
         error: payload,
       };
     case CLEAR_ERRORS:
