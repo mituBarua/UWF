@@ -35,15 +35,15 @@ const MediaList = (props) => {
   useEffect(() => {
     if (success && success.type == "campaign_delete_media_success") {
       toast.success("Campaign Deleted Successfully");
-      navigate("/campaign/list");
+      navigate(`/campaign/${success.modelId}`);
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
     }
   }, [loading, error, success]);
 
-  const handleDelete = (id) => {
-    dispatch(deleteCampaignMedia(accessToken, id));
+  const handleDelete = (idx) => {
+    dispatch(deleteCampaignMedia(accessToken, idx, id));
   };
 
   if (loading) return <Spinner />;

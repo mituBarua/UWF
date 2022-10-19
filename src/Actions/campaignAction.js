@@ -214,32 +214,33 @@ export const addCampaignMedia =
     }
   };
 
-export const deleteCampaignMedia = (accessToken, id) => async (dispatch) => {
-  try {
-    dispatch({ type: CAMPAIGN_REQUEST });
+export const deleteCampaignMedia =
+  (accessToken, id, modelId) => async (dispatch) => {
+    try {
+      dispatch({ type: CAMPAIGN_REQUEST });
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
 
-    const { data } = await api.post(`/media_delete/${id}`, config);
-    console.log(data);
-    dispatch({
-      type: CAMPAIGN_MEDIA_DELETE_SUCCESS,
-      payload: {
-        type: "campaign_delete_media_success",
-      },
-    });
-  } catch (error) {
-    dispatch({
-      type: CAMPAIGN_MEDIA_DELETE_FAIL,
-      payload: error.response.data,
-    });
-  }
-};
+      const { data } = await api.post(`/media_delete/${id}`, config);
+      dispatch({
+        type: CAMPAIGN_MEDIA_DELETE_SUCCESS,
+        payload: {
+          type: "campaign_delete_media_success",
+          modelId,
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: CAMPAIGN_MEDIA_DELETE_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };
 
 export const addCampaignParagraph =
   (accessToken, paragraphData) => async (dispatch) => {

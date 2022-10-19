@@ -1,8 +1,8 @@
 export const mediaList = {
-  image: ["image/jpeg", "image/jpg", "image/png"],
-  video: [],
-  word_doc: [],
-  pdf: ["application/pdf"],
+  image: ".jpg,.jpeg,.png",
+  video: "",
+  word_doc: ".doc,.docx",
+  pdf: ".pdf",
 };
 
 export const typeList = {

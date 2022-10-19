@@ -6,11 +6,10 @@ import {
   Input,
   InputNumber,
   Button,
-  Modal,
   Upload,
   Select,
 } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { UploadOutlined } from "@ant-design/icons";
 
 import { toast } from "react-toastify";
 
@@ -56,7 +55,7 @@ const View = () => {
       navigate(`/campaign/paragraph/list/${id}`);
     } else if (success && success.type == "campaign_media_success") {
       toast.success("Campaign Media Added");
-      navigate("/campaign/list");
+      navigate(`/campaign/media/list/${id}`);
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
@@ -77,10 +76,9 @@ const View = () => {
     data.append("model_name", "Campaign");
     data.append("model_id", id);
 
-    data.append("the_file", fileList[0], fileList[0].name);
-    // fileList.forEach((file) => {
-    //   data.append("the_file[]", file, file.name);
-    // });
+    fileList.forEach((file) => {
+      data.append("the_file", file);
+    });
     dispatch(addCampaignMedia(accessToken, data));
   };
 
@@ -96,64 +94,24 @@ const View = () => {
     dispatch(addCampaignParagraph(accessToken, data));
   };
 
-  const [previewVisible, setPreviewVisible] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
-  const [previewTitle, setPreviewTitle] = useState("");
   const [fileList, setFileList] = useState([]);
   const [mediaType, setMediaType] = useState("");
 
   const handleMediaTypeChange = (value) => setMediaType(value);
-  const handleCancel = () => setPreviewVisible(false);
 
-  const getBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-
-      reader.onload = () => resolve(reader.result);
-
-      reader.onerror = (error) => reject(error);
-    });
-
-  const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-
-    setPreviewImage(file.url || file.preview);
-    setPreviewVisible(true);
-    setPreviewTitle(
-      file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
-    );
+  const props = {
+    onRemove: (file) => {
+      const index = fileList.indexOf(file);
+      const newFileList = fileList.slice();
+      newFileList.splice(index, 1);
+      setFileList(newFileList);
+    },
+    beforeUpload: (file) => {
+      setFileList([...fileList, file]);
+      return false;
+    },
+    fileList,
   };
-
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-
-  const beforeUpload = (file) => {
-    let list = [];
-    if (mediaType == "") {
-      toast.error("Please select media type");
-    } else list = mediaList[mediaType].filter((item) => item === file.type);
-
-    const isValid = list.length != 0;
-    if (!isValid && mediaType) {
-      toast.error(`${file.type} is not valid`);
-    }
-    return isValid;
-  };
-
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </div>
-  );
 
   if (loading) return <Spinner />;
   return (
@@ -254,56 +212,27 @@ const View = () => {
             </Select>
           </Form.Item>
 
-          <Form.Item
-            label="Media"
-            name="media_list"
-            rules={[
-              {
-                validator: (_, value) => {
-                  if (fileList.length > 0) {
-                    return Promise.resolve();
-                  } else {
-                    return Promise.reject("Please upload your media file");
-                  }
+          {mediaType && (
+            <Form.Item
+              label="Media"
+              name="media_list"
+              rules={[
+                {
+                  validator: (_, value) => {
+                    if (fileList.length > 0) {
+                      return Promise.resolve();
+                    } else {
+                      return Promise.reject("Please upload your media file");
+                    }
+                  },
                 },
-              },
-            ]}
-          >
-            <Upload
-              accept={".png,.jpeg,.jpg,.doc"}
-              multiple
-              action={"http://localhost:3000/"}
-              listType="picture-card"
-              fileList={fileList}
-              onPreview={handlePreview}
-              onRemove={(file) => {
-                const index = fileList.indexOf(file);
-                const newFileList = fileList.slice();
-                newFileList.splice(index, 1);
-                setFileList(newFileList);
-              }}
-              beforeUpload={() => {
-                return false;
-              }}
-              onChange={handleChange}
+              ]}
             >
-              {fileList.length >= 8 ? null : uploadButton}
-            </Upload>
-            <Modal
-              visible={previewVisible}
-              title={previewTitle}
-              footer={null}
-              onCancel={handleCancel}
-            >
-              <img
-                alt="example"
-                style={{
-                  width: "100%",
-                }}
-                src={previewImage}
-              />
-            </Modal>
-          </Form.Item>
+              <Upload {...props} accept={mediaList[mediaType]}>
+                <Button icon={<UploadOutlined />}>Select File</Button>
+              </Upload>
+            </Form.Item>
+          )}
           <Form.Item
             wrapperCol={{
               offset: 8,
