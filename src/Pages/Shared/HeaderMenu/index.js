@@ -21,8 +21,8 @@ function HeaderMenu() {
           <Nav className="ms-auto site-menu">
             <Nav.Link className="active" href="#deets">Home</Nav.Link>
 
-            <Nav.Link href="#deets">Projects</Nav.Link>
-            <Nav.Link href="#deets">Appeal</Nav.Link>
+            <Nav.Link href="/projects">Projects</Nav.Link>
+            <Nav.Link href="/appeals">Appeal</Nav.Link>
             <Nav.Link href="#deets">Campagin</Nav.Link>
             <Nav.Link href="#deets">News</Nav.Link>
             <Nav.Link href="#deets">Contact</Nav.Link>

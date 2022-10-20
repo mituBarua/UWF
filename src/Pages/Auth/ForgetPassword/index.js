@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spin } from "antd";
-import Spinner from "../../Components/Spinner";
+import Spinner from "../../../Components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { clearErrors, ForgotPassword } from "../../Actions/forgotPasswordAction";
+import { clearErrors, ForgotPassword } from "../../../Actions/forgotPasswordAction";
 import { toast } from "react-toastify";
 import "./style.css";
 

@@ -15,20 +15,20 @@ import {
   } from "../Constants/volunteerConstants";
   import { api } from "../Utils/api";
 
-export const getVolunteerList = (accessToken) => async (dispatch) => {
+export const getVolunteerList = () => async (dispatch) => {
   try {
     dispatch({ type: VOLUNTEER_REQUEST });
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+     
       },
     };
 
     const { data } = await api.get("/volunteers", config);
     dispatch({
-      type: VOLUNTEER_LIST_SUCCESS,
+      type: VOLUNTEER_LIST_SUCCESS, 
       payload: data.data,
     });
   } catch (error) {
@@ -48,7 +48,7 @@ export const getVolunteerByID = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/volunteer/${id}`, config);
-    // console.table(data.data);
+ 
     dispatch({
       type: VOLUNTEER_BY_ID_SUCCESS,
       payload: data.data,

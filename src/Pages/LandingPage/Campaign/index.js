@@ -3,7 +3,7 @@ import { Row, Col, Card, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-    getCampaignListInfo
+    getCampaignList
 } from "../../../Actions/campaignAction";
 import EachCampaign from '../EachCampaign';
 const Campaign = () => {
@@ -16,7 +16,7 @@ const Campaign = () => {
         (state) => state.campaign
     );
     useEffect(() => {
-        dispatch(getCampaignListInfo(accessToken));
+        dispatch(getCampaignList());
 
     }, []);
 

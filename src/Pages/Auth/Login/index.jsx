@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spin } from "antd";
-import Spinner from "../../Components/Spinner";
+import Spinner from "../../../Components/Spinner";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { clearErrors, ChangePassword } from "../../Actions/resetPasswordAction";
+import { clearErrors, loginUser } from "../../../Actions/userAction";
 import { toast } from "react-toastify";
 import "./style.css";
-
-const ResetPassword = () => {
+const Login = () => {
   const dispatch = useDispatch();
-  const { loading,success,error } = useSelector(
-    (state) => state.resetPassword
+  const { loading, isAuthenticated, error, user } = useSelector(
+    (state) => state.user
   );
   const navigate = useNavigate();
   const onSubmit = (fieldsValue) => {
-    dispatch(ChangePassword(fieldsValue));
+    dispatch(loginUser(fieldsValue));
   };
+
   useEffect(() => {
-    if (success) {
+    if (isAuthenticated) {
       toast.success("success");
-      navigate("/login");
+      navigate("/dashboard");
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
     }
-  }, [loading,success, error]);
-
+  }, [loading, isAuthenticated, error]);
 
   if (loading) return <Spinner />;
   return (
@@ -52,15 +52,18 @@ const ResetPassword = () => {
         autoComplete="off"
       >
         {" "}
-        <h2 className="text-login">Reset Password</h2>
-
+        <h2 className="text-login">Login</h2>
         <Form.Item
-          label="Passcode"
-          name="passcode"
+          label="Email"
+          name="email"
           rules={[
             {
+              type: "email",
+              message: "Please input your valid email!",
+            },
+            {
               required: true,
-              message: "Please input your Passcode!",
+              message: "Please input your email!",
             },
           ]}
         >
@@ -72,7 +75,7 @@ const ResetPassword = () => {
           rules={[
             {
               required: true,
-              message: "Please input your new password!",
+              message: "Please input your password!",
             },
           ]}
         >
@@ -85,15 +88,16 @@ const ResetPassword = () => {
           }}
         >
           <Button className="login-btn" htmlType="submit">
-            Submit
+            Login
           </Button>
-          <br />
-        
-
+          <br/>
+          <Link to="/forgetPassword" relative="path">
+            Forgot Password?
+          </Link>
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default ResetPassword;
+export default Login;

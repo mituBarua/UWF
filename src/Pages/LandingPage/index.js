@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderMenu from '../Shared/HeaderMenu';
+import Footer from '../Shared/Footer';
 import About from './About';
 import Banner from './Banner';
 import Campaign from './Campaign';
@@ -12,6 +13,7 @@ const LandingPage = () => {
       <About/>
       <HelpUs/>
       <Campaign/>
+      <Footer/>
     </div>
   );
 };

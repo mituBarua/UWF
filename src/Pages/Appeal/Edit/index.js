@@ -50,6 +50,7 @@ const Edit = () => {
     form.setFieldsValue({
       title: appeal?.title,
       description: appeal?.description,
+      is_verified:appeal?.is_verified,
       is_active: appeal?.is_active,
       date: [moment(appeal?.start_date), moment(appeal?.end_date)],
     });
@@ -104,11 +105,14 @@ const Edit = () => {
     data.title = fieldsValue.title;
     data.description = fieldsValue.description;
     data.is_active = fieldsValue.is_active == true ? 1 : 0;
+    data.is_verified = fieldsValue.is_verified == true ? 1 : 0;
     data.start_date = moment(fieldsValue.date[0]).format("YYYY-MM-DD");
     data.end_date = moment(fieldsValue.date[1]).format("YYYY-MM-DD");
     // data.media_list = fileList;
     // data.paragraphs = fieldsValue.paragraphs;
+    console.log(data);
     dispatch(updateAppeal(accessToken, id, data));
+   
   };
   if (loading) return <Spinner />;
   return (
@@ -160,6 +164,19 @@ const Edit = () => {
           {
             required: false,
             message: "Please input your status!",
+          },
+        ]}
+      >
+        <Checkbox />
+      </Form.Item>
+      <Form.Item
+        label="Verified"
+        name="is_verified"
+        valuePropName="checked"
+        rules={[
+          {
+            required: false,
+            message: "Please input your verification!",
           },
         ]}
       >
