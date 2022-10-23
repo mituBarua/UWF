@@ -32,6 +32,9 @@ import NewsList from "./Pages/News/List";
 import NewsCreate from "./Pages/News/Create";
 import NewsView from "./Pages/News/View";
 import NewsEdit from "./Pages/News/Edit";
+import NewsParagraphList from "./Pages/News/Paragraph/List";
+import NewsMediaList from "./Pages/News/Media/List";
+import NewsParagraphEdit from "./Pages/News/Paragraph/Edit";
 import LandingPage from "./Pages/LandingPage";
 
 import VolunteerList from "./Pages/Volunteers/List";
@@ -162,6 +165,39 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <NewsList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/news/paragraph/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <NewsParagraphList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/news/paragraph/edit/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <NewsParagraphEdit />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/news/media/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <NewsMediaList />
               </Dashboard>
             </ProtectedRoute>
           }

@@ -124,6 +124,7 @@ const List = () => {
         <Table
           columns={columns}
           dataSource={newsList}
+          loading={newsList == undefined}
           style={{ marginTop: 20 }}
         />
       </div>
