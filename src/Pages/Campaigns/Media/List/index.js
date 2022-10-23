@@ -50,10 +50,18 @@ const MediaList = (props) => {
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
-        {campaign?.media_list.map(({ url, id }) => (
+        {campaign?.media_list.map(({ url, id, type }) => (
           <Col span={8}>
-            <Card title={`Media ${id}`} bordered={false}>
-              <Image width={200} src={url} />
+            <Card title={`Media ${id} ${type}`} bordered={false}>
+              {type == "Image" && <Image width={200} height={300} src={url} />}
+              {type != "Image" && (
+                <>
+                  <iframe src={url} width="200" height="300" />
+                  <a href={url} target="_blank">
+                    Read more
+                  </a>
+                </>
+              )}
             </Card>
             <br />
             <Button type="danger" block onClick={() => handleDelete(id)}>
