@@ -294,7 +294,7 @@ export const deleteNewsParagraph = (accessToken, id) => async (dispatch) => {
     dispatch({
       type: NEWS_PARAGRAPH_DELETE_SUCCESS,
       payload: {
-        type: "campaign_paragraph_delete_success",
+        type: "news_paragraph_delete_success",
       },
     });
   } catch (error) {

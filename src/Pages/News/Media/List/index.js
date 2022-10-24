@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { Image, Card, Col, Row, Button } from "antd";
-import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -9,10 +8,10 @@ import { toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
 
 import {
-  getCampaignByID,
-  deleteCampaignMedia,
+  getNewsByID,
+  deleteNewsMedia,
   clearErrors,
-} from "../../../../Actions/campaignAction";
+} from "../../../../Actions/newsAction";
 import Spinner from "../../../../Components/Spinner";
 
 const MediaList = (props) => {
@@ -24,18 +23,16 @@ const MediaList = (props) => {
     user: { accessToken },
   } = useSelector((state) => state.user);
 
-  const { loading, error, campaign, success } = useSelector(
-    (state) => state.campaign
-  );
+  const { loading, error, news, success } = useSelector((state) => state.news);
 
   useEffect(() => {
-    dispatch(getCampaignByID(accessToken, id));
+    dispatch(getNewsByID(accessToken, id));
   }, []);
 
   useEffect(() => {
-    if (success && success.type == "campaign_delete_media_success") {
-      toast.success("Campaign Deleted Successfully");
-      navigate(`/campaign/${success.modelId}`);
+    if (success && success.type == "news_delete_media_success") {
+      toast.success("News Deleted Successfully");
+      navigate(`/news/${success.modelId}`);
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
@@ -43,14 +40,14 @@ const MediaList = (props) => {
   }, [loading, error, success]);
 
   const handleDelete = (idx) => {
-    dispatch(deleteCampaignMedia(accessToken, idx, id));
+    dispatch(deleteNewsMedia(accessToken, idx, id));
   };
 
   if (loading) return <Spinner />;
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
-        {campaign?.media_list.map(({ url, id, type }) => (
+        {news?.media_list.map(({ url, id, type }) => (
           <Col span={8}>
             <Card title={`Media ${id} ${type}`} bordered={false}>
               {type == "Image" && <Image width={200} height={300} src={url} />}

@@ -141,7 +141,7 @@ const View = () => {
               },
             ]}
           >
-            <Input />
+            <Input disabled />
           </Form.Item>
 
           <Form.Item
@@ -154,7 +154,12 @@ const View = () => {
               },
             ]}
           >
-            <Input.TextArea rows={4} placeholder="Description" maxLength={6} />
+            <Input.TextArea
+              rows={4}
+              placeholder="Description"
+              maxLength={6}
+              disabled
+            />
           </Form.Item>
           <Form.Item
             label="Status"
@@ -167,7 +172,7 @@ const View = () => {
               },
             ]}
           >
-            <Checkbox />
+            <Checkbox disabled />
           </Form.Item>
         </Form>
 

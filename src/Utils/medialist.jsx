@@ -1,6 +1,6 @@
 export const mediaList = {
   image: ".jpg,.jpeg,.png",
-  video: "",
+  video: ".mp3,.mp4",
   word_doc: ".doc,.docx",
   pdf: ".pdf",
 };

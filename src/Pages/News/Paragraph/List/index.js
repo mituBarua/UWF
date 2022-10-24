@@ -9,9 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   clearErrors,
-  getCampaignByID,
-  deleteCampaignParagraph,
-} from "../../../../Actions/campaignAction";
+  getNewsByID,
+  deleteNewsParagraph,
+} from "../../../../Actions/newsAction";
 import "../../Create/style.css";
 
 import Spinner from "../../../../Components/Spinner";
@@ -26,18 +26,16 @@ const ParagraphList = (props) => {
   const {
     user: { accessToken },
   } = useSelector((state) => state.user);
-  const { campaign, loading, error, success } = useSelector(
-    (state) => state.campaign
-  );
+  const { news, loading, error, success } = useSelector((state) => state.news);
 
   useEffect(() => {
-    dispatch(getCampaignByID(accessToken, id));
+    dispatch(getNewsByID(accessToken, id));
   }, []);
 
   useEffect(() => {
-    if (success && success.type == "campaign_paragraph_delete_success") {
-      toast.success("Campaign Paragraph Deleted");
-      navigate(`/campaign/${id}`);
+    if (success && success.type == "news_paragraph_delete_success") {
+      toast.success("News Paragraph Deleted");
+      navigate(`/news/${id}`);
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
@@ -46,12 +44,12 @@ const ParagraphList = (props) => {
 
   const handleDelete = (idx) => {
     // console.log(idx);
-    dispatch(deleteCampaignParagraph(accessToken, idx));
+    dispatch(deleteNewsParagraph(accessToken, idx));
   };
 
   const genExtra = (idx) => (
     <>
-      <EditFilled onClick={() => navigate(`/campaign/paragraph/edit/${idx}`)} />
+      <EditFilled onClick={() => navigate(`/news/paragraph/edit/${idx}`)} />
       <DeleteFilled onClick={() => handleDelete(idx)} />
     </>
   );
@@ -60,7 +58,7 @@ const ParagraphList = (props) => {
   return (
     <>
       <Collapse expandIconPosition="start">
-        {campaign?.paragraphs.map(({ title, body, index, id }) => (
+        {news?.paragraphs.map(({ title, body, index, id }) => (
           <Panel header={title} key={index} extra={genExtra(id)}>
             <div>{body}</div>
           </Panel>

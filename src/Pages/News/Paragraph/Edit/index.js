@@ -8,9 +8,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
-  getCampaignPargraphByID,
-  updateCampaignParagraph,
-} from "../../../../Actions/campaignAction";
+  getNewsPargraphByID,
+  updateNewsParagraph,
+} from "../../../../Actions/newsAction";
 import "../../Create/style.css";
 
 import Spinner from "../../../../Components/Spinner";
@@ -27,18 +27,18 @@ const ParagraphEdit = () => {
   const {
     user: { accessToken },
   } = useSelector((state) => state.user);
-  const { campaignParagraph, loading, error, success } = useSelector(
-    (state) => state.campaign
+  const { newsParagraph, loading, error, success } = useSelector(
+    (state) => state.news
   );
 
   useEffect(() => {
-    dispatch(getCampaignPargraphByID(accessToken, id));
+    dispatch(getNewsPargraphByID(accessToken, id));
   }, []);
 
   useEffect(() => {
-    if (success && success.type == "campaign_paragraph_update_success") {
-      toast.success("Campaign Paragraph Updated");
-      navigate(`/campaign/${success.modelId}`);
+    if (success && success.type == "news_paragraph_update_success") {
+      toast.success("News Paragraph Updated");
+      navigate(`/news/${success.modelId}`);
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
@@ -47,11 +47,11 @@ const ParagraphEdit = () => {
 
   useEffect(() => {
     paragraphForm.setFieldsValue({
-      p_title: campaignParagraph?.title,
-      p_body: campaignParagraph?.body,
-      p_serial_number: campaignParagraph?.serial_number,
+      p_title: newsParagraph?.title,
+      p_body: newsParagraph?.body,
+      p_serial_number: newsParagraph?.serial_number,
     });
-  }, [campaignParagraph]);
+  }, [newsParagraph]);
 
   const onParagraphSubmit = (fieldsValue) => {
     let data = {};
@@ -60,15 +60,15 @@ const ParagraphEdit = () => {
     data.body = p_body;
     data.serial_number = p_serial_number;
 
-    let modelId = campaignParagraph?.model_id;
-    dispatch(updateCampaignParagraph(accessToken, data, id, modelId));
+    let modelId = newsParagraph?.model_id;
+    dispatch(updateNewsParagraph(accessToken, data, id, modelId));
   };
 
   if (loading) return <Spinner />;
   return (
     <div className="formLayout">
       <div className="form-designView">
-        <h3>Campaign Paragraph Details</h3>
+        <h3>News Paragraph Details</h3>
         {/* Paragraph */}
         <Form
           name="paragraph"
