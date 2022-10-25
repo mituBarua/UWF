@@ -1,0 +1,12 @@
+.gallery-btn{
+    padding: 10px 30px;
+    background-color: white;
+    border-color: #c1272d;
+    box-shadow: none;
+    outline-color: white;
+}
+.gallery-btn:hover{
+    background-color: #c1272d;
+    color: white;
+    transition: 0.3s;
+}

@@ -15,7 +15,7 @@ const Projects = () => {
     return (
         <div className="container">
             <Row className="py-3 my-2">
-                {projectList?.slice(0, 8).map((projectList) => (
+                {projectList?.filter((item)=>item.is_verified == 1).slice(0, 8).map((projectList) => (
                     <Col md="3" sm="6" className="my-2">
                         <Project key={projectList.id} projectList={projectList}></Project>
                     </Col>
