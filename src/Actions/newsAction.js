@@ -15,14 +15,14 @@ import {
   } from "../Constants/newsConstants";
   import { api } from "../Utils/api";
   
-  export const getNewsList = (accessToken) => async (dispatch) => {
+  export const getNewsList = () => async (dispatch) => {
     try {
       dispatch({ type: NEWS_REQUEST });
   
       const config = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+        
         },
       };
   

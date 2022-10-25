@@ -1,31 +1,32 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spin } from "antd";
-import Spinner from "../../Components/Spinner";
-
+import Spinner from "../../../Components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { registerUser } from "../../Actions/userAction";
+import { clearErrors, ChangePassword } from "../../../Actions/resetPasswordAction";
 import { toast } from "react-toastify";
+import "./style.css";
 
-const Register = () => {
+const ResetPassword = () => {
   const dispatch = useDispatch();
-  const { loading, isAuthenticated, error, user } = useSelector(
-    (state) => state.user
+  const { loading,success,error } = useSelector(
+    (state) => state.resetPassword
   );
   const navigate = useNavigate();
   const onSubmit = (fieldsValue) => {
-    dispatch(registerUser(fieldsValue));
+    dispatch(ChangePassword(fieldsValue));
   };
-
   useEffect(() => {
-    if (isAuthenticated) {
-      toast.success(user.message);
-      navigate("/");
+    if (success) {
+      toast.success("success");
+      navigate("/login");
     } else if (error) {
       toast.error(error.message);
+      dispatch(clearErrors());
     }
-  }, [loading, isAuthenticated, error]);
+  }, [loading,success, error]);
+
 
   if (loading) return <Spinner />;
   return (
@@ -33,11 +34,12 @@ const Register = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
-      
+        alignItems: "center",
+        height: "100vh",
       }}
     >
-      <Form  className="login-form"
+      <Form
+        className="login-form"
         name="basic"
         labelCol={{
           span: 8,
@@ -49,43 +51,28 @@ const Register = () => {
         //onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-       <h2 className="text-login">Register</h2>
-        <Form.Item
-          label="Username"
-          name="name"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            {
-              type: "email",
-              message: "Please input your valid email!",
-            },
-            {
-              required: true,
-              message: "Please input your email!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+        {" "}
+        <h2 className="text-login">Reset Password</h2>
 
+        <Form.Item
+          label="Passcode"
+          name="passcode"
+          rules={[
+            {
+              required: true,
+              message: "Please input your Passcode!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
         <Form.Item
           label="Password"
           name="password"
           rules={[
             {
               required: true,
-              message: "Please input your password!",
+              message: "Please input your new password!",
             },
           ]}
         >
@@ -98,12 +85,15 @@ const Register = () => {
           }}
         >
           <Button className="login-btn" htmlType="submit">
-            Register
+            Submit
           </Button>
+          <br />
+        
+
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default Register;
+export default ResetPassword;
