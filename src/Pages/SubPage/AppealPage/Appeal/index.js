@@ -3,7 +3,6 @@ import { Card, Button } from 'react-bootstrap';
 
 const Appeal = ({ appealList }) => {
     const {  title, description, media_list } = appealList;
-    console.log(media_list[0])
     return (
         <div>
             <Card >

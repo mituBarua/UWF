@@ -62,6 +62,23 @@ const List = () => {
       key: "end_date",
     },
     {
+      title: "Verify",
+      dataIndex: "is_verified",
+      key: "is_verified",
+      render: (isVerified) => {
+        let text = isVerified == "1" ? "Verified" : "Unverified";
+        let colors = {
+          1: "green",
+          0: "red",
+        };
+        return (
+          <Tag color={colors[isVerified]} key={isVerified}>
+            {text.toUpperCase()}
+          </Tag>
+        );
+      },
+    },
+    {
       title: "Active",
       dataIndex: "is_active",
       key: "is_active",
@@ -107,6 +124,7 @@ const List = () => {
         <Table
           columns={columns}
           dataSource={campaignList}
+          loading={campaignList == undefined}
           style={{ marginTop: 20 }}
         />
       </div>
