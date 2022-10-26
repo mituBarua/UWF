@@ -47,7 +47,6 @@ const Edit = () => {
   }, []);
 
   useEffect(() => {
-    console.log(campaign);
     form.setFieldsValue({
       title: campaign?.title,
       description: campaign?.description,

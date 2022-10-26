@@ -15,18 +15,19 @@ import {
   } from "../Constants/appealConstants";
   import { api } from "../Utils/api";
   
-  export const getAppealList = (accessToken) => async (dispatch) => {
+  export const getAppealList = () => async (dispatch) => {
     try {
       dispatch({ type: APPEAL_REQUEST });
   
       const config = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+       
         },
       };
   
       const { data } = await api.get("/appeals", config);
+  
       dispatch({
         type: APPEAL_LIST_SUCCESS,
         payload: data.data,
@@ -36,6 +37,8 @@ import {
     }
   };
   
+
+
   export const getAppealByID = (accessToken, id) => async (dispatch) => {
     try {
       dispatch({ type: APPEAL_REQUEST });

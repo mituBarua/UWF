@@ -45,7 +45,6 @@ const ParagraphList = (props) => {
   }, [loading, error, success]);
 
   const handleDelete = (idx) => {
-    // console.log(idx);
     dispatch(deleteCampaignParagraph(accessToken, idx));
   };
 

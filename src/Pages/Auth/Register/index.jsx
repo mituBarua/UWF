@@ -1,30 +1,29 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spin } from "antd";
-import Spinner from "../../Components/Spinner";
+import Spinner from "../../../Components/Spinner";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { clearErrors, loginUser } from "../../Actions/userAction";
+import { registerUser } from "../../../Actions/userAction";
 import { toast } from "react-toastify";
-import "./style.css";
-const Login = () => {
+
+const Register = () => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, user } = useSelector(
     (state) => state.user
   );
   const navigate = useNavigate();
   const onSubmit = (fieldsValue) => {
-    dispatch(loginUser(fieldsValue));
+    dispatch(registerUser(fieldsValue));
   };
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.success("success");
-      navigate("/dashboard");
+      toast.success(user.message);
+      navigate("/");
     } else if (error) {
       toast.error(error.message);
-      dispatch(clearErrors());
     }
   }, [loading, isAuthenticated, error]);
 
@@ -34,12 +33,11 @@ const Login = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        alignItems: "center"
+      
       }}
     >
-      <Form
-        className="login-form"
+      <Form  className="login-form"
         name="basic"
         labelCol={{
           span: 8,
@@ -51,8 +49,19 @@ const Login = () => {
         //onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        {" "}
-        <h2 className="text-login">Login</h2>
+       <h2 className="text-login">Register</h2>
+        <Form.Item
+          label="Username"
+          name="name"
+          rules={[
+            {
+              required: true,
+              message: "Please input your username!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
         <Form.Item
           label="Email"
           name="email"
@@ -69,6 +78,7 @@ const Login = () => {
         >
           <Input />
         </Form.Item>
+
         <Form.Item
           label="Password"
           name="password"
@@ -88,7 +98,7 @@ const Login = () => {
           }}
         >
           <Button className="login-btn" htmlType="submit">
-            Login
+            Register
           </Button>
         </Form.Item>
       </Form>
@@ -96,4 +106,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

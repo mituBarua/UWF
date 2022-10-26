@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spin } from "antd";
-import Spinner from "../../Components/Spinner";
-
+import Spinner from "../../../Components/Spinner";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { registerUser } from "../../Actions/userAction";
+import { clearErrors, loginUser } from "../../../Actions/userAction";
 import { toast } from "react-toastify";
-
-const Register = () => {
+import "./style.css";
+const Login = () => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, user } = useSelector(
     (state) => state.user
   );
   const navigate = useNavigate();
   const onSubmit = (fieldsValue) => {
-    dispatch(registerUser(fieldsValue));
+    dispatch(loginUser(fieldsValue));
   };
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.success(user.message);
-      navigate("/");
+      toast.success("success");
+      navigate("/dashboard");
     } else if (error) {
       toast.error(error.message);
+      dispatch(clearErrors());
     }
   }, [loading, isAuthenticated, error]);
 
@@ -33,11 +34,12 @@ const Register = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
-      
+        alignItems: "center",
+        height: "100vh",
       }}
     >
-      <Form  className="login-form"
+      <Form
+        className="login-form"
         name="basic"
         labelCol={{
           span: 8,
@@ -49,19 +51,8 @@ const Register = () => {
         //onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-       <h2 className="text-login">Register</h2>
-        <Form.Item
-          label="Username"
-          name="name"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+        {" "}
+        <h2 className="text-login">Login</h2>
         <Form.Item
           label="Email"
           name="email"
@@ -78,7 +69,6 @@ const Register = () => {
         >
           <Input />
         </Form.Item>
-
         <Form.Item
           label="Password"
           name="password"
@@ -98,12 +88,16 @@ const Register = () => {
           }}
         >
           <Button className="login-btn" htmlType="submit">
-            Register
+            Login
           </Button>
+          <br/>
+          <Link to="/forgetPassword" relative="path">
+            Forgot Password?
+          </Link>
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default Register;
+export default Login;

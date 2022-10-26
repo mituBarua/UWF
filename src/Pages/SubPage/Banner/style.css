@@ -1,0 +1,26 @@
+.inner-banner{
+ background-image: url("../../../assets/banner/banner.jpg");
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;
+ height: 80vh;
+}
+.banner-text h1{
+    color: white;
+}
+.banner-p{
+    color: white;
+}
+.banner-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.banner-text p{
+    font-size: 18px;
+}
+.banner-text span{
+    color:#C1272D
+}

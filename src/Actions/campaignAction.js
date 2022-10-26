@@ -27,19 +27,17 @@ import {
 } from "../Constants/campaignConstants";
 import { api } from "../Utils/api";
 
-export const getCampaignList = (accessToken) => async (dispatch) => {
+export const getCampaignList = () => async (dispatch) => {
   try {
     dispatch({ type: CAMPAIGN_REQUEST });
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
       },
     };
 
     const { data } = await api.get("/campaigns", config);
-    const response = await api.get("/campaigns", config);
 
     dispatch({
       type: CAMPAIGN_LIST_SUCCESS,
@@ -49,27 +47,7 @@ export const getCampaignList = (accessToken) => async (dispatch) => {
     dispatch({ type: CAMPAIGN_LIST_FAIL, payload: error.response.data });
   }
 };
-//web
-export const getCampaignListInfo = (accessToken) => async (dispatch) => {
-  try {
-    dispatch({ type: CAMPAIGN_REQUEST });
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-
-    const { data } = await api.get("/web_campaigns", config);
-    dispatch({
-      type: CAMPAIGN_LIST_SUCCESS,
-      payload: data.data,
-    });
-  } catch (error) {
-    dispatch({ type: CAMPAIGN_LIST_FAIL, payload: error.response.data });
-  }
-};
 export const getCampaignInfo = () => async (dispatch) => {
   try {
     dispatch({ type: CAMPAIGN_REQUEST });
@@ -124,7 +102,7 @@ export const createCampaign =
       };
 
       const { data } = await api.post("/campaign_new", campaignData, config);
-      console.log(data);
+  
       dispatch({
         type: CAMPAIGN_SUCCESS,
         payload: {

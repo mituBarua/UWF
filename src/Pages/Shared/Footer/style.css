@@ -1,0 +1,34 @@
+.footer-img img{
+    width:13%;
+}
+.footer-img{
+    margin: 20px 0;
+}
+.footer-bg{
+    background-color:#262626;
+}
+.footer h5{
+    border-bottom: 1px solid #C1272D;
+    border-bottom-width: medium;
+    width: 60%;
+    margin:20px 0;
+}
+.footer-bg h5,li,a,span{
+    color:white;
+}
+.footer-bg li {
+    list-style-type: square;
+    color: #C1272D;
+} 
+.about p{
+    width: 87%;
+    text-align: justify;
+    color: white;
+} 
+.newsletter p{
+    color:white;
+}
+.message-icon{
+    color: #C1272D;
+    font-size: 18px;
+} 

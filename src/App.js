@@ -6,8 +6,10 @@ import "antd/dist/antd.min.css";
 import ProtectedRoute from "./Routes/ProtectedRoute";
 
 import Dashboard from "./Components/Dashboard";
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
+import Login from "./Pages/Auth/Login";
+import ForgetPassword from "./Pages/Auth/ForgetPassword";
+import ResetPassword from "./Pages/Auth/ResetPassword";
+import Register from "./Pages/Auth/Register";
 import UserList from "./Pages/UserList";
 
 import ProjectList from "./Pages/Projects/List";
@@ -40,6 +42,8 @@ import LandingPage from "./Pages/LandingPage";
 import VolunteerList from "./Pages/Volunteers/List";
 import VolunteerView from "./Pages/Volunteers/View";
 import VolunteerEdit from "./Pages/Volunteers/Edit";
+import ProjectPage from "./Pages/SubPage/ProjectPage";
+import AppealPage from "./Pages/SubPage/AppealPage";
 
 function App() {
   // disable right click
@@ -65,7 +69,11 @@ function App() {
           }
         />
         <Route path="/login" exact element={<Login />} />
+        <Route path="/forgetPassword" exact element={<ForgetPassword />} />
+        <Route path="/resetPassword" exact element={<ResetPassword />} />
         <Route path="/register" exact element={<Register />} />
+        <Route path="/projects" exact element={<ProjectPage />} />
+        <Route path="/appeals" exact element={<AppealPage />} />
         <Route
           path="/user/list"
           exact

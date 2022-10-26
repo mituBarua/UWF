@@ -43,7 +43,6 @@ const ParagraphList = (props) => {
   }, [loading, error, success]);
 
   const handleDelete = (idx) => {
-    // console.log(idx);
     dispatch(deleteNewsParagraph(accessToken, idx));
   };
 
