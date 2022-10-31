@@ -62,7 +62,6 @@ const UserList = () => {
       dashboard: { userList },
     },
   } = useSelector((state) => state.user);
-  //   console.log(userList);
   return <Table columns={columns} dataSource={userList} />;
 };
 

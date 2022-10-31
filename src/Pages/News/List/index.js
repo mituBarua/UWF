@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { EditFilled, DeleteFilled, DatabaseFilled } from '@ant-design/icons';
+import { EditFilled, DeleteFilled, DatabaseFilled } from "@ant-design/icons";
 const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -62,6 +62,23 @@ const List = () => {
       key: "end_date",
     },
     {
+      title: "Verify",
+      dataIndex: "is_verified",
+      key: "is_verified",
+      render: (isVerified) => {
+        let text = isVerified == "1" ? "Verified" : "Unverified";
+        let colors = {
+          1: "green",
+          0: "red",
+        };
+        return (
+          <Tag color={colors[isVerified]} key={isVerified}>
+            {text.toUpperCase()}
+          </Tag>
+        );
+      },
+    },
+    {
       title: "Active",
       dataIndex: "is_active",
       key: "is_active",
@@ -84,11 +101,11 @@ const List = () => {
         const { id } = row;
         return (
           <>
-
             <DatabaseFilled onClick={() => navigate(`/news/${id}`)} />
             <EditFilled onClick={() => navigate(`/news/edit/${id}`)} />
-            <DeleteFilled onClick={() => dispatch(deleteNews(accessToken, id))} />
-
+            <DeleteFilled
+              onClick={() => dispatch(deleteNews(accessToken, id))}
+            />
           </>
         );
       },
@@ -100,10 +117,16 @@ const List = () => {
   return (
     <>
       <div>
-      
-      <Button type="primary" onClick={() => navigate("/news/create")}>Create</Button>
-      <br/>
-      <Table columns={columns} dataSource={newsList}  style={{ marginTop: 20 }} />
+        <Button type="primary" onClick={() => navigate("/news/create")}>
+          Create
+        </Button>
+        <br />
+        <Table
+          columns={columns}
+          dataSource={newsList}
+          loading={newsList == undefined}
+          style={{ marginTop: 20 }}
+        />
       </div>
     </>
   );

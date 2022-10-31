@@ -27,7 +27,7 @@ import {
       };
   
       const { data } = await api.get("/appeals", config);
-      console.log('appeal list',data);
+  
       dispatch({
         type: APPEAL_LIST_SUCCESS,
         payload: data.data,
@@ -101,7 +101,6 @@ import {
           appealData,
           config
         );
-        console.log('update appeal',data);
         dispatch({
           type: APPEAL_UPDATAE_SUCCESS,
           payload: {

@@ -3,7 +3,6 @@ import { Card, Button } from 'react-bootstrap';
 import './style.css';
 const EachCampaign = ({campaignList}) => {
     const { id, title,description,media_list } = campaignList;
-    console.log(media_list[0].url);
     return (
         <div>
             <Card >

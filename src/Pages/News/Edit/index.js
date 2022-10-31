@@ -51,6 +51,7 @@ const Edit = () => {
       title: news?.title,
       description: news?.description,
       is_active: news?.is_active,
+      is_verified: news?.is_verified,
       date: [moment(news?.start_date), moment(news?.end_date)],
     });
   }, [news]);
@@ -104,6 +105,7 @@ const Edit = () => {
     data.title = fieldsValue.title;
     data.description = fieldsValue.description;
     data.is_active = fieldsValue.is_active == true ? 1 : 0;
+    data.is_verified = fieldsValue.is_verified == true ? 1 : 0;
     data.start_date = moment(fieldsValue.date[0]).format("YYYY-MM-DD");
     data.end_date = moment(fieldsValue.date[1]).format("YYYY-MM-DD");
     // data.media_list = fileList;
@@ -160,6 +162,19 @@ const Edit = () => {
           {
             required: false,
             message: "Please input your status!",
+          },
+        ]}
+      >
+        <Checkbox />
+      </Form.Item>
+      <Form.Item
+        label="Verify"
+        name="is_verified"
+        valuePropName="checked"
+        rules={[
+          {
+            required: false,
+            message: "Please verify!",
           },
         ]}
       >

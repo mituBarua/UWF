@@ -110,7 +110,6 @@ const Edit = () => {
     data.end_date = moment(fieldsValue.date[1]).format("YYYY-MM-DD");
     // data.media_list = fileList;
     // data.paragraphs = fieldsValue.paragraphs;
-    console.log(data);
     dispatch(updateAppeal(accessToken, id, data));
    
   };

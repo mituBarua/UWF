@@ -19,7 +19,7 @@ export const ForgotPassword = (forgotPasswordData) => async (dispatch) => {
         };
 
         const { data } = await api.post("/forget_password", forgotPasswordData, config);
-        console.log(data);
+        
         dispatch({
             type: FORGOTPASSWORD_SUCCESS,
             payload: {

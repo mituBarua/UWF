@@ -10,9 +10,11 @@ import { campaignReducer } from "./Reducers/campaignReducer";
 import { appealReducer } from "./Reducers/appealReducer";
 import { newsReducer } from "./Reducers/newsReducer";
 import { volunteerReducer } from "./Reducers/volunteerReducer";
+
 import { resetPasswordReducer } from "./Reducers/resetPasswordReducer";
 import { forgotPasswordReducer } from "./Reducers/forgotPasswordReducer";
 import { imageGalleryReducer } from "./Reducers/imageGalleryReducer";
+
 const reducer = combineReducers({
   user: userReducer,
   project: projectReducer,
@@ -33,7 +35,15 @@ const persistConfig = {
   whiteList: ["user"],
 };
 
-const rootReducer = persistReducer(persistConfig, reducer);
+const appReducer = (state, action) => {
+  if (action.type === "LOGOUT_USER_SUCCESS") {
+    return reducer(undefined, action);
+  }
+
+  return reducer(state, action);
+};
+
+const rootReducer = persistReducer(persistConfig, appReducer);
 
 export const store = createStore(
   rootReducer,
