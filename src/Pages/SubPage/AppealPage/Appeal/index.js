@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-
+import { Link } from "react-router-dom";
 const Appeal = ({ appealList }) => {
-    const {  title, description, media_list } = appealList;
+    const { id, title, description, media_list } = appealList;
     console.log(media_list[0])
     return (
         <div>
@@ -13,7 +13,10 @@ const Appeal = ({ appealList }) => {
                     <Card.Text>
                         {description.slice(0, 90)}
                     </Card.Text>
-                    <Button className="donate btn btn-primary" >More</Button>
+                    <Link to={`/appeal/${id}`}>
+                        <Button className="donate btn btn-primary" >More</Button>
+                    </Link>
+
                 </Card.Body>
             </Card>
         </div>

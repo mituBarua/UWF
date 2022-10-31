@@ -39,19 +39,18 @@ import {
   
 
 
-  export const getAppealByID = (accessToken, id) => async (dispatch) => {
+  export const getAppealByID = ( id) => async (dispatch) => {
     try {
       dispatch({ type: APPEAL_REQUEST });
   
       const config = {
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json"
         },
       };
   
       const { data } = await api.get(`/appeal/${id}`, config);
-      // console.table(data.data);
+     console.log(data,'sfdsfdsfds');
       dispatch({
         type: APPEAL_BY_ID_SUCCESS,
         payload: data.data,

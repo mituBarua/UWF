@@ -34,6 +34,7 @@ import VolunteerView from "./Pages/Volunteers/View";
 import VolunteerEdit from "./Pages/Volunteers/Edit";
 import ProjectPage from "./Pages/SubPage/ProjectPage";
 import AppealPage from "./Pages/SubPage/AppealPage";
+import AppealDetails from "./Pages/SubPage/AppealDetailPage";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Route path="/register" exact element={<Register />} />
         <Route path="/projects" exact element={<ProjectPage />} />
         <Route path="/appeals" exact element={<AppealPage />} />
+        <Route path="/appeal/:id" exact element={<AppealDetails />} />
         <Route
           path="/user/list"
           exact
