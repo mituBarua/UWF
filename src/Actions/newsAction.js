@@ -70,6 +70,27 @@ export const getNewsByID = (accessToken, id) => async (dispatch) => {
   }
 };
 
+export const getNewsDataByID = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: NEWS_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await api.get(`/news/${id}`, config);
+    // console.table(data.data);
+    dispatch({
+      type: NEWS_BY_ID_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({ type: NEWS_BY_ID_FAIL, payload: error.response.data });
+  }
+};
+
 export const createNews = (accessToken, newsData) => async (dispatch) => {
   try {
     dispatch({ type: NEWS_REQUEST });
