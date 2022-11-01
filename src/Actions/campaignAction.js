@@ -89,6 +89,27 @@ export const getCampaignByID = (accessToken, id) => async (dispatch) => {
   }
 };
 
+export const getCampaignDataByID = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: CAMPAIGN_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await api.get(`/campaign/${id}`, config);
+
+    dispatch({
+      type: CAMPAIGN_BY_ID_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({ type: CAMPAIGN_BY_ID_FAIL, payload: error.response.data });
+  }
+};
+
 export const createCampaign =
   (accessToken, campaignData) => async (dispatch) => {
     try {
@@ -102,7 +123,7 @@ export const createCampaign =
       };
 
       const { data } = await api.post("/campaign_new", campaignData, config);
-  
+
       dispatch({
         type: CAMPAIGN_SUCCESS,
         payload: {

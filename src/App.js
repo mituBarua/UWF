@@ -16,6 +16,7 @@ import ProjectList from "./Pages/Projects/List";
 import ProjectCreate from "./Pages/Projects/Create";
 import ProjectView from "./Pages/Projects/View";
 import ProjectEdit from "./Pages/Projects/Edit";
+import ProjectPage from "./Pages/SubPage/ProjectPage";
 
 import CampaignList from "./Pages/Campaigns/List";
 import CampaignCreate from "./Pages/Campaigns/Create";
@@ -24,11 +25,15 @@ import CampaignEdit from "./Pages/Campaigns/Edit";
 import CampaignParagraphList from "./Pages/Campaigns/Paragraph/List";
 import CampaignMediaList from "./Pages/Campaigns/Media/List";
 import CampaignParagraphEdit from "./Pages/Campaigns/Paragraph/Edit";
+import CampaingDetails from "./Pages/SubPage/CampaignDetailPage";
+import CampaignPage from "./Pages/SubPage/CampaignPage";
 
 import AppealList from "./Pages/Appeal/List";
 import AppealCreate from "./Pages/Appeal/Create";
 import AppealView from "./Pages/Appeal/View";
 import AppealEdit from "./Pages/Appeal/Edit";
+import AppealPage from "./Pages/SubPage/AppealPage";
+import AppealDetails from "./Pages/SubPage/AppealDetailPage";
 
 import NewsList from "./Pages/News/List";
 import NewsCreate from "./Pages/News/Create";
@@ -42,9 +47,6 @@ import LandingPage from "./Pages/LandingPage";
 import VolunteerList from "./Pages/Volunteers/List";
 import VolunteerView from "./Pages/Volunteers/View";
 import VolunteerEdit from "./Pages/Volunteers/Edit";
-import ProjectPage from "./Pages/SubPage/ProjectPage";
-import AppealPage from "./Pages/SubPage/AppealPage";
-import AppealDetails from "./Pages/SubPage/AppealDetailPage";
 
 function App() {
   // disable right click
@@ -76,6 +78,12 @@ function App() {
         <Route path="/projects" exact element={<ProjectPage />} />
         <Route path="/appeals" exact element={<AppealPage />} />
         <Route path="/appeal/:id" exact element={<AppealDetails />} />
+        <Route path="/campaign" exact element={<CampaignPage />} />
+        <Route
+          path="/campaign-details/:id"
+          exact
+          element={<CampaingDetails />}
+        />
         <Route
           path="/user/list"
           exact
