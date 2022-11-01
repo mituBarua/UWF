@@ -25,7 +25,7 @@ import CampaignEdit from "./Pages/Campaigns/Edit";
 import CampaignParagraphList from "./Pages/Campaigns/Paragraph/List";
 import CampaignMediaList from "./Pages/Campaigns/Media/List";
 import CampaignParagraphEdit from "./Pages/Campaigns/Paragraph/Edit";
-import CampaingDetails from "./Pages/SubPage/CampaignDetailPage";
+import CampaignDetails from "./Pages/SubPage/CampaignDetailPage";
 import CampaignPage from "./Pages/SubPage/CampaignPage";
 
 import AppealList from "./Pages/Appeal/List";
@@ -42,6 +42,9 @@ import NewsEdit from "./Pages/News/Edit";
 import NewsParagraphList from "./Pages/News/Paragraph/List";
 import NewsMediaList from "./Pages/News/Media/List";
 import NewsParagraphEdit from "./Pages/News/Paragraph/Edit";
+import NewsDetails from "./Pages/SubPage/NewsDetailPage";
+import NewsPage from "./Pages/SubPage/NewsPage";
+
 import LandingPage from "./Pages/LandingPage";
 
 import VolunteerList from "./Pages/Volunteers/List";
@@ -82,8 +85,10 @@ function App() {
         <Route
           path="/campaign-details/:id"
           exact
-          element={<CampaingDetails />}
+          element={<CampaignDetails />}
         />
+        <Route path="/news" exact element={<NewsPage />} />
+        <Route path="/news-details/:id" exact element={<NewsDetails />} />
         <Route
           path="/user/list"
           exact
