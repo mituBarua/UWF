@@ -14,7 +14,7 @@
     margin:20px 0;
 }
 .footer-bg h5,li,a,span{
-    color:white;
+    /* color:white; */
 }
 .footer-bg li {
     list-style-type: square;
