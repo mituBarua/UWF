@@ -1,19 +1,19 @@
 import {
-    VOLUNTEER_FAIL,
-    VOLUNTEER_SUCCESS,
-    VOLUNTEER_REQUEST,
-    VOLUNTEER_LIST_SUCCESS,
-    VOLUNTEER_LIST_FAIL,
-    VOLUNTEER_BY_ID_SUCCESS,
-    VOLUNTEER_BY_ID_FAIL,
-    VOLUNTEER_UPDATAE_SUCCESS,
-    VOLUNTEER_UPDATE_FAIL,
-    VOLUNTEER_DELETE_SUCCESS,
-    VOLUNTEER_DELETE_FAIL,
-    CLEAR_ERRORS,
-    CLEAR_SUCCESS,
-  } from "../Constants/volunteerConstants";
-  import { api } from "../Utils/api";
+  VOLUNTEER_FAIL,
+  VOLUNTEER_SUCCESS,
+  VOLUNTEER_REQUEST,
+  VOLUNTEER_LIST_SUCCESS,
+  VOLUNTEER_LIST_FAIL,
+  VOLUNTEER_BY_ID_SUCCESS,
+  VOLUNTEER_BY_ID_FAIL,
+  VOLUNTEER_UPDATAE_SUCCESS,
+  VOLUNTEER_UPDATE_FAIL,
+  VOLUNTEER_DELETE_SUCCESS,
+  VOLUNTEER_DELETE_FAIL,
+  CLEAR_ERRORS,
+  CLEAR_SUCCESS,
+} from "../Constants/volunteerConstants";
+import { api } from "../Utils/api";
 
 export const getVolunteerList = () => async (dispatch) => {
   try {
@@ -22,13 +22,12 @@ export const getVolunteerList = () => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-     
       },
     };
 
     const { data } = await api.get("/volunteers", config);
     dispatch({
-      type: VOLUNTEER_LIST_SUCCESS, 
+      type: VOLUNTEER_LIST_SUCCESS,
       payload: data.data,
     });
   } catch (error) {
@@ -48,7 +47,7 @@ export const getVolunteerByID = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/volunteer/${id}`, config);
- 
+
     dispatch({
       type: VOLUNTEER_BY_ID_SUCCESS,
       payload: data.data,
@@ -58,29 +57,30 @@ export const getVolunteerByID = (accessToken, id) => async (dispatch) => {
   }
 };
 
-// export const createProject = (accessToken, projectData) => async (dispatch) => {
-//   try {
-//     dispatch({ type: VOLUNTEER_REQUEST });
+export const createVolunteer =
+  (accessToken, volunteerData) => async (dispatch) => {
+    try {
+      dispatch({ type: VOLUNTEER_REQUEST });
 
-//     const config = {
-//       headers: {
-//         "Content-Type": "multipart/form-data",
-//         Authorization: `Bearer ${accessToken}`,
-//       },
-//     };
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
 
-//     const { data } = await api.post("/project_new", projectData, config);
-   
-//     dispatch({
-//       type: VOLUNTEER_SUCCESS,
-//       payload: {
-//         type: "project_create_success",
-//       },
-//     });
-//   } catch (error) {
-//     dispatch({ type: VOLUNTEER_FAIL, payload: error.response.data });
-//   }
-// };
+      const { data } = await api.post("/volunteer_new", volunteerData, config);
+
+      dispatch({
+        type: VOLUNTEER_SUCCESS,
+        payload: {
+          type: "volunteer_create_success",
+        },
+      });
+    } catch (error) {
+      dispatch({ type: VOLUNTEER_FAIL, payload: error.response.data });
+    }
+  };
 
 export const updateVolunteer =
   (accessToken, id, volunteerData) => async (dispatch) => {
@@ -122,7 +122,7 @@ export const deleteVolunteer = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.delete(`/volunteer_delete/${id}`, config);
-  
+
     dispatch({
       type: VOLUNTEER_DELETE_SUCCESS,
       payload: {
@@ -130,7 +130,7 @@ export const deleteVolunteer = (accessToken, id) => async (dispatch) => {
       },
     });
   } catch (error) {
-    dispatch({ type:VOLUNTEER_DELETE_FAIL, payload: error.response.data });
+    dispatch({ type: VOLUNTEER_DELETE_FAIL, payload: error.response.data });
   }
 };
 
