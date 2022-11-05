@@ -57,11 +57,12 @@ const menuItems = [
     label: "Volunteer",
     ref: "/volunteer/list",
   },
-  //   {
-  //     key: "2",
-  //     icon: <FileOutlined />,
-  //     label: "Projects",
-  //   },
+  {
+    key: "8",
+    icon: <FileOutlined />,
+    label: "Message",
+    ref: "/message/list",
+  },
   //   {
   //     key: "3",
   //     icon: <UploadOutlined />,

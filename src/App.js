@@ -58,6 +58,9 @@ import VolunteerList from "./Pages/Volunteers/List";
 import VolunteerView from "./Pages/Volunteers/View";
 import VolunteerEdit from "./Pages/Volunteers/Edit";
 
+import MessageList from "./Pages/Messages/List";
+import MessageView from "./Pages/Messages/View";
+
 function App() {
   // disable right click
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -456,6 +459,29 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <VolunteerView />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/message/list"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <MessageList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/message/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <MessageView />
               </Dashboard>
             </ProtectedRoute>
           }

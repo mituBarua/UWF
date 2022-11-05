@@ -10,6 +10,7 @@ import { campaignReducer } from "./Reducers/campaignReducer";
 import { appealReducer } from "./Reducers/appealReducer";
 import { newsReducer } from "./Reducers/newsReducer";
 import { volunteerReducer } from "./Reducers/volunteerReducer";
+import { messageReducer } from "./Reducers/messageReducer";
 
 import { resetPasswordReducer } from "./Reducers/resetPasswordReducer";
 import { forgotPasswordReducer } from "./Reducers/forgotPasswordReducer";
@@ -24,7 +25,8 @@ const reducer = combineReducers({
   volunteer: volunteerReducer,
   forgotPassword: forgotPasswordReducer,
   resetPassword: resetPasswordReducer,
-  imageGallery: imageGalleryReducer
+  imageGallery: imageGalleryReducer,
+  message: messageReducer,
 });
 
 const middleware = [thunk];
