@@ -1,8 +1,9 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-const Project = ({projectList}) => {
-    const { id, title,description,media_list } = projectList;
- 
+import { Link } from "react-router-dom";
+const Project = ({ projectList }) => {
+    const { id, title, description, media_list } = projectList;
+
     return (
         <div>
             <Card >
@@ -10,9 +11,12 @@ const Project = ({projectList}) => {
                 <Card.Body>
                     <Card.Title>{title.slice(0, 30)}</Card.Title>
                     <Card.Text>
-                      {description.slice(0,90)}
+                        {description.slice(0, 90)}
                     </Card.Text>
-                    <Button  className="donate btn btn-primary" >More</Button>
+                    <Link to={`/project-details/${id}`}>
+                        <Button className="donate btn btn-primary">More</Button>
+                    </Link>
+
                 </Card.Body>
             </Card>
         </div>

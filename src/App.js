@@ -17,6 +17,9 @@ import ProjectCreate from "./Pages/Projects/Create";
 import ProjectView from "./Pages/Projects/View";
 import ProjectEdit from "./Pages/Projects/Edit";
 import ProjectPage from "./Pages/SubPage/ProjectPage";
+import ProjectParagraphList from "./Pages/Projects/Paragraph/List";
+import ProjectMediaList from "./Pages/Projects/Media/List";
+import ProjectParagraphEdit from "./Pages/Projects/Paragraph/Edit";
 
 import CampaignList from "./Pages/Campaigns/List";
 import CampaignCreate from "./Pages/Campaigns/Create";
@@ -32,6 +35,9 @@ import AppealList from "./Pages/Appeal/List";
 import AppealCreate from "./Pages/Appeal/Create";
 import AppealView from "./Pages/Appeal/View";
 import AppealEdit from "./Pages/Appeal/Edit";
+import AppealParagraphList from "./Pages/Appeal/Paragraph/List";
+import AppealMediaList from "./Pages/Appeal/Media/List";
+import AppealParagraphEdit from "./Pages/Appeal/Paragraph/Edit";
 import AppealPage from "./Pages/SubPage/AppealPage";
 import AppealDetails from "./Pages/SubPage/AppealDetailPage";
 
@@ -44,7 +50,7 @@ import NewsMediaList from "./Pages/News/Media/List";
 import NewsParagraphEdit from "./Pages/News/Paragraph/Edit";
 import NewsDetails from "./Pages/SubPage/NewsDetailPage";
 import NewsPage from "./Pages/SubPage/NewsPage";
-
+import ProjectDetails from "./Pages/SubPage/ProjectDetailPage";
 import LandingPage from "./Pages/LandingPage";
 
 import VolunteerList from "./Pages/Volunteers/List";
@@ -80,7 +86,7 @@ function App() {
         <Route path="/register" exact element={<Register />} />
         <Route path="/projects" exact element={<ProjectPage />} />
         <Route path="/appeals" exact element={<AppealPage />} />
-        <Route path="/appeal/:id" exact element={<AppealDetails />} />
+        <Route path="/appeal-details/:id" exact element={<AppealDetails />} />
         <Route path="/campaign" exact element={<CampaignPage />} />
         <Route
           path="/campaign-details/:id"
@@ -89,6 +95,7 @@ function App() {
         />
         <Route path="/news" exact element={<NewsPage />} />
         <Route path="/news-details/:id" exact element={<NewsDetails />} />
+        <Route path="/project-details/:id" exact element={<ProjectDetails />} />
         <Route
           path="/user/list"
           exact
@@ -107,6 +114,39 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <ProjectList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/project/paragraph/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <ProjectParagraphList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/project/paragraph/edit/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <ProjectParagraphEdit />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/project/media/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <ProjectMediaList />
               </Dashboard>
             </ProtectedRoute>
           }
@@ -184,6 +224,39 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <AppealView />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/appeal/paragraph/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <AppealParagraphList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/appeal/paragraph/edit/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <AppealParagraphEdit />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/appeal/media/list/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <AppealMediaList />
               </Dashboard>
             </ProtectedRoute>
           }

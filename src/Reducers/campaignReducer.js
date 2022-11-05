@@ -80,7 +80,8 @@ export const campaignReducer = (
         campaignParagraph: null,
         error: payload,
       };
-    case CLEAR_ERRORS:
+    
+      case CLEAR_ERRORS:
       return {
         ...state,
         error: null,

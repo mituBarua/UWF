@@ -19,9 +19,9 @@ const Newss = () => {
           ?.filter((item) => item.is_verified == 1)
           .slice(0, 8)
           .map((news) => (
-            <Col md="3" sm="6" className="my-2">
-              <News key={news.id} news={news} />
-            </Col>
+
+            <News key={news.id} news={news} />
+
           ))}
       </Row>
     </div>

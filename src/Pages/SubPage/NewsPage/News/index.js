@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const News = ({ news }) => {
@@ -7,16 +7,20 @@ const News = ({ news }) => {
 
   return (
     <div>
-      <Card>
-        <Card.Img variant="top" src={media_list[0]?.url} />
-        <Card.Body>
-          <Card.Title>{title.slice(0, 30)}</Card.Title>
-          <Card.Text>{description.slice(0, 90)}</Card.Text>
+
+
+      <div className="row m-4">
+        <div className="col-md-5">
+          <img src={media_list[0]?.url} alt='img' style={{ width: '100%', borderRadius: '10px' }} />
+        </div>
+        <div className="col-md-7">
+          <h3>{title}</h3>
+          <p>{description}</p>
           <Link to={`/news-details/${id}`}>
             <Button className="donate btn btn-primary">More</Button>
           </Link>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

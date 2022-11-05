@@ -18,7 +18,7 @@ function HeaderMenu() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto site-menu">
-            <Nav.Link className="active" href="#deets">
+            <Nav.Link className="active" href="/">
               Home
             </Nav.Link>
 
@@ -26,7 +26,7 @@ function HeaderMenu() {
             <Nav.Link href="/appeals">Appeal</Nav.Link>
             <Nav.Link href="/campaign">Campagin</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
-            <Nav.Link href="#deets">Contact</Nav.Link>
+            <Nav.Link href="/contact">Contact</Nav.Link>
             <Button className="donate">Donate</Button>
           </Nav>
         </Navbar.Collapse>

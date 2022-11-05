@@ -14,9 +14,9 @@ const Appeals = () => {
         <div className="container">
             <Row className="py-3 my-2">
                 {appealList?.filter((item)=>item.is_verified == 1).slice(0, 8).map((appealList) => (
-                    <Col md="3" sm="6" className="my-2">
+                   
                         <Appeal key={appealList.id} appealList={appealList}></Appeal>
-                    </Col>
+                 
                 ))}
             </Row >
         </div>

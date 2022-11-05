@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getAppealByID } from "../../../Actions/appealAction";
+import { getAppealDataByID } from "../../../Actions/appealAction";
 import Banner from "../Banner";
 import HeaderMenu from "../../Shared/HeaderMenu";
 import Slider from "react-slick";
@@ -14,7 +14,7 @@ const AppealDetails = () => {
     const { appeal } = useSelector((state) => state.appeal);
 
     useEffect(() => {
-        dispatch(getAppealByID(id));
+        dispatch(getAppealDataByID(id));
     }, []);
     const settings = {
         dots: true,
