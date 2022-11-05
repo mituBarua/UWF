@@ -1,0 +1,11 @@
+.categories ul{
+    margin: 28px 0 43px 0;
+}
+.categories li {
+    padding: 10px;
+    list-style-type: square;
+    color: white;
+}
+.categories h2{
+    padding: 0 23px;
+}
