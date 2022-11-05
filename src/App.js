@@ -47,6 +47,7 @@ import NewsPage from "./Pages/SubPage/NewsPage";
 
 import LandingPage from "./Pages/LandingPage";
 
+import VolunteerCreate from "./Pages/Volunteers/Create";
 import VolunteerList from "./Pages/Volunteers/List";
 import VolunteerView from "./Pages/Volunteers/View";
 import VolunteerEdit from "./Pages/Volunteers/Edit";
@@ -353,7 +354,17 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/volunteer/create"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <VolunteerCreate />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/volunteer/edit/:id"
           exact

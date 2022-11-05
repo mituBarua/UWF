@@ -6,22 +6,16 @@ import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  getVolunteerByID,
-  clearErrors,
-  updateVolunteer,
-} from "../../../Actions/volunteerAction";
+import { useNavigate } from "react-router-dom";
+import { createVolunteer, clearErrors } from "../../../Actions/volunteerAction";
 import Spinner from "../../../Components/Spinner";
 
 import { mediaList } from "../../../Utils/medialist";
 
-const Edit = () => {
+const Create = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [form] = Form.useForm();
-
-  const { id } = useParams();
 
   const {
     user: { accessToken },
@@ -30,21 +24,6 @@ const Edit = () => {
   const { loading, error, volunteer, success } = useSelector(
     (state) => state.volunteer
   );
-
-  useEffect(() => {
-    dispatch(getVolunteerByID(accessToken, id));
-  }, []);
-
-  useEffect(() => {
-    form.setFieldsValue({
-      first_name: volunteer?.first_name,
-      last_name: volunteer?.last_name,
-      phone: volunteer?.phone,
-      email: volunteer?.email,
-      address: volunteer?.address,
-      additional_note: volunteer?.additional_note,
-    });
-  }, [volunteer]);
 
   const [fileList, setFileList] = useState([]);
 
@@ -76,8 +55,8 @@ const Edit = () => {
   );
 
   useEffect(() => {
-    if (success && success.type == "volunteer_update_success") {
-      toast.success("Volunteer Updated Successfully");
+    if (success && success.type == "volunteer_create_success") {
+      toast.success("Volunteer Created Successfully");
       navigate("/volunteer/list");
     } else if (error) {
       toast.error(error.message);
@@ -100,7 +79,8 @@ const Edit = () => {
     fileList.forEach((file) => {
       data.append("profile_picture", file);
     });
-    dispatch(updateVolunteer(accessToken, id, data));
+
+    dispatch(createVolunteer(accessToken, data));
   };
   if (loading) return <Spinner />;
   return (
@@ -231,4 +211,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default Create;
