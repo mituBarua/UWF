@@ -31,7 +31,7 @@ const CampaignDetails = () => {
       <Banner name="Campaign Details" />
       <div className="container mt-4">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-7">
             <Slider {...settings}>
               {campaign?.media_list.map(({ url, id }) => (
                 <div className="each-slide" key={id}>
@@ -41,7 +41,7 @@ const CampaignDetails = () => {
             </Slider>
           </div>
           <div className="col-md-1"></div>
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                         <div className="categories">
                             <h2>Categories</h2>
                             <ul>

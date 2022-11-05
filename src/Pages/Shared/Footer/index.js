@@ -32,7 +32,7 @@ const Footer = () => {
                     </div>
                     <div className="col-md-2">
                         <h5>Our Project</h5>
-                        <ul>
+                        <ul className="link-color">
                             <li>   <Link to="/" relative="path">
                                 Project Name
                             </Link></li>
@@ -49,7 +49,7 @@ const Footer = () => {
                     </div>
                     <div className="col-md-2">
                         <h5>Quick Links</h5>
-                        <ul>
+                        <ul className="link-color">
                             <li>
                                 <Link to="/" relative="path">
                                     Home

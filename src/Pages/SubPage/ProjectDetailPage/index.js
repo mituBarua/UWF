@@ -5,7 +5,7 @@ import HeaderMenu from "../../Shared/HeaderMenu";
 import { getProjectDataByID } from "../../../Actions/projectAction";
 
 import Banner from "../Banner";
-
+import './style.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -31,17 +31,17 @@ const ProjectDetails = () => {
       <Banner name="Project Details" />
       <div className="container mt-4">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-7">
             <Slider {...settings}>
               {project?.media_list.map(({ url, id }) => (
                 <div className="each-slide" key={id}>
-                  <img src={url} style={{ width: "100%" }} alt="slide" />
+                  <img src={url} style={{ width: "90%" }} alt="slide" />
                 </div>
               ))}
             </Slider>
           </div>
           <div className="col-md-1"></div>
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div className="categories">
               <h2>Categories</h2>
               <ul>

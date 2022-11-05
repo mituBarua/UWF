@@ -11,7 +11,7 @@ import ForgetPassword from "./Pages/Auth/ForgetPassword";
 import ResetPassword from "./Pages/Auth/ResetPassword";
 import Register from "./Pages/Auth/Register";
 import UserList from "./Pages/UserList";
-
+import Contact from "./Pages/SubPage/ContactPage";
 import ProjectList from "./Pages/Projects/List";
 import ProjectCreate from "./Pages/Projects/Create";
 import ProjectView from "./Pages/Projects/View";
@@ -57,6 +57,7 @@ import VolunteerCreate from "./Pages/Volunteers/Create";
 import VolunteerList from "./Pages/Volunteers/List";
 import VolunteerView from "./Pages/Volunteers/View";
 import VolunteerEdit from "./Pages/Volunteers/Edit";
+import Volunteer from "./Pages/SubPage/VolunteerPage";
 
 import MessageList from "./Pages/Messages/List";
 import MessageView from "./Pages/Messages/View";
@@ -88,6 +89,8 @@ function App() {
         <Route path="/forgetPassword" exact element={<ForgetPassword />} />
         <Route path="/resetPassword" exact element={<ResetPassword />} />
         <Route path="/register" exact element={<Register />} />
+        <Route path="/contact" exact element={<Contact />} />
+        <Route path="/volunteer" exact element={<Volunteer />} />
         <Route path="/projects" exact element={<ProjectPage />} />
         <Route path="/appeals" exact element={<AppealPage />} />
         <Route path="/appeal-details/:id" exact element={<AppealDetails />} />

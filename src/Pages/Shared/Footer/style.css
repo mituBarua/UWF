@@ -13,14 +13,14 @@
     width: 60%;
     margin:20px 0;
 }
-.footer-bg h5,li,a,span{
-    /* color:white; */
+.link-color li, a{
+    color: white;
 }
 .footer-bg li {
     list-style-type: square;
     color: #C1272D;
 } 
-.about p{
+.about p, h5{
     width: 87%;
     text-align: justify;
     color: white;

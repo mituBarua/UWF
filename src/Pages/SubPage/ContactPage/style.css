@@ -1,0 +1,20 @@
+.contact-form{
+    padding: 30px 0;
+    border: 1px solid #d1d1d1;
+    margin-top: 65px;
+}
+.contact-text{
+    padding: 0px 50px;
+}
+.form-style{
+    padding: 18px 47px;
+}
+.form-style .form-control{
+    padding: 10px;
+    background-color: #F5F5F5;
+    border: none;
+  
+}
+.submit{
+    padding: 10px 20px;
+}
