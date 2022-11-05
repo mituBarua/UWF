@@ -166,6 +166,19 @@ const Edit = () => {
         <Checkbox />
       </Form.Item>
       <Form.Item
+        label="Verified"
+        name="is_verified"
+        valuePropName="checked"
+        rules={[
+          {
+            required: false,
+            message: "Please input your verification!",
+          },
+        ]}
+      >
+        <Checkbox />
+      </Form.Item>
+      <Form.Item
         label="Date"
         name="date"
         rules={[

@@ -93,6 +93,23 @@ const List = () => {
         );
       },
     },
+    {
+      title: "Verified",
+      dataIndex: "is_verified",
+      key: "is_verified",
+      render: (isVerified) => {
+        let text = isVerified == "1" ? "Verified" : "Unverified";
+        let colors = {
+          1: "green",
+          2: "yellow",
+        };
+        return (
+          <Tag color={colors[isVerified]} key={isVerified}>
+            {text.toUpperCase()}
+          </Tag>
+        );
+      },
+    },
   ];
   useEffect(() => {
     dispatch(getProjectList(accessToken));

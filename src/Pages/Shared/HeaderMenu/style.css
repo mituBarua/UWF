@@ -1,0 +1,27 @@
+.site-logo{
+    width:15%;
+}
+.site-menu{
+   
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.site-menu a{
+     color: #685f5f!important;
+     padding: 5px;
+     margin: 5px;
+}
+.site-menu:active{
+    color:#C1272D !important;
+}
+.donate{
+    background-color:#C1272D;
+    color:white;
+    outline: none;
+    border: none;
+    padding: 4px 25px;
+}
+.donate:hover{
+    background-color: #a11117de !important
+}
