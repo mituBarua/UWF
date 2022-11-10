@@ -11,7 +11,7 @@ import {
   getAppealPargraphByID,
   updateAppealParagraph,
 } from "../../../../Actions/appealAction";
-import "../../Create/style.css";
+// import "../../Create/style.css";
 
 import Spinner from "../../../../Components/Spinner";
 
