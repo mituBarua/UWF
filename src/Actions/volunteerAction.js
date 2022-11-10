@@ -82,6 +82,31 @@ export const createVolunteer =
     }
   };
 
+export const createDataVolunteer =
+  (volunteerData) => async (dispatch) => {
+    try {
+      dispatch({ type: VOLUNTEER_REQUEST });
+
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+
+        },
+      };
+
+      const { data } = await api.post("/volunteer_new", volunteerData, config);
+
+      dispatch({
+        type: VOLUNTEER_SUCCESS,
+        payload: {
+          type: "volunteer_create_success",
+        },
+      });
+    } catch (error) {
+      dispatch({ type: VOLUNTEER_FAIL, payload: error.response.data });
+    }
+  };
+
 export const updateVolunteer =
   (accessToken, id, volunteerData) => async (dispatch) => {
     try {

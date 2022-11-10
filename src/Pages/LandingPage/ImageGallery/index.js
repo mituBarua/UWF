@@ -22,43 +22,45 @@ const ImageGallery = () => {
       <div>
         <h1 className="text-center">OUR GALLERY</h1>
         <div className="row justify-content-center mt-5">
-          <div className="col-2">
-            <button
-              className="gallery-btn"
-              onClick={() => setType("all")}
-            >
-              All
-            </button>
-          </div>
-          <div className="col-2">
+          <div className="category-btn">
+            <div>
+              <button
+                className="gallery-btn"
+                onClick={() => setType("all")}
+              >
+                All
+              </button>
+            </div>
+            <div>
 
-            <button
-              className="gallery-btn"
-              onClick={() => setType("appeal")}
-            >
-              Appeal
-            </button>
-          </div>
-          <div className="col-2">
-            <button
-              className="gallery-btn"
-              onClick={() => setType("project")}
-            >
-              Project
-            </button>
-          </div>
-          <div className="col-2">
-            <button
-              className="gallery-btn"
-              onClick={() => setType("campaign")}
-            >
-              Campaign
-            </button>
-          </div>
-          <div className="col-2">
-            <button className="gallery-btn" onClick={() => setType("news")}>
-              News
-            </button>
+              <button
+                className="gallery-btn"
+                onClick={() => setType("appeal")}
+              >
+                Appeal
+              </button>
+            </div>
+            <div>
+              <button
+                className="gallery-btn"
+                onClick={() => setType("project")}
+              >
+                Project
+              </button>
+            </div>
+            <div>
+              <button
+                className="gallery-btn"
+                onClick={() => setType("campaign")}
+              >
+                Campaign
+              </button>
+            </div>
+            <div>
+              <button className="gallery-btn" onClick={() => setType("news")}>
+                News
+              </button>
+            </div>
           </div>
           <div className="row mt-5">
             {(type == "appeal") && (

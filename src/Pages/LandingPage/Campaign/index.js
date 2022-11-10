@@ -23,7 +23,7 @@ const Campaign = () => {
     return (
         <div className="container">
             <div className="text-center">
-                <h3>CAMPAIGN</h3>
+                <h2>CAMPAIGN</h2>
                 <p>Mid Text. Lorem Ipsum Text.Lorem Ipsum Text.Lorem Ipsum Text.
                     Lorem Ipsum Text.Lorem Ipsum Text.</p>
             </div>

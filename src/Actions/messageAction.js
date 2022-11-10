@@ -59,18 +59,17 @@ export const getMessageByID = (accessToken, id) => async (dispatch) => {
   }
 };
 
-export const createMessage = (accessToken, messageData) => async (dispatch) => {
+export const createMessage = ( messageData) => async (dispatch) => {
   try {
     dispatch({ type: MESSAGE_REQUEST });
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json" 
       },
     };
 
-    const { data } = await api.post("/appeal_new", messageData, config);
+    const { data } = await api.post("/message_new", messageData, config);
 
     dispatch({
       type: MESSAGE_SUCCESS,
