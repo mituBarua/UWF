@@ -8,14 +8,15 @@ function HeaderMenu() {
   return (
     <Navbar collapseOnSelect expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home" className="logo-toggler">
           <img
             src={logo}
             className="d-inline-block align-top site-logo"
             alt="Unity Welfare Fund"
           />
-        </Navbar.Brand>
+     
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        </Navbar.Brand>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto site-menu">
             <Nav.Link className="active" href="/">
