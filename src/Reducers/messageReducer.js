@@ -21,7 +21,9 @@ export const messageReducer = (
   switch (type) {
     case MESSAGE_REQUEST:
       return {
+        ...state,
         loading: true,
+        message: null,
       };
     case MESSAGE_LIST_SUCCESS:
       return {
@@ -30,6 +32,7 @@ export const messageReducer = (
       };
     case MESSAGE_BY_ID_SUCCESS:
       return {
+        ...state,
         loading: false,
         message: payload,
       };
