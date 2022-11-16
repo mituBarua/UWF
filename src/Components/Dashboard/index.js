@@ -63,12 +63,12 @@ const menuItems = [
     label: "Message",
     ref: "/message/list",
   },
-  //   {
-  //     key: "3",
-  //     icon: <UploadOutlined />,
-  //     label: "Campaign",
-  //   },
-  //
+  {
+    key: "9",
+    icon: <UploadOutlined />,
+    label: "Donation",
+    ref: "/donation/list",
+  },
 ];
 
 const Dashboard = ({ children }) => {
