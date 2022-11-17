@@ -64,92 +64,96 @@ const Create = () => {
 
   if (loading) return <Spinner />;
   return (
-    <div className="formLayout">
-      <Form
-        name="basic"
-        form={form}
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        style={{
-          width: "80%",
-        }}
-        onFinish={onSubmit}
-        autoComplete="off"
-      >
-        <Card
-          title="Campaign"
-          style={{ marginBottom: 10 }}
-          className="resume__basic"
+    <div className="form-layout">
+      <div className="form-design-view">
+        <Form
+          name="basic"
+          form={form}
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          style={{
+            width: "80%",
+          }}
+          onFinish={onSubmit}
+          autoComplete="off"
         >
-          <Form.Item
-            label="Title"
-            name="title"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Please input your title!",
-              },
-            ]}
+          <Card
+            title="Create Campaign"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
           >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Description"
-            name="description"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Please input your description!",
-              },
-            ]}
-          >
-            <Input.TextArea rows={4} placeholder="Description" />
-          </Form.Item>
-          <Form.Item
-            label="Status"
-            name="is_active"
-            {...formItemLayout}
-            valuePropName="checked"
-            rules={[
-              {
-                required: false,
-                message: "Please input your status!",
-              },
-            ]}
-          >
-            <Checkbox />
-          </Form.Item>
-          <Form.Item
-            label="Date"
-            name="date"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Please input your start & end date!",
-              },
-            ]}
-          >
-            <RangePicker
-              disabledDate={(current) => {
-                return (
-                  moment().add(-1, "days") >= current ||
-                  moment().add(1, "month") <= current
-                );
-              }}
-            />
-          </Form.Item>
-          <Form.Item {...formItemLayoutWithOutLabel}>
-            <Button htmlType="submit">Submit</Button>
-          </Form.Item>
-        </Card>
-      </Form>
+            <Form.Item
+              label="Title"
+              name="title"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your title!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Description"
+              name="description"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your description!",
+                },
+              ]}
+            >
+              <Input.TextArea rows={4} placeholder="Description" />
+            </Form.Item>
+            <Form.Item
+              label="Status"
+              name="is_active"
+              {...formItemLayout}
+              valuePropName="checked"
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your status!",
+                },
+              ]}
+            >
+              <Checkbox />
+            </Form.Item>
+            <Form.Item
+              label="Date"
+              name="date"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your start & end date!",
+                },
+              ]}
+            >
+              <RangePicker
+                disabledDate={(current) => {
+                  return (
+                    moment().add(-1, "days") >= current ||
+                    moment().add(1, "month") <= current
+                  );
+                }}
+              />
+            </Form.Item>
+            <Form.Item {...formItemLayoutWithOutLabel}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Card>
+        </Form>
+      </div>
     </div>
   );
 };

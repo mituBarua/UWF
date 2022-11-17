@@ -1,4 +1,4 @@
-.formLayout{
+.form-layout{
     display: flex;
     align-items: center;
     width: 100%;
@@ -12,11 +12,10 @@
     padding: 70px 20px;
     border-radius: 7px;
 }
-.form-designView{
+.form-design-view{
     display: flex;
     flex-direction: column;
     width: 80%;
-    background-color: #f0f2f585;
-    padding: 70px 20px;
+    padding: 0px 20px;
     border-radius: 7px;
 }
