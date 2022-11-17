@@ -37,7 +37,6 @@ const List = () => {
   };
 
   useEffect(() => {
-    console.log(messageList);
     if (error) {
       toast.error(error.message);
       dispatch(clearErrors());

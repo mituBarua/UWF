@@ -8,7 +8,7 @@ import {
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { logoutUser } from "../../Actions/userAction";
 import "./style.css";
@@ -24,13 +24,13 @@ const menuItems = [
   {
     key: "2",
     icon: <UserOutlined />,
-    label: "Users",
+    label: "User",
     ref: "/user/list",
   },
   {
     key: "3",
     icon: <UserOutlined />,
-    label: "Projects",
+    label: "Project",
     ref: "/project/list",
   },
   {
@@ -48,7 +48,7 @@ const menuItems = [
   {
     key: "6",
     icon: <UserOutlined />,
-    label: "Campaigns",
+    label: "Campaign",
     ref: "/campaign/list",
   },
   {
@@ -84,6 +84,12 @@ const Dashboard = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const location = useLocation();
+
+  const selectedMenuItem = menuItems.filter(
+    ({ label }) => location.pathname.search(label.toLowerCase()) > 0
+  );
+
   return (
     <Layout
       style={{
@@ -92,7 +98,13 @@ const Dashboard = ({ children }) => {
     >
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={[
+            selectedMenuItem.length > 0 ? selectedMenuItem[0].key : "1",
+          ]}
+        >
           {menuItems.map(({ key, icon, label, ref }) => (
             <Menu.Item key={key} icon={icon}>
               <Link to={ref} />
