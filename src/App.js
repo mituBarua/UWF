@@ -63,6 +63,9 @@ import MessageList from "./Pages/Messages/List";
 import MessageView from "./Pages/Messages/View";
 import DonatePage from "./Pages/SubPage/DonatePage";
 
+import DonationList from "./Pages/Donations/List";
+import DonationView from "./Pages/Donations/View";
+
 function App() {
   // disable right click
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -127,7 +130,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/project/paragraph/list/:id"
           exact
           element={
@@ -237,7 +240,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/appeal/paragraph/list/:id"
           exact
           element={
@@ -487,6 +490,28 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <MessageView />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donation/list"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <DonationList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donation/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <DonationView />
               </Dashboard>
             </ProtectedRoute>
           }

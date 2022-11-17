@@ -15,6 +15,7 @@ import { messageReducer } from "./Reducers/messageReducer";
 import { resetPasswordReducer } from "./Reducers/resetPasswordReducer";
 import { forgotPasswordReducer } from "./Reducers/forgotPasswordReducer";
 import { imageGalleryReducer } from "./Reducers/imageGalleryReducer";
+import { donationReducer } from "./Reducers/donationReducer";
 
 const reducer = combineReducers({
   user: userReducer,
@@ -27,6 +28,7 @@ const reducer = combineReducers({
   resetPassword: resetPasswordReducer,
   imageGallery: imageGalleryReducer,
   message: messageReducer,
+  donation: donationReducer,
 });
 
 const middleware = [thunk];

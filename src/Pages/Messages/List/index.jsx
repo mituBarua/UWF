@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-import { Table, Tag, Button, message } from "antd";
+import { message, Table, Tag } from "antd";
 
 import {
   getMessageList,
@@ -10,7 +10,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { EditFilled, DeleteFilled, DatabaseFilled } from "@ant-design/icons";
+import { DatabaseFilled } from "@ant-design/icons";
+import ModalView from "../View/index2";
+
 const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,17 +24,24 @@ const List = () => {
     (state) => state.message
   );
 
+  const [isModalOpen, setIsModalOpen] = useState({
+    id: null,
+    isOpen: false,
+  });
+
+  const handleCancel = () => {
+    setIsModalOpen({
+      id: null,
+      isOpen: false,
+    });
+  };
+
   useEffect(() => {
-    if (success && success.type == "message_delete_success") {
-      toast.success("Message Deleted Successfully");
-      dispatch(clearSuccess());
-      navigate("/message/list");
-      window.location.reload();
-    } else if (error) {
+    if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
     }
-  }, [loading, error, success]);
+  }, [loading, error]);
 
   const columns = [
     {
@@ -81,11 +90,14 @@ const List = () => {
         const { id } = row;
         return (
           <>
-            <DatabaseFilled onClick={() => navigate(`/message/${id}`)} />
-            {/* <EditFilled onClick={() => navigate(`/campaign/edit/${id}`)} />
-            <DeleteFilled
-              onClick={() => dispatch(deleteCampaign(accessToken, id))}
-            /> */}
+            <DatabaseFilled
+              onClick={() => {
+                return setIsModalOpen({
+                  id,
+                  isOpen: true,
+                });
+              }}
+            />
           </>
         );
       },
@@ -97,6 +109,9 @@ const List = () => {
   return (
     <>
       <div>
+        {isModalOpen.isOpen && (
+          <ModalView {...isModalOpen} handleCancel={handleCancel} />
+        )}
         <Table
           columns={columns}
           dataSource={messageList}
