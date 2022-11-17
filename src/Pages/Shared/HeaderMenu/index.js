@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import { Navbar, Button } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../../assets/logo.png";
+import { Link } from "react-router-dom";
 import "./style.css";
 function HeaderMenu() {
   return (
@@ -28,7 +29,10 @@ function HeaderMenu() {
             <Nav.Link href="/campaign">Campagin</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>
+            <Link to={`/donate`}>
             <Button className="donate">Donate</Button>
+            </Link>
+          
           </Nav>
         </Navbar.Collapse>
       </Container>

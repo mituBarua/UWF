@@ -61,6 +61,7 @@ import Volunteer from "./Pages/SubPage/VolunteerPage";
 
 import MessageList from "./Pages/Messages/List";
 import MessageView from "./Pages/Messages/View";
+import DonatePage from "./Pages/SubPage/DonatePage";
 
 function App() {
   // disable right click
@@ -95,6 +96,7 @@ function App() {
         <Route path="/appeals" exact element={<AppealPage />} />
         <Route path="/appeal-details/:id" exact element={<AppealDetails />} />
         <Route path="/campaign" exact element={<CampaignPage />} />
+        <Route path="/donate" exact element={<DonatePage />} />
         <Route
           path="/campaign-details/:id"
           exact
