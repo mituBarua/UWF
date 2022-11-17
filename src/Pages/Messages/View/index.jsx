@@ -24,7 +24,6 @@ const View = () => {
   }, []);
 
   useEffect(() => {
-    console.log(message);
     form.setFieldsValue({
       first_name: message?.first_name,
       last_name: message?.last_name,
