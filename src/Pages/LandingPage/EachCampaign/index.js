@@ -4,7 +4,7 @@ import './style.css';
 const EachCampaign = ({campaignList}) => {
     const { id, title,description,media_list } = campaignList;
     return (
-        <div>
+        <div className="campaign-list">
             <Card >
                 <Card.Img variant="top" className="campaign-img" src={media_list[0]?.url} />
                 <Card.Body>

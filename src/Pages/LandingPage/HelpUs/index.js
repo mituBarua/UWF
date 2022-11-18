@@ -15,8 +15,8 @@ const HelpUs = () => {
           </p>
         </div>
         <div>
-          <Row className="m-5">
-            <Col sm className="donator">
+          <Row className="justify-content-center">
+            <div className="col-md-3 donator">
               <FaDonate className="helpUs-icon" />
               <h4>DONATOR</h4>
               <p>
@@ -29,8 +29,8 @@ const HelpUs = () => {
                 </Button>
               </Link>
             
-            </Col>
-            <Col sm className="donator">
+            </div>
+            <div className="col-md-3 donator">
               <FaRegMoneyBillAlt className="helpUs-icon" />
               <h4>FUNDRISING</h4>
               <p>
@@ -42,8 +42,8 @@ const HelpUs = () => {
                   Learn More
                 </Button>
               </Link>
-            </Col>
-            <Col sm>
+            </div>
+            <div className="col-md-3 donator" >
               <FaUsers className="helpUs-icon" />
               <h4>VOLUNTEER</h4>
               <p>
@@ -55,7 +55,7 @@ const HelpUs = () => {
                   Learn More
                 </Button>
               </Link>
-            </Col>
+            </div>
           </Row>
         </div>
       </div>

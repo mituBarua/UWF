@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css'
-import { Row, Col, Card,Button } from 'react-bootstrap';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 import { FaCheckCircle } from "react-icons/fa";
 const About = () => {
     return (
@@ -13,84 +13,84 @@ const About = () => {
                     , discrimination, homelessness, unemployment, injustice, deprivation or
                     lack of skills and economic opportunities.</p>
             </div>
-            <div>
+            <div className="about-card">
                 <Row>
-                    <Col sm>
+                    <div className="col-md-6 col-lg-3">
                         <Card >
-                            <Card.Body>
+                            <Card.Body className="d-flex flex-column align-items-center">
                                 <div className="d-flex flex-column align-items-center">
-                                    <FaCheckCircle  className="icon-color"/>
-                                    <Card.Title  className="m-2">Our Mission</Card.Title>
+                                    <FaCheckCircle className="icon-color" />
+                                    <Card.Title className="m-2">Our Mission</Card.Title>
                                 </div>
 
 
                                 <Card.Text className="text-center">
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
-                                    <Button className="m-3" variant="danger">Learn More</Button>
-                                </Card.Text>
-                                
 
+                                </Card.Text>
+
+                                <Button className="m-3" variant="danger">Learn More</Button>
                             </Card.Body>
                         </Card>
-                    </Col>
-                    <Col sm>
-                    <Card >
-                            <Card.Body>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                        <Card >
+                            <Card.Body className="d-flex flex-column align-items-center">
                                 <div className="d-flex flex-column align-items-center">
-                                    <FaCheckCircle  className="icon-color"/>
-                                    <Card.Title  className="m-2">Our Mission</Card.Title>
+                                    <FaCheckCircle className="icon-color" />
+                                    <Card.Title className="m-2">Our Mission</Card.Title>
                                 </div>
 
 
                                 <Card.Text className="text-center">
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
-                                    <Button className="m-3" variant="danger">Learn More</Button>
+
                                 </Card.Text>
-                                
+                                <Button className="m-3" variant="danger">Learn More</Button>
 
                             </Card.Body>
                         </Card>
-                    </Col>
-                    <Col sm>
-                    <Card >
-                            <Card.Body>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                        <Card >
+                            <Card.Body className="d-flex flex-column align-items-center">
                                 <div className="d-flex flex-column align-items-center">
-                                    <FaCheckCircle  className="icon-color"/>
-                                    <Card.Title  className="m-2">Our Mission</Card.Title>
+                                    <FaCheckCircle className="icon-color" />
+                                    <Card.Title className="m-2">Our Mission</Card.Title>
                                 </div>
 
 
                                 <Card.Text className="text-center">
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
-                                    <Button className="m-3" variant="danger">Learn More</Button>
+
                                 </Card.Text>
-                                
+                                <Button className="m-3" variant="danger">Learn More</Button>
 
                             </Card.Body>
                         </Card>
-                    </Col>
-                    <Col sm>
-                    <Card >
-                            <Card.Body>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                        <Card >
+                            <Card.Body className="d-flex flex-column align-items-center">
                                 <div className="d-flex flex-column align-items-center">
-                                    <FaCheckCircle  className="icon-color"/>
-                                    <Card.Title  className="m-2">Our Mission</Card.Title>
+                                    <FaCheckCircle className="icon-color" />
+                                    <Card.Title className="m-2">Our Mission</Card.Title>
                                 </div>
 
 
                                 <Card.Text className="text-center">
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
-                                    <Button className="m-3" variant="danger">Learn More</Button>
+
                                 </Card.Text>
-                                
+                                <Button className="m-3" variant="danger">Learn More</Button>
 
                             </Card.Body>
                         </Card>
-                    </Col>
+                    </div>
                 </Row>
             </div>
         </div>

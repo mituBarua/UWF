@@ -1,22 +1,63 @@
-.carousel-caption{
-    right: 42%;
-    top: 42%;
-    text-align: left;
+.carousel-caption {
+  right: 42%;
+  top: 42%;
+  text-align: left;
 }
-.carousel-caption h2{
-    color: #ffffff;
-    font-size: 48px;
+.carousel-caption h2 {
+  color: #ffffff;
+  font-size: 48px;
 }
-.carousel-caption p{
-    font-size: 15px;
+.carousel-caption p {
+  font-size: 15px;
 }
-.custom-btn{
-    background-color: #C1272D!important;
+.custom-btn {
+  background-color: #c1272d !important;
 }
 .custom-btn-outline {
-    color: #ffffff;
-    border-color: #ffffff;
+  color: #ffffff;
+  border-color: #ffffff;
 }
-.carousel-indicators{
-    display: none;
+.carousel-indicators {
+  display: none;
+}
+@media (max-width: 991.98px) {
+  .carousel-caption {
+    right: 24%;
+    top: 13%;
+  }
+  .carousel-caption h2 {
+    font-size: 35px;
+  }
+}
+
+@media (max-width:767.98px) {
+  .carousel-caption {
+    right: 13%;
+    top: 7%;
+  }
+  .carousel-caption h2 {
+    font-size: 35px;
+  }
+}
+
+
+@media (max-width: 575.98px) {
+  .carousel-caption h2 {
+    font-size: 18px;
+  }
+  .carousel-caption {
+    right: 0;
+    top: 0;
+    left: 0;
+    text-align: center;
+  }
+
+  .carousel-caption p {
+    font-size: 13px;
+  }
+  .carousel-item img{
+      height: 39vh;
+  }
+ 
+ 
 }

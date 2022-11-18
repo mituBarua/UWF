@@ -1,4 +1,9 @@
-.campaign-img{
-    padding: 10px;
-    border-radius: 15px;
+.campaign-img {
+  padding: 10px;
+  border-radius: 15px;
+}
+@media (max-width: 575.98px) {
+  .campaign-list .card {
+    margin: 10px;
+  }
 }
