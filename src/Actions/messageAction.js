@@ -49,7 +49,7 @@ export const getMessageByID = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/message/${id}`, config);
-
+console.log('data',data)
     dispatch({
       type: MESSAGE_BY_ID_SUCCESS,
       payload: data.data,
@@ -82,53 +82,6 @@ export const createMessage = ( messageData) => async (dispatch) => {
   }
 };
 
-// export const updateAppeal =
-//   (accessToken, id, appealData) => async (dispatch) => {
-//     try {
-//       dispatch({ type: APPEAL_REQUEST });
-
-//       const config = {
-//         headers: {
-//           "Content-Type": "multipart/form-data",
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       };
-
-//       const { data } = await api.post(`/appeal_edit/${id}`, appealData, config);
-//       dispatch({
-//         type: APPEAL_UPDATAE_SUCCESS,
-//         payload: {
-//           type: "appeal_update_success",
-//         },
-//       });
-//     } catch (error) {
-//       dispatch({ type: APPEAL_UPDATE_FAIL, payload: error.response.data });
-//     }
-//   };
-
-// export const deleteAppeal = (accessToken, id) => async (dispatch) => {
-//   try {
-//     dispatch({ type: APPEAL_REQUEST });
-
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${accessToken}`,
-//       },
-//     };
-
-//     const { data } = await api.delete(`/appeal_delete/${id}`, config);
-
-//     dispatch({
-//       type: APPEAL_DELETE_SUCCESS,
-//       payload: {
-//         type: "appeal_delete_success",
-//       },
-//     });
-//   } catch (error) {
-//     dispatch({ type: APPEAL_DELETE_FAIL, payload: error.response.data });
-//   }
-// };
 
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });

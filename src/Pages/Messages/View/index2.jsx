@@ -21,7 +21,7 @@ const View = ({ id, isOpen, handleCancel }) => {
   return (
     <Modal
       title={`Message from ${message?.email}`}
-      open={isOpen}
+      visible={isOpen}
       onCancel={handleCancel}
       footer={[<p>Seen by: {message?.seen_by}</p>]}
     >

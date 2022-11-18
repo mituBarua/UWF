@@ -66,6 +66,8 @@ import DonatePage from "./Pages/SubPage/DonatePage";
 import DonationList from "./Pages/Donations/List";
 import DonationView from "./Pages/Donations/View";
 
+import NotFound from "./Pages/Shared/NotFound";
+import Thankyou from "./Pages/SubPage/ThankyouPage";
 function App() {
   // disable right click
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -100,6 +102,8 @@ function App() {
         <Route path="/appeal-details/:id" exact element={<AppealDetails />} />
         <Route path="/campaign" exact element={<CampaignPage />} />
         <Route path="/donate" exact element={<DonatePage />} />
+       
+        <Route path="/thankyou" exact element={<Thankyou/>} />
         <Route
           path="/campaign-details/:id"
           exact
@@ -516,7 +520,9 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<>Page Not found</>} />
+        <Route path="*" element={
+          <NotFound/>
+        } />
       </Routes>
     </>
   );

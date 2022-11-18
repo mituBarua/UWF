@@ -66,11 +66,12 @@ export const createDonation = (donationData) => async (dispatch) => {
     };
 
     const { data } = await api.post("/donation_new", donationData, config);
-
+    console.log(data, 'donation');
     dispatch({
       type: DONATION_SUCCESS,
       payload: {
         type: "donation_create_success",
+        url: data.url
       },
     });
   } catch (error) {

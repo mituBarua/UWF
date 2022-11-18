@@ -112,6 +112,8 @@ const List = () => {
         {isModalOpen.isOpen && (
           <ModalView {...isModalOpen} handleCancel={handleCancel} />
         )}
+        
+     
         <Table
           columns={columns}
           dataSource={messageList}
