@@ -8,6 +8,7 @@ import {
   Button,
   Upload,
   Select,
+  Card,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
@@ -28,6 +29,24 @@ import Spinner from "../../../Components/Spinner";
 import { mediaList, typeList } from "../../../Utils/medialist";
 
 const { Option } = Select;
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 20 },
+  },
+};
+
+const formItemLayoutWithOutLabel = {
+  wrapperCol: {
+    xs: { span: 24, offset: 0 },
+    sm: { span: 20, offset: 4 },
+  },
+};
 
 const View = () => {
   const { id } = useParams();
@@ -113,9 +132,8 @@ const View = () => {
 
   if (loading) return <Spinner />;
   return (
-    <div className="formLayout">
-      <div className="form-designView">
-        <h3>News Details</h3>
+    <div className="form-layout">
+      <div className="form-design-view">
         <Form
           name="basic"
           form={form}
@@ -125,53 +143,60 @@ const View = () => {
           wrapperCol={{
             span: 16,
           }}
-          // onFinish={onSubmit}
-          // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Form.Item
-            label="Title"
-            name="title"
-            rules={[
-              {
-                required: false,
-                message: "Please input your title!",
-              },
-            ]}
+          <Card
+            title="View News"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
           >
-            <Input disabled />
-          </Form.Item>
+            <Form.Item
+              label="Title"
+              name="title"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your title!",
+                },
+              ]}
+            >
+              <Input disabled />
+            </Form.Item>
 
-          <Form.Item
-            label="Description"
-            name="description"
-            rules={[
-              {
-                required: false,
-                message: "Please input your description!",
-              },
-            ]}
-          >
-            <Input.TextArea
-              rows={4}
-              placeholder="Description"
-              maxLength={6}
-              disabled
-            />
-          </Form.Item>
-          <Form.Item
-            label="Status"
-            name="is_active"
-            valuePropName="checked"
-            rules={[
-              {
-                required: false,
-                message: "Please input your status!",
-              },
-            ]}
-          >
-            <Checkbox disabled />
-          </Form.Item>
+            <Form.Item
+              label="Description"
+              name="description"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your description!",
+                },
+              ]}
+            >
+              <Input.TextArea
+                rows={4}
+                placeholder="Description"
+                maxLength={6}
+                disabled
+              />
+            </Form.Item>
+            <Form.Item
+              label="Status"
+              name="is_active"
+              {...formItemLayout}
+              valuePropName="checked"
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your status!",
+                },
+              ]}
+            >
+              <Checkbox disabled />
+            </Form.Item>
+          </Card>
         </Form>
 
         {/* Media */}
@@ -186,64 +211,70 @@ const View = () => {
             span: 16,
           }}
           onFinish={onMediaSubmit}
-          // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <h3>
-            Media <Link to={`/news/media/list/${id}`}>list</Link>
-          </h3>
-          <Form.Item
-            label="Media type"
-            name="type"
-            rules={[
-              {
-                required: true,
-                message: "Please input your media type!",
-              },
-            ]}
+          <Card
+            title="Media News"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
+            extra={
+              <Button onClick={() => navigate(`/news/media/list/${id}`)}>
+                Media List
+              </Button>
+            }
           >
-            <Select
-              style={{
-                width: 120,
-              }}
-              onChange={handleMediaTypeChange}
-            >
-              <Option value="image">Image</Option>
-              <Option value="video">Video</Option>
-              <Option value="word_doc">Word Document</Option>
-              <Option value="pdf">PDF</Option>
-            </Select>
-          </Form.Item>
-
-          {mediaType && (
             <Form.Item
-              label="Media"
-              name="media_list"
+              label="Media type"
+              name="type"
+              {...formItemLayout}
               rules={[
                 {
-                  validator: (_, value) => {
-                    if (fileList.length > 0) {
-                      return Promise.resolve();
-                    } else {
-                      return Promise.reject("Please upload your media file");
-                    }
-                  },
+                  required: true,
+                  message: "Please input your media type!",
                 },
               ]}
             >
-              <Upload {...props} accept={mediaList[mediaType]}>
-                <Button icon={<UploadOutlined />}>Select File</Button>
-              </Upload>
+              <Select
+                style={{
+                  width: 120,
+                }}
+                onChange={handleMediaTypeChange}
+              >
+                <Option value="image">Image</Option>
+                <Option value="video">Video</Option>
+                <Option value="word_doc">Word Document</Option>
+                <Option value="pdf">PDF</Option>
+              </Select>
             </Form.Item>
-          )}
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button htmlType="submit">Submit</Button>
-          </Form.Item>
+
+            {mediaType && (
+              <Form.Item
+                label="Media"
+                name="media_list"
+                {...formItemLayout}
+                rules={[
+                  {
+                    validator: (_, value) => {
+                      if (fileList.length > 0) {
+                        return Promise.resolve();
+                      } else {
+                        return Promise.reject("Please upload your media file");
+                      }
+                    },
+                  },
+                ]}
+              >
+                <Upload {...props} accept={mediaList[mediaType]}>
+                  <Button icon={<UploadOutlined />}>Select File</Button>
+                </Upload>
+              </Form.Item>
+            )}
+            <Form.Item {...formItemLayoutWithOutLabel}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Card>
         </Form>
 
         {/* Paragraph */}
@@ -257,57 +288,64 @@ const View = () => {
             span: 16,
           }}
           onFinish={onParagraphSubmit}
-          // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <h3>
-            Paragraph <Link to={`/news/paragraph/list/${id}`}>list</Link>
-          </h3>
-          <Form.Item
-            label="Title"
-            name="p_title"
-            rules={[
-              {
-                required: true,
-                message: "Please input your title!",
-              },
-            ]}
+          <Card
+            title="Paragraph News"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
+            extra={
+              <Button onClick={() => navigate(`/news/paragraph/list/${id}`)}>
+                Paragraph List
+              </Button>
+            }
           >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Title"
+              name="p_title"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your title!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Body"
-            name="p_body"
-            rules={[
-              {
-                required: true,
-                message: "Please input your body!",
-              },
-            ]}
-          >
-            <Input.TextArea rows={4} placeholder="Body" />
-          </Form.Item>
-          <Form.Item
-            label="Serial Number"
-            name="p_serial_number"
-            rules={[
-              {
-                required: true,
-                message: "Please input your serial number!",
-              },
-            ]}
-          >
-            <InputNumber min={1} />
-          </Form.Item>
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button htmlType="submit">Submit</Button>
-          </Form.Item>
+            <Form.Item
+              label="Body"
+              name="p_body"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your body!",
+                },
+              ]}
+            >
+              <Input.TextArea rows={4} placeholder="Body" />
+            </Form.Item>
+            <Form.Item
+              label="Serial Number"
+              name="p_serial_number"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your serial number!",
+                },
+              ]}
+            >
+              <InputNumber min={1} />
+            </Form.Item>
+            <Form.Item {...formItemLayoutWithOutLabel}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Card>
         </Form>
       </div>
     </div>

@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { EditFilled, DeleteFilled, DatabaseFilled } from '@ant-design/icons';
+import { EditFilled, DeleteFilled, DatabaseFilled } from "@ant-design/icons";
 const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -85,11 +85,11 @@ const List = () => {
         const { id } = row;
         return (
           <>
-
             <DatabaseFilled onClick={() => navigate(`/appeal/${id}`)} />
             <EditFilled onClick={() => navigate(`/appeal/edit/${id}`)} />
-            <DeleteFilled onClick={() => dispatch(deleteAppeal(accessToken, id))} />
-
+            <DeleteFilled
+              onClick={() => dispatch(deleteAppeal(accessToken, id))}
+            />
           </>
         );
       },
@@ -118,10 +118,16 @@ const List = () => {
   return (
     <>
       <div>
-      
-      <Button type="primary" onClick={() => navigate("/appeal/create")}>Create</Button>
-      <br/>
-      <Table columns={columns} dataSource={appealList}  style={{ marginTop: 20 }} />
+        <Button type="primary" onClick={() => navigate("/appeal/create")}>
+          Create
+        </Button>
+        <br />
+        <Table
+          columns={columns}
+          dataSource={appealList}
+          loading={appealList == undefined}
+          style={{ marginTop: 20 }}
+        />
       </div>
     </>
   );
