@@ -1,0 +1,21 @@
+.form-layout{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+.form-design {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: #f0f2f585;
+    padding: 70px 20px;
+    border-radius: 7px;
+}
+.form-design-view{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 0px 20px;
+    border-radius: 7px;
+}

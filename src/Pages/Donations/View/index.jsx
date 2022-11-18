@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import {
-  Checkbox,
-  Form,
-  Input,
-  InputNumber,
-  Button,
-  Upload,
-  Select,
-} from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Checkbox, Form, Input, Select, Card } from "antd";
 
 import { toast } from "react-toastify";
 
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getDonationByID } from "../../../Actions/donationAction";
-// import "../Create/style.css";
+import "../style.css";
 
 import Spinner from "../../../Components/Spinner";
 
-import { mediaList, typeList } from "../../../Utils/medialist";
-
 const { Option } = Select;
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 20 },
+  },
+};
 
 const View = () => {
   const { id } = useParams();
@@ -61,36 +61,50 @@ const View = () => {
 
   if (loading) return <Spinner />;
   return (
-    <div className="formLayout">
-      <div className="form-designView">
-        <h3>Donation Details</h3>
-        <Form
-          name="basic"
-          form={form}
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          autoComplete="off"
+    <div className="form-layout">
+      <div className="form-design-view">
+        <Card
+          title="View Donation"
+          style={{ marginBottom: 10 }}
+          className="resume__basic"
         >
-          <Form.Item label="Donation ID" name="just_giving_donation_id">
-            <Input disabled />
-          </Form.Item>
-          <Form.Item label="Amount" name="amount">
-            <Input disabled />
-          </Form.Item>
-          <Form.Item label="Date" name="created_at">
-            <Input disabled />
-          </Form.Item>
-          <Form.Item label="Reference" name="payment_ref">
-            <Input disabled />
-          </Form.Item>
-          <Form.Item label="Monthly" name="is_monthly" valuePropName="checked">
-            <Checkbox disabled />
-          </Form.Item>
-        </Form>
+          <Form
+            name="basic"
+            form={form}
+            labelCol={{
+              span: 8,
+            }}
+            wrapperCol={{
+              span: 16,
+            }}
+            autoComplete="off"
+          >
+            <Form.Item
+              {...formItemLayout}
+              label="Donation ID"
+              name="just_giving_donation_id"
+            >
+              <Input disabled />
+            </Form.Item>
+            <Form.Item {...formItemLayout} label="Amount" name="amount">
+              <Input disabled />
+            </Form.Item>
+            <Form.Item {...formItemLayout} label="Date" name="created_at">
+              <Input disabled />
+            </Form.Item>
+            <Form.Item {...formItemLayout} label="Reference" name="payment_ref">
+              <Input disabled />
+            </Form.Item>
+            <Form.Item
+              label="Monthly"
+              name="is_monthly"
+              {...formItemLayout}
+              valuePropName="checked"
+            >
+              <Checkbox disabled />
+            </Form.Item>
+          </Form>
+        </Card>
       </div>
     </div>
   );
