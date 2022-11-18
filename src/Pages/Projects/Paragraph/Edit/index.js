@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import { Form, Input, InputNumber, Button, Select } from "antd";
+import { Form, Input, InputNumber, Button, Select, Card } from "antd";
 
 import { toast } from "react-toastify";
 
@@ -11,11 +11,29 @@ import {
   getProjectPargraphByID,
   updateProjectParagraph,
 } from "../../../../Actions/projectAction";
-import "../../Create/style.css";
+import "../../style.css";
 
 import Spinner from "../../../../Components/Spinner";
 
 const { Option } = Select;
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 20 },
+  },
+};
+
+const formItemLayoutWithOutLabel = {
+  wrapperCol: {
+    xs: { span: 24, offset: 0 },
+    sm: { span: 20, offset: 4 },
+  },
+};
 
 const ParagraphEdit = () => {
   const { id } = useParams();
@@ -66,10 +84,8 @@ const ParagraphEdit = () => {
 
   if (loading) return <Spinner />;
   return (
-    <div className="formLayout">
-      <div className="form-designView">
-        <h3>Project Paragraph Details</h3>
-        {/* Paragraph */}
+    <div className="form-layout">
+      <div className="form-design-view">
         <Form
           name="paragraph"
           form={paragraphForm}
@@ -80,54 +96,57 @@ const ParagraphEdit = () => {
             span: 16,
           }}
           onFinish={onParagraphSubmit}
-          // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Form.Item
-            label="Title"
-            name="p_title"
-            rules={[
-              {
-                required: true,
-                message: "Please input your title!",
-              },
-            ]}
+          <Card
+            title="Paragraph Edit"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
           >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Title"
+              name="p_title"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your title!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Body"
-            name="p_body"
-            rules={[
-              {
-                required: true,
-                message: "Please input your body!",
-              },
-            ]}
-          >
-            <Input.TextArea rows={4} placeholder="Body" />
-          </Form.Item>
-          <Form.Item
-            label="Serial Number"
-            name="p_serial_number"
-            rules={[
-              {
-                required: true,
-                message: "Please input your serial number!",
-              },
-            ]}
-          >
-            <InputNumber min={1} />
-          </Form.Item>
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button htmlType="submit">Update</Button>
-          </Form.Item>
+            <Form.Item
+              label="Body"
+              name="p_body"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your body!",
+                },
+              ]}
+            >
+              <Input.TextArea rows={4} placeholder="Body" />
+            </Form.Item>
+            <Form.Item
+              label="Serial Number"
+              name="p_serial_number"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your serial number!",
+                },
+              ]}
+            >
+              <InputNumber min={1} />
+            </Form.Item>
+            <Form.Item {...formItemLayoutWithOutLabel}>
+              <Button type="primary" htmlType="submit">Update</Button>
+            </Form.Item>
+          </Card>
         </Form>
       </div>
     </div>

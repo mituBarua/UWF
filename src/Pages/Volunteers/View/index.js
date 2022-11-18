@@ -1,11 +1,30 @@
 import React, { useEffect, useState } from "react";
 
-import { Form, Input, Image } from "antd";
+import { Form, Input, Image, Card } from "antd";
 
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getVolunteerByID } from "../../../Actions/volunteerAction";
-// import '../Create/style.css';
+import "../Create/style.css";
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 20 },
+  },
+};
+
+const formItemLayoutWithOutLabel = {
+  wrapperCol: {
+    xs: { span: 24, offset: 0 },
+    sm: { span: 20, offset: 4 },
+  },
+};
+
 const View = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -36,8 +55,8 @@ const View = () => {
     setProfilePic(volunteer?.profile_picture);
   }, [volunteer]);
   return (
-    <div className="formLayout">
-      <div className="form-designView">
+    <div className="form-layout">
+      <div className="form-design-view">
         <Form
           name="basic"
           form={form}
@@ -47,90 +66,104 @@ const View = () => {
           wrapperCol={{
             span: 16,
           }}
-          // onFinish={onFinish}
-          // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Form.Item>
-            <Image width={200} src={profilePic} alt="Profile Picture" />
-          </Form.Item>
-          <Form.Item
-            label="Fist Name"
-            name="first_name"
-            rules={[
-              {
-                required: false,
-                message: "Please input your first name!",
-              },
-            ]}
+          <Card
+            title="View Volunteer"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
           >
-            <Input />
-          </Form.Item>
+            <Form.Item {...formItemLayout} style={{ textAlign: "center" }}>
+              <Image
+                src={profilePic}
+                alt="Profile Picture"
+                style={{ width: 200, height: 200, borderRadius: 100 }}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Fist Name"
+              name="first_name"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your first name!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Last Name"
-            name="last_name"
-            rules={[
-              {
-                required: false,
-                message: "Please input your last name!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Phone"
-            name="phone"
-            rules={[
-              {
-                required: false,
-                message: "Please input your phone!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: false,
-                message: "Please input your email!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Address"
-            name="address"
-            rules={[
-              {
-                required: false,
-                message: "Please input your address!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Additional Note"
-            name="additional_note"
-            rules={[
-              {
-                required: false,
-                message: "Please input your additional note!",
-              },
-            ]}
-          >
-            <Input.TextArea
-              rows={4}
-              placeholder="Additional Note"
-              maxLength={6}
-            />
-          </Form.Item>
+            <Form.Item
+              label="Last Name"
+              name="last_name"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your last name!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Phone"
+              name="phone"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your phone!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Email"
+              name="email"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your email!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Address"
+              name="address"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your address!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Additional Note"
+              name="additional_note"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: false,
+                  message: "Please input your additional note!",
+                },
+              ]}
+            >
+              <Input.TextArea
+                rows={4}
+                placeholder="Additional Note"
+                maxLength={6}
+              />
+            </Form.Item>
+          </Card>
         </Form>
       </div>
     </div>

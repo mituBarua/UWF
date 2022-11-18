@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Form, Input, Button, Upload } from "antd";
+import { Form, Input, Button, Upload, Card } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,25 @@ import { createVolunteer, clearErrors } from "../../../Actions/volunteerAction";
 import Spinner from "../../../Components/Spinner";
 
 import { mediaList } from "../../../Utils/medialist";
+import "./style.css";
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 20 },
+  },
+};
+
+const formItemLayoutWithOutLabel = {
+  wrapperCol: {
+    xs: { span: 24, offset: 0 },
+    sm: { span: 20, offset: 4 },
+  },
+};
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -84,130 +103,143 @@ const Create = () => {
   };
   if (loading) return <Spinner />;
   return (
-    <Form
-      name="basic"
-      form={form}
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      onFinish={onSubmit}
-      // onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="First Name"
-        name="first_name"
-        rules={[
-          {
-            required: true,
-            message: "Please input your first name!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+    <div className="form-layout">
+      <div className="form-design-view">
+        <Form
+          name="basic"
+          form={form}
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          onFinish={onSubmit}
+          autoComplete="off"
+        >
+          <Card
+            title="Create Volunteer"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
+          >
+            <Form.Item
+              label="First Name"
+              name="first_name"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your first name!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-      <Form.Item
-        label="Last Name"
-        name="last_name"
-        rules={[
-          {
-            required: true,
-            message: "Please input your last name!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+            <Form.Item
+              label="Last Name"
+              name="last_name"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your last name!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-      <Form.Item
-        label="Phone"
-        name="phone"
-        rules={[
-          {
-            required: true,
-            message: "Please input your phone!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Email"
-        name="email"
-        rules={[
-          {
-            required: true,
-            message: "Please input your email!",
-          },
-          {
-            type: "email",
-            message: "Please input your valid email!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Address"
-        name="address"
-        rules={[
-          {
-            required: true,
-            message: "Please input your address!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+            <Form.Item
+              label="Phone"
+              name="phone"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your phone!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Email"
+              name="email"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your email!",
+                },
+                {
+                  type: "email",
+                  message: "Please input your valid email!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Address"
+              name="address"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your address!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-      <Form.Item
-        label="Additional Note"
-        name="additional_note"
-        rules={[
-          {
-            required: true,
-            message: "Please input your Additional Note!",
-          },
-        ]}
-      >
-        <Input.TextArea
-          rows={4}
-          placeholder="Additional Note"
-          maxLength={250}
-        />
-      </Form.Item>
-      <Form.Item
-        label="Profile Picture"
-        name="profie_picture"
-        rules={[
-          {
-            validator: (_, value) => {
-              if (fileList.length > 0) {
-                return Promise.resolve();
-              } else {
-                return Promise.reject("Please upload profile picture");
-              }
-            },
-          },
-        ]}
-      >
-        <Upload {...props} accept={mediaList["image"]}>
-          <Button icon={<UploadOutlined />}>Select File</Button>
-        </Upload>
-      </Form.Item>
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button htmlType="submit">Submit</Button>
-      </Form.Item>
-    </Form>
+            <Form.Item
+              label="Additional Note"
+              name="additional_note"
+              {...formItemLayout}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your Additional Note!",
+                },
+              ]}
+            >
+              <Input.TextArea
+                rows={4}
+                placeholder="Additional Note"
+                maxLength={250}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Profile Picture"
+              name="profie_picture"
+              {...formItemLayout}
+              rules={[
+                {
+                  validator: (_, value) => {
+                    if (fileList.length > 0) {
+                      return Promise.resolve();
+                    } else {
+                      return Promise.reject("Please upload profile picture");
+                    }
+                  },
+                },
+              ]}
+            >
+              <Upload {...props} accept={mediaList["image"]}>
+                <Button icon={<UploadOutlined />}>Select File</Button>
+              </Upload>
+            </Form.Item>
+            <Form.Item {...formItemLayoutWithOutLabel}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Card>
+        </Form>
+      </div>
+    </div>
   );
 };
 

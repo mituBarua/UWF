@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import { Collapse } from "antd";
+import { Collapse, Card } from "antd";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
 import { toast } from "react-toastify";
 
@@ -12,11 +12,29 @@ import {
   getProjectByID,
   deleteProjectParagraph,
 } from "../../../../Actions/projectAction";
-import "../../Create/style.css";
+import "../../style.css";
 
 import Spinner from "../../../../Components/Spinner";
 
 const { Panel } = Collapse;
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 20 },
+  },
+};
+
+const formItemLayoutWithOutLabel = {
+  wrapperCol: {
+    xs: { span: 24, offset: 0 },
+    sm: { span: 20, offset: 4 },
+  },
+};
 
 const ParagraphList = (props) => {
   const { id } = useParams();
@@ -57,15 +75,23 @@ const ParagraphList = (props) => {
 
   if (loading) return <Spinner />;
   return (
-    <>
-      <Collapse expandIconPosition="start">
-        {project?.paragraphs.map(({ title, body, index, id }) => (
-          <Panel header={title} key={index} extra={genExtra(id)}>
-            <div>{body}</div>
-          </Panel>
-        ))}
-      </Collapse>
-    </>
+    <div className="form-layout">
+      <div className="form-design-view">
+        <Card
+          title="Paragraph List"
+          style={{ marginBottom: 10 }}
+          className="resume__basic"
+        >
+          <Collapse expandIconPosition="start">
+            {project?.paragraphs.map(({ title, body, index, id }) => (
+              <Panel header={title} key={index} extra={genExtra(id)}>
+                <div>{body}</div>
+              </Panel>
+            ))}
+          </Collapse>
+        </Card>
+      </div>
+    </div>
   );
 };
 
