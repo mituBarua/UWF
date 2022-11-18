@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { EditFilled, DeleteFilled, DatabaseFilled } from '@ant-design/icons';
+import { EditFilled, DeleteFilled, DatabaseFilled } from "@ant-design/icons";
 
 const List = () => {
   const dispatch = useDispatch();
@@ -85,11 +85,11 @@ const List = () => {
         const { id } = row;
         return (
           <>
-
             <DatabaseFilled onClick={() => navigate(`/project/${id}`)} />
             <EditFilled onClick={() => navigate(`/project/edit/${id}`)} />
-            <DeleteFilled onClick={() => dispatch(deleteProject(accessToken, id))} />
-
+            <DeleteFilled
+              onClick={() => dispatch(deleteProject(accessToken, id))}
+            />
           </>
         );
       },
@@ -118,10 +118,16 @@ const List = () => {
   return (
     <>
       <div>
-      
-      <Button type="primary" onClick={() => navigate("/project/create")}>Create</Button>
-      <br/>
-      <Table columns={columns} dataSource={projectList}  style={{ marginTop: 20 }} />
+        <Button type="primary" onClick={() => navigate("/project/create")}>
+          Create
+        </Button>
+        <br />
+        <Table
+          columns={columns}
+          dataSource={projectList}
+          loading={projectList == undefined}
+          style={{ marginTop: 20 }}
+        />
       </div>
     </>
   );
