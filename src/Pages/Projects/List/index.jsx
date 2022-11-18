@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { EditFilled, DeleteFilled, DatabaseFilled } from '@ant-design/icons';
+
 const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
