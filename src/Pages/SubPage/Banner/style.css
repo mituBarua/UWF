@@ -24,3 +24,8 @@
 .banner-text span{
     color:#C1272D
 }
+@media (max-width: 575.98px) {
+    .inner-banner{
+    height: 40vh;
+    }
+}

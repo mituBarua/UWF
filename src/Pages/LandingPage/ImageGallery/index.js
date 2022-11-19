@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGalleryImageList } from "../../../Actions/imageGalleryAction";
-import { Row, Col, Card, Button } from 'react-bootstrap';
 import './style.css';
 import AllImage from "./AllImage";
 
 const ImageGallery = () => {
   const dispatch = useDispatch();
-  const { GalleryList, error, success, loading } = useSelector(
+  const { GalleryList} = useSelector(
     (state) => state.imageGallery
   );
   const [type, setType] = useState("all");
@@ -62,25 +61,25 @@ const ImageGallery = () => {
               </button>
             </div>
           </div>
-          <div className="row mt-5">
-            {(type == "appeal") && (
+          <div className="row mt-5 justify-content-center">
+            {(type === "appeal") && (
 
               <AllImage type={type} image={GalleryList?.appeal} />
 
             )}
           </div>
-          <div className="row">
-            {(type == "project") && (
+          <div className="row justify-content-center">
+            {(type === "project") && (
               <AllImage type={type} image={GalleryList?.project} />
             )}
           </div>
-          <div className="row">
-            {(type == "campaign" || type == "all") && (
+          <div className="row justify-content-center">
+            {(type === "campaign" || type === "all") && (
               <AllImage type={type} image={GalleryList?.campaign} />
             )}
           </div>
-          <div className="row">
-            {(type == "news" || type == "all") && (
+          <div className="row justify-content-center">
+            {(type === "news" || type === "all") && (
               <AllImage type={type} image={GalleryList?.news} />
             )}
           </div>

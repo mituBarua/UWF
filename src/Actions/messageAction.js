@@ -49,7 +49,7 @@ export const getMessageByID = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/message/${id}`, config);
-console.log('data',data)
+
     dispatch({
       type: MESSAGE_BY_ID_SUCCESS,
       payload: data.data,
