@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
-import { Table, Button } from "antd";
+import { Button } from "antd";
+import { Table } from "ant-table-extensions";
+
 import { EditFilled, DeleteFilled, DatabaseFilled } from "@ant-design/icons";
 import {
   clearSuccess,
@@ -96,11 +98,13 @@ const List = () => {
           Create
         </Button>
         <br />
+        <br />
         <Table
           columns={columns}
           dataSource={volunteerList}
           loading={volunteerList == undefined}
           style={{ marginTop: 20 }}
+          searchable
         />
       </div>
     </>

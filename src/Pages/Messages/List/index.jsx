@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { message, Table, Tag } from "antd";
+import { Tag } from "antd";
+import { Table } from "ant-table-extensions";
 
 import {
   getMessageList,
@@ -112,13 +113,13 @@ const List = () => {
         {isModalOpen.isOpen && (
           <ModalView {...isModalOpen} handleCancel={handleCancel} />
         )}
-        
-     
+
         <Table
           columns={columns}
           dataSource={messageList}
           loading={messageList == undefined}
           style={{ marginTop: 20 }}
+          searchable={true}
         />
       </div>
     </>

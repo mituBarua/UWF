@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Table, Tag } from "antd";
+import { Tag } from "antd";
+import { Table } from "ant-table-extensions";
 
 import { useSelector } from "react-redux";
 
@@ -62,7 +63,7 @@ const UserList = () => {
       dashboard: { userList },
     },
   } = useSelector((state) => state.user);
-  return <Table columns={columns} dataSource={userList} />;
+  return <Table columns={columns} dataSource={userList} searchable />;
 };
 
 export default UserList;

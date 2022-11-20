@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
-import { Table, Tag, Button } from "antd";
+import { Tag, Button } from "antd";
+import { Table } from "ant-table-extensions";
 
 import {
   clearSuccess,
@@ -122,11 +123,13 @@ const List = () => {
           Create
         </Button>
         <br />
+        <br />
         <Table
           columns={columns}
           dataSource={projectList}
           loading={projectList == undefined}
           style={{ marginTop: 20 }}
+          searchable
         />
       </div>
     </>
