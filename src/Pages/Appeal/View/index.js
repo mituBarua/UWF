@@ -211,7 +211,7 @@ const View = () => {
             style={{ marginBottom: 10 }}
             className="resume__basic"
             extra={
-              <Button onClick={() => navigate(`/appeal/media/list/${id}`)}>
+              <Button type="primary" onClick={() => navigate(`/appeal/media/list/${id}`)}>
                 Media List
               </Button>
             }
@@ -288,7 +288,7 @@ const View = () => {
             style={{ marginBottom: 10 }}
             className="resume__basic"
             extra={
-              <Button onClick={() => navigate(`/appeal/paragraph/list/${id}`)}>
+              <Button type="primary" onClick={() => navigate(`/appeal/paragraph/list/${id}`)}>
                 Paragraph List
               </Button>
             }

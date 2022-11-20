@@ -53,7 +53,7 @@ const MediaList = (props) => {
         {campaign?.media_list.map(({ url, id, type }) => (
           <Col span={8}>
             <Card title={`Media ${id} ${type}`} bordered={false}>
-              {type == "Image" && <Image width={200} height={300} src={url} />}
+              {type == "Image" && <Image  src={url} />}
               {type != "Image" && (
                 <>
                   <iframe src={url} width="200" height="300" />
