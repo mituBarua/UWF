@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
-import { Table, Tag, Button } from "antd";
+import { Tag } from "antd";
+import { Table } from "ant-table-extensions";
 
 import {
   getDonationList,
@@ -10,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { EditFilled, DeleteFilled, DatabaseFilled } from "@ant-design/icons";
+import { DatabaseFilled } from "@ant-design/icons";
 
 const List = () => {
   const dispatch = useDispatch();
@@ -99,6 +100,7 @@ const List = () => {
           dataSource={donationList}
           loading={donationList == undefined}
           style={{ marginTop: 20 }}
+          searchable
         />
       </div>
     </>
