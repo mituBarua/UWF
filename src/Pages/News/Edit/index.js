@@ -13,7 +13,7 @@ import {
   updateNews,
 } from "../../../Actions/newsAction";
 import Spinner from "../../../Components/Spinner";
-import "../Create/style.css";
+import "../style.css";
 
 const formItemLayout = {
   labelCol: {

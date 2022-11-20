@@ -6,12 +6,15 @@ import "antd/dist/antd.min.css";
 import ProtectedRoute from "./Routes/ProtectedRoute";
 
 import Dashboard from "./Components/Dashboard";
+import AdminDashboard from "./Pages/AdminDashboard";
+
 import Login from "./Pages/Auth/Login";
 import ForgetPassword from "./Pages/Auth/ForgetPassword";
 import ResetPassword from "./Pages/Auth/ResetPassword";
 import Register from "./Pages/Auth/Register";
-import UserList from "./Pages/UserList";
+import UserList from "./Pages/User/List";
 import Contact from "./Pages/SubPage/ContactPage";
+
 import ProjectList from "./Pages/Projects/List";
 import ProjectCreate from "./Pages/Projects/Create";
 import ProjectView from "./Pages/Projects/View";
@@ -86,7 +89,7 @@ function App() {
           element={
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
-                <h2>Welcome to Dashboard!</h2>
+                <AdminDashboard />
               </Dashboard>
             </ProtectedRoute>
           }
@@ -102,8 +105,8 @@ function App() {
         <Route path="/appeal-details/:id" exact element={<AppealDetails />} />
         <Route path="/campaign" exact element={<CampaignPage />} />
         <Route path="/donate" exact element={<DonatePage />} />
-       
-        <Route path="/thankyou" exact element={<Thankyou/>} />
+
+        <Route path="/thankyou" exact element={<Thankyou />} />
         <Route
           path="/campaign-details/:id"
           exact
@@ -520,9 +523,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={
-          <NotFound/>
-        } />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

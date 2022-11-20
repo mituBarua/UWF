@@ -12,7 +12,7 @@ import {
   getCampaignByID,
   deleteCampaignParagraph,
 } from "../../../../Actions/campaignAction";
-import "../../Create/style.css";
+import "../../style.css";
 
 import Spinner from "../../../../Components/Spinner";
 

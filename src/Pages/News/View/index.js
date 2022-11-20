@@ -22,7 +22,7 @@ import {
   clearErrors,
   getNewsByID,
 } from "../../../Actions/newsAction";
-import "../Create/style.css";
+import "../style.css";
 
 import Spinner from "../../../Components/Spinner";
 

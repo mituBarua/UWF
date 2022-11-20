@@ -12,7 +12,7 @@ import {
   getNewsByID,
   deleteNewsParagraph,
 } from "../../../../Actions/newsAction";
-import "../../Create/style.css";
+import "../../style.css";
 
 import Spinner from "../../../../Components/Spinner";
 
