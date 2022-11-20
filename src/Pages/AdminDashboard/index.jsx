@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 
-//dashboad chart, cards goes here!
 const AdminDashboard = () => {
   return <h2>Welcome to Dashboard!</h2>;
 };
