@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { createCampaign, clearErrors } from "../../../Actions/campaignAction";
 import Spinner from "../../../Components/Spinner";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
+import "../style.css";
 
 const { RangePicker } = DatePicker;
 

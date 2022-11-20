@@ -12,7 +12,7 @@ import {
   updateCampaign,
 } from "../../../Actions/campaignAction";
 import Spinner from "../../../Components/Spinner";
-import "../Create/style.css";
+import "../style.css";
 
 const { RangePicker } = DatePicker;
 
