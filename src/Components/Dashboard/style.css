@@ -21,9 +21,20 @@
     display: flex;
     
   }
+  .content-bg{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  
+  
+
+  }
   .header-menu{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 90%;
+  }
+  .header-menu a {
+    color: #000;
   }

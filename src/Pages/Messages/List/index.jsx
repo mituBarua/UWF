@@ -109,7 +109,7 @@ const List = () => {
   }, []);
   return (
     <>
-      <div>
+      <div style={{width:'90%'}}>
         {isModalOpen.isOpen && (
           <ModalView {...isModalOpen} handleCancel={handleCancel} />
         )}

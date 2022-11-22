@@ -140,7 +140,7 @@ const Dashboard = ({ children }) => {
           </div>
         </Header>
         <Content
-          className="site-layout-background"
+          className="content-bg"
           style={{
             margin: "24px 16px",
             padding: 24,

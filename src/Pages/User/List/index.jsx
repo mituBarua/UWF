@@ -35,8 +35,8 @@ const columns = [
         role == "SuperAdmin"
           ? "Super Admin"
           : role == "RegisteredUser"
-          ? "Registered User"
-          : role;
+            ? "Registered User"
+            : role;
       let colors = {
         SuperAdmin: "red",
         Admin: "blue",
@@ -57,13 +57,15 @@ const columns = [
   },
 ];
 
-const UserList = () => {
+const List = () => {
   const {
     user: {
       dashboard: { userList },
     },
   } = useSelector((state) => state.user);
-  return <Table columns={columns} dataSource={userList} searchable />;
+  return <div style={{ width: '90%' }}>
+    <Table columns={columns} dataSource={userList} searchable />;
+  </div>
 };
 
-export default UserList;
+export default List;
