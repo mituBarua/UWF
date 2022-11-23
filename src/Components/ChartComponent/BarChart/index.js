@@ -28,7 +28,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Donation History",
+      text: "Last 12 Months Donation History",
     },
   },
 };

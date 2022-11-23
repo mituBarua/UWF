@@ -69,7 +69,8 @@ export const lastFewMonthsDonation = (donations) => {
   let labels = [];
   let totalAmounts = [];
 
-  for (let i = 0; i < 6; ++i) {
+  for (let i = 0; i < 12; ++i) {
+    if (month < 10) month = "0" + month;
     let new_date = year + "-" + month;
 
     let total = donations
