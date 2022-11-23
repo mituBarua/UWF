@@ -48,7 +48,6 @@ const Login = () => {
           span: 16,
         }}
         onFinish={onSubmit}
-        //onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         {" "}
@@ -90,7 +89,7 @@ const Login = () => {
           <Button className="login-btn" htmlType="submit">
             Login
           </Button>
-          <br/>
+          <br />
           <Link to="/forgetPassword" relative="path">
             Forgot Password?
           </Link>

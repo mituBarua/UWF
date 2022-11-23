@@ -24,6 +24,8 @@ const List = () => {
     (state) => state.campaign
   );
 
+  // console.log(window.innerWidth);
+
   useEffect(() => {
     if (success && success.type == "campaign_delete_success") {
       toast.success("Campaign Deleted Successfully");
@@ -129,6 +131,9 @@ const List = () => {
           loading={campaignList == undefined}
           style={{ marginTop: 20 }}
           searchable
+          scroll={{
+            x: window.innerWidth < 1350 ? window.innerWidth : 0,
+          }}
         />
       </div>
     </>

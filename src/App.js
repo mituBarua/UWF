@@ -1,19 +1,20 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.min.css";
 
 import ProtectedRoute from "./Routes/ProtectedRoute";
 
-import Dashboard from "./Components/Dashboard";
-import AdminDashboard from "./Pages/AdminDashboard";
-
 import Login from "./Pages/Auth/Login";
 import ForgetPassword from "./Pages/Auth/ForgetPassword";
 import ResetPassword from "./Pages/Auth/ResetPassword";
 import Register from "./Pages/Auth/Register";
+
+import Dashboard from "./Components/Dashboard";
+import AdminDashboard from "./Pages/AdminDashboard";
+
 import UserList from "./Pages/User/List";
-import Contact from "./Pages/SubPage/ContactPage";
 
 import ProjectList from "./Pages/Projects/List";
 import ProjectCreate from "./Pages/Projects/Create";
@@ -23,6 +24,7 @@ import ProjectPage from "./Pages/SubPage/ProjectPage";
 import ProjectParagraphList from "./Pages/Projects/Paragraph/List";
 import ProjectMediaList from "./Pages/Projects/Media/List";
 import ProjectParagraphEdit from "./Pages/Projects/Paragraph/Edit";
+import ProjectDetails from "./Pages/SubPage/ProjectDetailPage";
 
 import CampaignList from "./Pages/Campaigns/List";
 import CampaignCreate from "./Pages/Campaigns/Create";
@@ -53,8 +55,6 @@ import NewsMediaList from "./Pages/News/Media/List";
 import NewsParagraphEdit from "./Pages/News/Paragraph/Edit";
 import NewsDetails from "./Pages/SubPage/NewsDetailPage";
 import NewsPage from "./Pages/SubPage/NewsPage";
-import ProjectDetails from "./Pages/SubPage/ProjectDetailPage";
-import LandingPage from "./Pages/LandingPage";
 
 import VolunteerCreate from "./Pages/Volunteers/Create";
 import VolunteerList from "./Pages/Volunteers/List";
@@ -69,8 +69,11 @@ import DonatePage from "./Pages/SubPage/DonatePage";
 import DonationList from "./Pages/Donations/List";
 import DonationView from "./Pages/Donations/View";
 
+import Contact from "./Pages/SubPage/ContactPage";
+import LandingPage from "./Pages/LandingPage";
 import NotFound from "./Pages/Shared/NotFound";
 import Thankyou from "./Pages/SubPage/ThankyouPage";
+
 function App() {
   // disable right click
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
