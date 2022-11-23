@@ -31,7 +31,6 @@ const AdminDashboard = (props) => {
   } = useSelector((state) => state.user);
 
   const barChartData = lastFewMonthsDonation(donations);
-  console.log(barChartData);
 
   return (
     <>
