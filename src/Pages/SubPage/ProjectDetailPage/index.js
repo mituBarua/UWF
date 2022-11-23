@@ -5,7 +5,10 @@ import HeaderMenu from "../../Shared/HeaderMenu";
 import { getProjectDataByID } from "../../../Actions/projectAction";
 
 import Banner from "../Banner";
-import './style.css';
+import "./style.css";
+
+import Categories from "../../../Components/Categories";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -42,70 +45,7 @@ const ProjectDetails = () => {
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-4">
-            <div className="categories">
-              <h2>Categories</h2>
-              <ul>
-                <li>
-                  <a href="/about">About</a>
-                </li>
-                <li>
-                  <a href="/project">Projects</a>
-                </li>
-                <li>
-                  <a href="/appeals">Appeals</a>
-                </li>
-                <li>
-                  <a href="/campaign">Campaign</a>
-                </li>
-                <li>
-                  <a href="/news">News</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-5 ">
-            <div>
-              {/* <a
-                href="https://checkout.justgiving.com/c/2375023"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  width: "100%",
-                  maxWidth: "296px",
-                  minWidth: "256px",
-                  margin: "12px auto",
-                }}
-              >
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "100%",
-                    height: "48px",
-                    backgroundColor: "#7a04dd",
-                    borderRadius: "3px",
-                    marginBottom: "12px",
-                  }}
-                >
-                  <img
-                    src="https://www.jg-cdn.com/buttons/donate-with-jg.svg"
-                    alt="Donate with JustGiving."
-                  />
-                </span>
-                <img
-                  src="https://www.jg-cdn.com/buttons/payment-type-logos-gb.svg"
-                  alt="Pay with Mastercard, Visa, American Express, PayPal, Bank Transfer, Apple Pay or Direct Debit."
-                />
-              </a> */}
-            </div>
-            {project?.paragraphs.slice(0, 6).map(({ title, body, id }) => (
-              <div key={id} className="paragraph">
-                <h4>{title}</h4>
-                <p>{body}</p>
-              </div>
-            ))}
+            <Categories />
           </div>
         </div>
       </div>

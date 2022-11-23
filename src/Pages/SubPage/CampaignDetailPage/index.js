@@ -6,6 +6,8 @@ import { getCampaignDataByID } from "../../../Actions/campaignAction";
 import HeaderMenu from "../../Shared/HeaderMenu";
 import Banner from "../Banner";
 
+import Categories from "../../../Components/Categories";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,8 +28,8 @@ const CampaignDetails = () => {
     slidesToScroll: 1,
   };
   return (
-    <> 
-     <HeaderMenu />
+    <>
+      <HeaderMenu />
       <Banner name="Campaign Details" />
       <div className="container mt-4">
         <div className="row">
@@ -41,26 +43,17 @@ const CampaignDetails = () => {
             </Slider>
           </div>
           <div className="col-md-1"></div>
-                    <div className="col-md-4">
-                        <div className="categories">
-                            <h2>Categories</h2>
-                            <ul>
-                                <li><a href="/about">About</a></li>
-                                <li><a href="/project">Projects</a></li>
-                                <li><a href="/appeals">Appeals</a></li>
-                                <li><a href="/campaign">Campaign</a></li>
-                                <li><a href="/news">News</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="mt-5 ">
-                        {campaign?.paragraphs.slice(0, 6).map(({ title, body, id }) => (
-                            <div key={id} className="paragraph">
-                                <h4>{title}</h4>
-                                <p>{body}</p>
-                            </div>
-                        ))}
-                    </div>
+          <div className="col-md-4">
+            <Categories />
+          </div>
+          <div className="mt-5 ">
+            {campaign?.paragraphs.slice(0, 6).map(({ title, body, id }) => (
+              <div key={id} className="paragraph">
+                <h4>{title}</h4>
+                <p>{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
