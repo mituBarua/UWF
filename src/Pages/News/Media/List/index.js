@@ -30,7 +30,7 @@ const MediaList = (props) => {
   }, []);
 
   useEffect(() => {
-    if (success && success.type == "news_delete_media_success") {
+    if (success && success.type === "news_delete_media_success") {
       toast.success("News Deleted Successfully");
       navigate(`/news/${success.modelId}`);
     } else if (error) {
@@ -50,8 +50,8 @@ const MediaList = (props) => {
         {news?.media_list.map(({ url, id, type }) => (
           <Col span={8}>
             <Card title={`Media ${id} ${type}`} bordered={false}>
-              {type == "Image" && <Image  src={url} />}
-              {type != "Image" && (
+              {type === "Image" && <Image  src={url} />}
+              {type !== "Image" && (
                 <>
                   <iframe src={url} width="200" height="300" />
                   <a href={url} target="_blank">

@@ -8,8 +8,6 @@ import {
   TrophyOutlined,
 } from "@ant-design/icons";
 import { Col, Row } from "antd";
-import "./style.css";
-
 import CardComponent from "../../Components/CardComponent";
 import PieChart from "../../Components/ChartComponent/PieChart";
 import BarChart from "../../Components/ChartComponent/BarChart";
