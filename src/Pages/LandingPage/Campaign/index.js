@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { getCampaignList } from "../../../Actions/campaignAction";
 import EachCampaign from "../EachCampaign";
 const Campaign = () => {
@@ -10,9 +9,7 @@ const Campaign = () => {
   const {
     user: { accessToken },
   } = useSelector((state) => state.user);
-  const { campaignList, error, success, loading } = useSelector(
-    (state) => state.campaign
-  );
+  const { campaignList } = useSelector((state) => state.campaign);
   useEffect(() => {
     dispatch(getCampaignList());
   }, []);
@@ -28,7 +25,7 @@ const Campaign = () => {
       </div>
       <Row className="py-3 my-2">
         {campaignList
-          ?.filter((item) => item.is_verified == 1)
+          ?.filter((item) => item.is_verified === 1)
           .slice(0, 4)
           .map((campaignList) => (
             <Col md="3" sm="6" className="my-2">

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Carousel, Button } from "react-bootstrap";
-import bannerImg1 from "../../../assets/banner/banner.jpg";
+import bannerImg1 from "../../../assets/banner/banner.png";
 
 function Banner() {
   return (
