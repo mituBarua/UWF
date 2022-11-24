@@ -26,7 +26,7 @@ const List = () => {
   );
 
   useEffect(() => {
-    if (success && success.type == "project_delete_success") {
+    if (success && success.type === "project_delete_success") {
       toast.success("Project Deleted Successfully");
       dispatch(clearSuccess());
       navigate("/project/list");
@@ -68,7 +68,7 @@ const List = () => {
       dataIndex: "is_active",
       key: "is_active",
       render: (isActive) => {
-        let text = isActive == "1" ? "Active" : "Inactive";
+        let text = isActive === "1" ? "Active" : "Inactive";
         let colors = {
           1: "green",
           2: "yellow",
@@ -127,7 +127,7 @@ const List = () => {
         <Table
           columns={columns}
           dataSource={projectList}
-          loading={projectList == undefined}
+          loading={projectList === undefined}
           style={{ marginTop: 20 }}
           searchable
         />

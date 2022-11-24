@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import './style.css';
 const EachCampaign = ({campaignList}) => {
-    const { id, title,description,media_list } = campaignList;
+    const {title,description,media_list } = campaignList;
     return (
         <div className="campaign-list">
             <Card >

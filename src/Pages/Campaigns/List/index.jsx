@@ -69,7 +69,7 @@ const List = () => {
       dataIndex: "is_verified",
       key: "is_verified",
       render: (isVerified) => {
-        let text = isVerified == "1" ? "Verified" : "Unverified";
+        let text = isVerified === "1" ? "Verified" : "Unverified";
         let colors = {
           1: "green",
           0: "red",
@@ -86,7 +86,7 @@ const List = () => {
       dataIndex: "is_active",
       key: "is_active",
       render: (isActive) => {
-        let text = isActive == "1" ? "Active" : "Inactive";
+        let text = isActive === "1" ? "Active" : "Inactive";
         let colors = {
           1: "green",
           2: "yellow",
@@ -128,7 +128,7 @@ const List = () => {
         <Table
           columns={columns}
           dataSource={campaignList}
-          loading={campaignList == undefined}
+          loading={campaignList === undefined}
           style={{ marginTop: 20 }}
           searchable
           scroll={{

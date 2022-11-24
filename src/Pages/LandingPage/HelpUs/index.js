@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row,Button } from "react-bootstrap";
 import { FaDonate, FaUsers, FaRegMoneyBillAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./style.css";

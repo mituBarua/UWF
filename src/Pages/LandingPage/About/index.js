@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css'
-import { Row, Col, Card, Button } from 'react-bootstrap';
+import { Row, Card, Button } from 'react-bootstrap';
 import { FaCheckCircle } from "react-icons/fa";
 const About = () => {
     return (
