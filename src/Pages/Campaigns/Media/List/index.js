@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { Image, Card, Col, Row, Button } from "antd";
-import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import { useParams, useNavigate } from "react-router-dom";
+
+import NoDataFound from "../../../../Components/NoDataFound";
 
 import {
   getCampaignByID,
@@ -49,11 +50,12 @@ const MediaList = (props) => {
   if (loading) return <Spinner />;
   return (
     <div className="site-card-wrapper">
+      {campaign?.media_list.length == 0 && <NoDataFound />}
       <Row gutter={16}>
         {campaign?.media_list.map(({ url, id, type }) => (
           <Col span={8}>
             <Card title={`Media ${id} ${type}`} bordered={false}>
-              {type == "Image" && <Image  src={url} />}
+              {type == "Image" && <Image src={url} />}
               {type != "Image" && (
                 <>
                   <iframe src={url} width="200" height="300" />

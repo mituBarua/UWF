@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { Image, Card, Col, Row, Button } from "antd";
 
@@ -13,6 +13,7 @@ import {
   clearErrors,
 } from "../../../../Actions/newsAction";
 import Spinner from "../../../../Components/Spinner";
+import NoDataFound from "../../../../Components/NoDataFound";
 
 const MediaList = (props) => {
   const { id } = useParams();
@@ -46,11 +47,12 @@ const MediaList = (props) => {
   if (loading) return <Spinner />;
   return (
     <div className="site-card-wrapper">
+      {news?.media_list.length == 0 && <NoDataFound />}
       <Row gutter={16}>
         {news?.media_list.map(({ url, id, type }) => (
           <Col span={8}>
             <Card title={`Media ${id} ${type}`} bordered={false}>
-              {type === "Image" && <Image  src={url} />}
+              {type === "Image" && <Image src={url} />}
               {type !== "Image" && (
                 <>
                   <iframe src={url} width="200" height="300" />

@@ -14,6 +14,7 @@ import {
   clearErrors,
 } from "../../../../Actions/appealAction";
 import Spinner from "../../../../Components/Spinner";
+import NoDataFound from "../../../../Components/NoDataFound";
 
 const MediaList = (props) => {
   const { id } = useParams();
@@ -49,6 +50,7 @@ const MediaList = (props) => {
   if (loading) return <Spinner />;
   return (
     <div className="site-card-wrapper">
+      {appeal?.media_list.length == 0 && <NoDataFound />}
       <Row gutter={16}>
         {appeal?.media_list.map(({ url, id, type }) => (
           <Col span={8}>

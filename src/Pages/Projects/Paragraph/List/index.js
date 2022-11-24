@@ -15,6 +15,7 @@ import {
 import "../../style.css";
 
 import Spinner from "../../../../Components/Spinner";
+import NoDataFound from "../../../../Components/NoDataFound";
 
 const { Panel } = Collapse;
 
@@ -77,19 +78,22 @@ const ParagraphList = (props) => {
   return (
     <div className="form-layout">
       <div className="form-design-view">
-        <Card
-          title="Paragraph List"
-          style={{ marginBottom: 10 }}
-          className="resume__basic"
-        >
-          <Collapse expandIconPosition="start">
-            {project?.paragraphs.map(({ title, body, index, id }) => (
-              <Panel header={title} key={index} extra={genExtra(id)}>
-                <div>{body}</div>
-              </Panel>
-            ))}
-          </Collapse>
-        </Card>
+        {project?.paragraphs.length == 0 && <NoDataFound />}
+        {project?.paragraphs.length > 0 && (
+          <Card
+            title="Paragraph List"
+            style={{ marginBottom: 10 }}
+            className="resume__basic"
+          >
+            <Collapse expandIconPosition="start">
+              {project?.paragraphs.map(({ title, body, index, id }) => (
+                <Panel header={title} key={index} extra={genExtra(id)}>
+                  <div>{body}</div>
+                </Panel>
+              ))}
+            </Collapse>
+          </Card>
+        )}
       </div>
     </div>
   );
