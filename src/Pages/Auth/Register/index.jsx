@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spin } from "antd";
 import Spinner from "../../../Components/Spinner";
-
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -33,8 +33,8 @@ const Register = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
-      
+        alignItems: "center",
+        height: "100vh",
       }}
     >
       <Form  className="login-form"
@@ -100,6 +100,10 @@ const Register = () => {
           <Button className="login-btn" htmlType="submit">
             Register
           </Button>
+          <br/>
+          <Link to="/login" relative="path">
+            Already Registered?
+          </Link>
         </Form.Item>
       </Form>
     </div>

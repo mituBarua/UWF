@@ -29,6 +29,7 @@ function HeaderMenu() {
             <Nav.Link href="/campaign">Campagin</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
             <Link to={`/donate`}>
             <Button className="donate">Donate</Button>
             </Link>

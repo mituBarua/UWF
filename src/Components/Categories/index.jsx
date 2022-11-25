@@ -26,7 +26,7 @@ const Categories = () => {
             <a
               style={
                 selectedItem[0]?.name == name
-                  ? { backgroundColor: "yellow" }
+                  ? { color: "#a11117de",fontWeight:'bold' }
                   : null
               }
               href={link}

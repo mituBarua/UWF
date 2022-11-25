@@ -2,6 +2,9 @@
   padding: 50px 30px;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
 }
+.login-form a{
+  color: #40a9ff;
+}
 .text-login {
     text-align: center;
     margin: 0 20px 40px;
