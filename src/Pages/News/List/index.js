@@ -46,11 +46,14 @@ const List = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
+      width:'20%',
     },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
+      width:'20%',
+      render:(des)=>des.slice(0,50)
     },
     {
       title: "Start Date",

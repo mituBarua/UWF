@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  DollarCircleOutlined,
+  PoundCircleOutlined,
   UserOutlined,
   LineChartOutlined,
   BankOutlined,
@@ -35,9 +35,9 @@ const AdminDashboard = (props) => {
       <Row gutter={16}>
         <Col>
           <CardComponent
-            icon={<DollarCircleOutlined />}
+            icon={<PoundCircleOutlined />}
             title={"Fund Raised This Year"}
-            amount={totalDonations(donations)}
+            amount={totalDonations(donations)+' £'}
             color={"#CD7360"}
           />
         </Col>
