@@ -15,6 +15,8 @@ import Dashboard from "./Components/Dashboard";
 import AdminDashboard from "./Pages/AdminDashboard";
 
 import UserList from "./Pages/User/List";
+import UserCreate from "./Pages/User/Create";
+import UserEdit from "./Pages/User/Edit";
 
 import ProjectList from "./Pages/Projects/List";
 import ProjectCreate from "./Pages/Projects/Create";
@@ -125,6 +127,28 @@ function App() {
             <ProtectedRoute isAdmin={true}>
               <Dashboard>
                 <UserList />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user/create"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <UserCreate />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user/edit/:id"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <UserEdit />
               </Dashboard>
             </ProtectedRoute>
           }
