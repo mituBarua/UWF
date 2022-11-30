@@ -4,6 +4,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+import { encryptTransform } from "redux-persist-transform-encrypt";
+
 import { userReducer } from "./Reducers/userReducer";
 import { projectReducer } from "./Reducers/projectReducer";
 import { campaignReducer } from "./Reducers/campaignReducer";
@@ -33,18 +35,26 @@ const reducer = combineReducers({
 
 const middleware = [thunk];
 
-const persistConfig = {
-  key: "root",
-  storage,
-  whiteList: ["user"],
-};
-
 const appReducer = (state, action) => {
   if (action.type === "LOGOUT_USER_SUCCESS") {
     return reducer(undefined, action);
   }
 
   return reducer(state, action);
+};
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whiteList: ["user"],
+  transforms: [
+    encryptTransform({
+      secretKey: process.env.REACT_APP_SECRET_KEY,
+      onError: function (error) {
+        appReducer = (state, action) => reducer(undefined, action);
+      },
+    }),
+  ],
 };
 
 const rootReducer = persistReducer(persistConfig, appReducer);
