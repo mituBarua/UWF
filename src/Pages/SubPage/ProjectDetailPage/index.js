@@ -47,6 +47,14 @@ const ProjectDetails = () => {
           <div className="col-md-4">
             <Categories />
           </div>
+          <div className="mt-5 ">
+            {project?.paragraphs.slice(0, 6).map(({ title, body, id }) => (
+              <div key={id} className="paragraph">
+                <h4>{title}</h4>
+                <p>{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

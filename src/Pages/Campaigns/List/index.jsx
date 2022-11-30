@@ -23,9 +23,6 @@ const List = () => {
   const { campaignList, error, success, loading } = useSelector(
     (state) => state.campaign
   );
-
-  // console.log(window.innerWidth);
-
   useEffect(() => {
     if (success && success.type == "campaign_delete_success") {
       toast.success("Campaign Deleted Successfully");
@@ -48,11 +45,15 @@ const List = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
+      width:'20%'
     },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
+      width:'20%',
+      render:(des)=>des.slice(0,50)
+    
     },
     {
       title: "Start Date",
