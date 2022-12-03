@@ -47,14 +47,14 @@ const persistConfig = {
   key: "root",
   storage,
   whiteList: ["user"],
-  // transforms: [
-  //   encryptTransform({
-  //     secretKey: process.env.REACT_APP_SECRET_KEY,
-  //     onError: function (error) {
-  //       appReducer = (state, action) => reducer(undefined, action);
-  //     },
-  //   }),
-  // ],
+  transforms: [
+    encryptTransform({
+      secretKey: process.env.REACT_APP_SECRET_KEY,
+      onError: function (error) {
+        appReducer = (state, action) => reducer(undefined, action);
+      },
+    }),
+  ],
 };
 
 const rootReducer = persistReducer(persistConfig, appReducer);
