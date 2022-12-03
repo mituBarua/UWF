@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getNewsList } from "../../../../Actions/newsAction";
 import { Pagination } from "antd";
@@ -15,24 +15,25 @@ const Newss = () => {
 
   useEffect(() => {
     dispatch(getNewsList());
-    setTotal(newsList?.length);
   }, []);
   useEffect(() => {
-    let indexOfLastPage = page * postPerPage
-    let indexOfFirstPage = ((page - 1) * postPerPage)
+    setTotal(newsList?.length);
+  }, [newsList]);
+
+  useEffect(() => {
+    let indexOfLastPage = page * postPerPage;
+    let indexOfFirstPage = (page - 1) * postPerPage;
 
     setList(newsList?.slice(indexOfFirstPage, indexOfLastPage));
-  }, [page]);
+  }, [page, newsList]);
   return (
     <div className="container">
       <Row className="py-3 my-2">
-        {list
-          ?.filter((item) => item.is_verified == 1)
-          .map((news) => (
-
-            <News key={news.id} news={news} />
-
-          ))}
+        {!list && <p>No Data Found </p>}
+        {list &&
+          list
+            ?.filter((item) => item.is_verified == 1)
+            .map((news) => <News key={news.id} news={news} />)}
       </Row>
       <br />
       <Pagination

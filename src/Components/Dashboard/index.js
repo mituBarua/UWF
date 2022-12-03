@@ -1,9 +1,14 @@
 import {
+  DashboardOutlined,
+  ProjectOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
-  FileOutlined,
+  PoundCircleOutlined,
+  MessageOutlined,
+  TeamOutlined,
+  DatabaseOutlined,
+  GiftOutlined,SecurityScanOutlined
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
@@ -17,7 +22,7 @@ const { Header, Sider, Content } = Layout;
 const menuItems = [
   {
     key: "1",
-    icon: <UserOutlined />,
+    icon: <DashboardOutlined />,
     label: "Dashboard",
     ref: "/dashboard",
   },
@@ -29,43 +34,43 @@ const menuItems = [
   },
   {
     key: "3",
-    icon: <UserOutlined />,
+    icon: <ProjectOutlined />,
     label: "Project",
     ref: "/project/list",
   },
   {
     key: "4",
-    icon: <UploadOutlined />,
+    icon: <SecurityScanOutlined />,
     label: "Appeal",
     ref: "/appeal/list",
   },
   {
     key: "5",
-    icon: <UploadOutlined />,
+    icon: <DatabaseOutlined />,
     label: "News",
     ref: "/news/list",
   },
   {
     key: "6",
-    icon: <UserOutlined />,
+    icon: <GiftOutlined />,
     label: "Campaign",
     ref: "/campaign/list",
   },
   {
     key: "7",
-    icon: <UserOutlined />,
+    icon: <TeamOutlined />,
     label: "Volunteer",
     ref: "/volunteer/list",
   },
   {
     key: "8",
-    icon: <FileOutlined />,
+    icon: <MessageOutlined />,
     label: "Message",
     ref: "/message/list",
   },
   {
     key: "9",
-    icon: <UploadOutlined />,
+    icon: <PoundCircleOutlined />,
     label: "Donation",
     ref: "/donation/list",
   },

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { Pagination } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getAppealList } from "../../../../Actions/appealAction";
@@ -11,26 +11,31 @@ const Appeals = () => {
   const [page, setPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(5);
   const [list, setList] = useState([]);
-  
+
   useEffect(() => {
     dispatch(getAppealList());
-    setTotal(appealList?.length);
   }, []);
   useEffect(() => {
-    let indexOfLastPage = page  * postPerPage
-    let indexOfFirstPage = ((page -1) * postPerPage)
- 
+    setTotal(appealList?.length);
+  }, [appealList]);
+
+  useEffect(() => {
+    let indexOfLastPage = page * postPerPage;
+    let indexOfFirstPage = (page - 1) * postPerPage;
+
     setList(appealList?.slice(indexOfFirstPage, indexOfLastPage));
-  }, [page]);
+  }, [page, appealList]);
 
   return (
     <div className="container">
       <Row className="py-3 my-2">
-        {list
-          ?.filter((item) => item.is_verified === 1)
-          .map((appealList) => (
-            <Appeal key={appealList.id} appealList={appealList}></Appeal>
-          ))}
+        {!list && <p>No Data Found </p>}
+        {list &&
+          list
+            ?.filter((item) => item.is_verified == 1)
+            .map((appealList) => (
+              <Appeal key={appealList.id} appealList={appealList}></Appeal>
+            ))}
       </Row>
       <br />
       <Pagination

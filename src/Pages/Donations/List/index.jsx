@@ -25,7 +25,7 @@ const List = () => {
   );
 
   useEffect(() => {
-    if (success && success.type === "campaign_delete_success") {
+    if (success && success.type == "campaign_delete_success") {
       toast.success("Campaign Deleted Successfully");
       dispatch(clearSuccess());
       navigate("/campaign/list");
@@ -98,7 +98,7 @@ const List = () => {
         <Table
           columns={columns}
           dataSource={donationList}
-          loading={donationList === undefined}
+          loading={donationList == undefined}
           style={{ marginTop: 20 }}
           searchable
         />

@@ -102,7 +102,7 @@ const List = () => {
         <Table
           columns={columns}
           dataSource={volunteerList}
-          loading={volunteerList === undefined}
+          loading={volunteerList == undefined}
           style={{ marginTop: 20 }}
           searchable
         />

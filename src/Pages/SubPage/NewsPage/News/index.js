@@ -7,11 +7,18 @@ const News = ({ news }) => {
 
   return (
     <div>
-
-
       <div className="row m-4">
         <div className="col-md-5">
-          <img src={media_list[0]?.url} alt='img' style={{ width: '100%', borderRadius: '10px' }} />
+          {media_list[0]?.type != "Image" && (
+            <iframe src={media_list[0]?.url} />
+          )}
+          {media_list[0]?.type == "Image" && (
+            <img
+              src={media_list[0]?.url}
+              alt="img"
+              style={{ width: "100%", borderRadius: "10px" }}
+            />
+          )}
         </div>
         <div className="col-md-7">
           <h3>{title}</h3>

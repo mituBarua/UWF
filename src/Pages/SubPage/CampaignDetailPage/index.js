@@ -35,9 +35,10 @@ const CampaignDetails = () => {
         <div className="row">
           <div className="col-md-7">
             <Slider {...settings}>
-              {campaign?.media_list.map(({ url, id }) => (
+              {campaign?.media_list.map(({ url, id,type }) => (
                 <div className="each-slide" key={id}>
-                  <img src={url} style={{ width: "100%" }} alt="slide" />
+                {type == 'Image' &&  <img src={url} style={{ width: "100%" }} alt="slide" /> }
+                 {type != 'Image' &&  <iframe src={url} height="400" width="600" alt="slide" /> }
                 </div>
               ))}
             </Slider>

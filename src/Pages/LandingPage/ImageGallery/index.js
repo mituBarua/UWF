@@ -52,22 +52,22 @@ const ImageGallery = () => {
             </div>
           </div>
           <div className="row mt-5 justify-content-center">
-            {type === "appeal" && (
+            {type == "appeal" && (
               <AllImage type={type} image={GalleryList?.appeal} />
             )}
           </div>
           <div className="row justify-content-center">
-            {type === "project" && (
+            {type == "project" && (
               <AllImage type={type} image={GalleryList?.project} />
             )}
           </div>
           <div className="row justify-content-center">
-            {(type === "campaign" || type === "all") && (
+            {(type == "campaign" || type == "all") && (
               <AllImage type={type} image={GalleryList?.campaign} />
             )}
           </div>
           <div className="row justify-content-center">
-            {(type === "news" || type === "all") && (
+            {(type == "news" || type == "all") && (
               <AllImage type={type} image={GalleryList?.news} />
             )}
           </div>
