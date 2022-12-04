@@ -119,6 +119,9 @@ const List = () => {
         dataSource={userList}
         loading={userList == undefined}
         searchable
+        scroll={{
+          x: window.innerWidth < 1350 ? window.innerWidth : 0,
+        }}
       />
       ;
     </div>

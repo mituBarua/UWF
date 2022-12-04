@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 
 import { useParams, useNavigate } from "react-router-dom";
 
+import nextId from "react-id-generator";
+
 import {
   getNewsByID,
   deleteNewsMedia,
@@ -50,7 +52,7 @@ const MediaList = (props) => {
       {news?.media_list.length == 0 && <NoDataFound />}
       <Row gutter={16}>
         {news?.media_list.map(({ url, id, type }) => (
-          <Col span={8}>
+          <Col key={nextId()} span={8}>
             <Card title={`Media ${id} ${type}`} bordered={false}>
               {type == "Image" && <Image src={url} />}
               {type !== "Image" && (

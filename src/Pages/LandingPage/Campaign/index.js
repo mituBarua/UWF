@@ -5,6 +5,8 @@ import { getCampaignList } from "../../../Actions/campaignAction";
 import EachCampaign from "../EachCampaign";
 import { Pagination } from "antd";
 
+import nextId from "react-id-generator";
+
 const Campaign = () => {
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
@@ -45,13 +47,9 @@ const Campaign = () => {
         {list &&
           list
             ?.filter((item) => item.is_verified == 1)
-
             .map((campaign) => (
-              <Col md="3" sm="6" className="my-2">
-                <EachCampaign
-                  key={campaign.id}
-                  campaignList={campaign}
-                ></EachCampaign>
+              <Col md="3" sm="6" className="my-2" key={nextId()}>
+                <EachCampaign key={nextId()} campaignList={campaign} />
               </Col>
             ))}
       </Row>

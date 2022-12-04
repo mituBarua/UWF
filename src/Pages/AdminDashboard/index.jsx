@@ -37,7 +37,7 @@ const AdminDashboard = (props) => {
           <CardComponent
             icon={<PoundCircleOutlined />}
             title={"Fund Raised This Year"}
-            amount={totalDonations(donations)+' £'}
+            amount={totalDonations(donations) + " £"}
             color={"#CD7360"}
           />
         </Col>

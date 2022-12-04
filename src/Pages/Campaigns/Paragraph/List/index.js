@@ -17,6 +17,8 @@ import "../../style.css";
 import Spinner from "../../../../Components/Spinner";
 import NoDataFound from "../../../../Components/NoDataFound";
 
+import nextId from "react-id-generator";
+
 const { Panel } = Collapse;
 
 const ParagraphList = (props) => {
@@ -69,7 +71,7 @@ const ParagraphList = (props) => {
           >
             <Collapse expandIconPosition="start">
               {campaign?.paragraphs.map(({ title, body, index, id }) => (
-                <Panel header={title} key={index} extra={genExtra(id)}>
+                <Panel header={title} key={nextId()} extra={genExtra(id)}>
                   <div>{body}</div>
                 </Panel>
               ))}

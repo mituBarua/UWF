@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import nextId from "react-id-generator";
+
 import {
   clearErrors,
   getAppealByID,
@@ -69,7 +71,7 @@ const ParagraphList = (props) => {
           >
             <Collapse expandIconPosition="start">
               {appeal?.paragraphs.map(({ title, body, index, id }) => (
-                <Panel header={title} key={index} extra={genExtra(id)}>
+                <Panel header={title} key={nextId()} extra={genExtra(id)}>
                   <div>{body}</div>
                 </Panel>
               ))}

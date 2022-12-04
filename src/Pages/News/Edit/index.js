@@ -174,7 +174,7 @@ const Edit = () => {
               <RangePicker
                 disabledDate={(current) => {
                   return (
-                    moment().add(-1, "days") >= current ||
+                    moment().add(0, "days") >= current ||
                     moment().add(1, "month") <= current
                   );
                 }}
