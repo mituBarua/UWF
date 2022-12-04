@@ -59,13 +59,13 @@ export const getMessageByID = (accessToken, id) => async (dispatch) => {
   }
 };
 
-export const createMessage = ( messageData) => async (dispatch) => {
+export const createMessage = (messageData) => async (dispatch) => {
   try {
     dispatch({ type: MESSAGE_REQUEST });
 
     const config = {
       headers: {
-        "Content-Type": "application/json" 
+        "Content-Type": "application/json",
       },
     };
 
@@ -81,7 +81,6 @@ export const createMessage = ( messageData) => async (dispatch) => {
     dispatch({ type: MESSAGE_FAIL, payload: error.response.data });
   }
 };
-
 
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });

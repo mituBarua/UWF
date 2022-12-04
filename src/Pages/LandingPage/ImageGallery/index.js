@@ -4,14 +4,27 @@ import { getGalleryImageList } from "../../../Actions/imageGalleryAction";
 import "./style.css";
 import AllImage from "./AllImage";
 
+import nextId from "react-id-generator";
+import Spinner from "../../../Components/Spinner";
+
 const ImageGallery = () => {
   const dispatch = useDispatch();
   const { GalleryList } = useSelector((state) => state.imageGallery);
   const [type, setType] = useState("all");
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     dispatch(getGalleryImageList());
   }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    let timer = setTimeout(() => setLoading(false), 1500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [type]);
 
   return (
     <div className="container">
@@ -20,18 +33,27 @@ const ImageGallery = () => {
         <div className="row justify-content-center mt-5">
           <div className="category-btn">
             <div>
-              <button className="gallery-btn" onClick={() => setType("all")}>
+              <button
+                className="gallery-btn"
+                style={{ backgroundColor: type == "all" ? "red" : null }}
+                onClick={() => setType("all")}
+              >
                 All
               </button>
             </div>
             <div>
-              <button className="gallery-btn" onClick={() => setType("appeal")}>
+              <button
+                className="gallery-btn"
+                style={{ backgroundColor: type == "appeal" ? "red" : null }}
+                onClick={() => setType("appeal")}
+              >
                 Appeal
               </button>
             </div>
             <div>
               <button
                 className="gallery-btn"
+                style={{ backgroundColor: type == "project" ? "red" : null }}
                 onClick={() => setType("project")}
               >
                 Project
@@ -40,37 +62,66 @@ const ImageGallery = () => {
             <div>
               <button
                 className="gallery-btn"
+                style={{ backgroundColor: type == "campaign" ? "red" : null }}
                 onClick={() => setType("campaign")}
               >
                 Campaign
               </button>
             </div>
             <div>
-              <button className="gallery-btn" onClick={() => setType("news")}>
+              <button
+                className="gallery-btn"
+                style={{ backgroundColor: type == "news" ? "red" : null }}
+                onClick={() => setType("news")}
+              >
                 News
               </button>
             </div>
           </div>
-          <div className="row mt-5 justify-content-center">
-            {type == "appeal" && (
-              <AllImage type={type} image={GalleryList?.appeal} />
-            )}
-          </div>
-          <div className="row justify-content-center">
-            {type == "project" && (
-              <AllImage type={type} image={GalleryList?.project} />
-            )}
-          </div>
-          <div className="row justify-content-center">
-            {(type == "campaign" || type == "all") && (
-              <AllImage type={type} image={GalleryList?.campaign} />
-            )}
-          </div>
-          <div className="row justify-content-center">
-            {(type == "news" || type == "all") && (
-              <AllImage type={type} image={GalleryList?.news} />
-            )}
-          </div>
+          {loading ? (
+            <div>
+              <Spinner />
+            </div>
+          ) : (
+            <>
+              <div className="row mt-5 justify-content-center">
+                {type == "appeal" && (
+                  <AllImage
+                    key={nextId()}
+                    type={type}
+                    image={GalleryList?.appeal}
+                  />
+                )}
+              </div>
+              <div className="row justify-content-center">
+                {type == "project" && (
+                  <AllImage
+                    key={nextId()}
+                    type={type}
+                    image={GalleryList?.project}
+                  />
+                )}
+              </div>
+              <div className="row justify-content-center">
+                {(type == "campaign" || type == "all") && (
+                  <AllImage
+                    key={nextId()}
+                    type={type}
+                    image={GalleryList?.campaign}
+                  />
+                )}
+              </div>
+              <div className="row justify-content-center">
+                {(type == "news" || type == "all") && (
+                  <AllImage
+                    key={nextId()}
+                    type={type}
+                    image={GalleryList?.news}
+                  />
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
