@@ -47,14 +47,14 @@ const List = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      width:'20%',
+      width: "20%",
     },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      width:'20%',
-      render:(des)=>des.slice(0,50)
+      width: "20%",
+      render: (des) => des.slice(0, 50),
     },
     {
       title: "Start Date",
@@ -133,6 +133,9 @@ const List = () => {
           loading={projectList == undefined}
           style={{ marginTop: 20 }}
           searchable
+          scroll={{
+            x: window.innerWidth < 1350 ? window.innerWidth : 0,
+          }}
         />
       </div>
     </>

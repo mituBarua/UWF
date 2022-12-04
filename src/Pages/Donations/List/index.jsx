@@ -101,6 +101,9 @@ const List = () => {
           loading={donationList == undefined}
           style={{ marginTop: 20 }}
           searchable
+          scroll={{
+            x: window.innerWidth < 1350 ? window.innerWidth : 0,
+          }}
         />
       </div>
     </>

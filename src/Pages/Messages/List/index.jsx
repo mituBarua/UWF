@@ -120,6 +120,9 @@ const List = () => {
           loading={messageList == undefined}
           style={{ marginTop: 20 }}
           searchable={true}
+          scroll={{
+            x: window.innerWidth < 1350 ? window.innerWidth : 0,
+          }}
         />
       </div>
     </>
