@@ -26,6 +26,8 @@ const ImageGallery = () => {
     };
   }, [type]);
 
+  const color = "#c1272d";
+
   return (
     <div className="container">
       <div>
@@ -35,7 +37,7 @@ const ImageGallery = () => {
             <div>
               <button
                 className="gallery-btn"
-                style={{ backgroundColor: type == "all" ? "red" : null }}
+                style={{ backgroundColor: type == "all" ? color : null }}
                 onClick={() => setType("all")}
               >
                 All
@@ -44,7 +46,7 @@ const ImageGallery = () => {
             <div>
               <button
                 className="gallery-btn"
-                style={{ backgroundColor: type == "appeal" ? "red" : null }}
+                style={{ backgroundColor: type == "appeal" ? color : null }}
                 onClick={() => setType("appeal")}
               >
                 Appeal
@@ -53,7 +55,9 @@ const ImageGallery = () => {
             <div>
               <button
                 className="gallery-btn"
-                style={{ backgroundColor: type == "project" ? "red" : null }}
+                style={{
+                  backgroundColor: type == "project" ? color : null,
+                }}
                 onClick={() => setType("project")}
               >
                 Project
@@ -62,7 +66,9 @@ const ImageGallery = () => {
             <div>
               <button
                 className="gallery-btn"
-                style={{ backgroundColor: type == "campaign" ? "red" : null }}
+                style={{
+                  backgroundColor: type == "campaign" ? color : null,
+                }}
                 onClick={() => setType("campaign")}
               >
                 Campaign
@@ -71,7 +77,7 @@ const ImageGallery = () => {
             <div>
               <button
                 className="gallery-btn"
-                style={{ backgroundColor: type == "news" ? "red" : null }}
+                style={{ backgroundColor: type == "news" ? "#c1272d" : null }}
                 onClick={() => setType("news")}
               >
                 News

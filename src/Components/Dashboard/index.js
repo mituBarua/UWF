@@ -15,7 +15,6 @@ import { Layout, Menu } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import nextId from "react-id-generator";
 import { logoutUser } from "../../Actions/userAction";
 import "./style.css";
 const { Header, Sider, Content } = Layout;
@@ -112,7 +111,7 @@ const Dashboard = ({ children }) => {
           ]}
         >
           {menuItems.map(({ key, icon, label, ref }) => (
-            <Menu.Item key={nextId()} icon={icon}>
+            <Menu.Item key={key} icon={icon}>
               <Link to={ref} />
               {label}
             </Menu.Item>
