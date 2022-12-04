@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
 import { getProjectList } from "../../../../Actions/projectAction";
 import Project from "../Project/Project";
+import nextId from "react-id-generator";
+
 const Projects = () => {
   const dispatch = useDispatch();
   const { projectList } = useSelector((state) => state.project);
@@ -31,7 +33,7 @@ const Projects = () => {
           list
             ?.filter((item) => item.is_verified == 1)
             .map((projectList) => (
-              <Col md="3" sm="6" className="my-2">
+              <Col key={nextId()} md="3" sm="6" className="my-2">
                 <Project
                   key={projectList.id}
                   projectList={projectList}
