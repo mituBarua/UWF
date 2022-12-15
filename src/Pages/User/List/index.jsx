@@ -13,6 +13,7 @@ import {
   deleteUser,
   clearErrors,
   clearSuccess,
+  getUserList,
 } from "../../../Actions/userAction";
 
 const List = () => {
@@ -20,14 +21,12 @@ const List = () => {
   const dispatch = useDispatch();
 
   const {
-    user: {
-      accessToken,
-      dashboard: { userList },
-    },
-    success,
-    loading,
-    error,
+    user: { accessToken },
   } = useSelector((state) => state.user);
+
+  const { userList, success, loading, error } = useSelector(
+    (state) => state.newUser
+  );
 
   const columns = [
     {
@@ -106,6 +105,10 @@ const List = () => {
       dispatch(clearErrors());
     }
   }, [loading, error, success]);
+
+  useEffect(() => {
+    dispatch(getUserList(accessToken));
+  }, []);
 
   return (
     <div style={{ width: "90%" }}>

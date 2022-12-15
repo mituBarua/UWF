@@ -18,9 +18,11 @@ import { resetPasswordReducer } from "./Reducers/resetPasswordReducer";
 import { forgotPasswordReducer } from "./Reducers/forgotPasswordReducer";
 import { imageGalleryReducer } from "./Reducers/imageGalleryReducer";
 import { donationReducer } from "./Reducers/donationReducer";
+import { newUserReducer } from "./Reducers/newUserReducer";
 
 const reducer = combineReducers({
   user: userReducer,
+  newUser: newUserReducer,
   project: projectReducer,
   appeal: appealReducer,
   news: newsReducer,
