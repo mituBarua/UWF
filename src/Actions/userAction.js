@@ -17,6 +17,9 @@ import {
   USER_FAIL,
   USER_DELETE_SUCCESS,
   USER_DELETE_FAIL,
+  USER_LIST_SUCCESS,
+  USER_LIST_FAIL,
+  NEW_USER_REQUEST,
 } from "../Constants/userConstants";
 import { api } from "../Utils/api";
 
@@ -63,7 +66,7 @@ export const registerUser = (userData) => async (dispatch) => {
 
 export const createUser = (accessToken, userData) => async (dispatch) => {
   try {
-    dispatch({ type: USER_REQUEST });
+    dispatch({ type: NEW_USER_REQUEST });
 
     const config = {
       headers: {
@@ -85,9 +88,33 @@ export const createUser = (accessToken, userData) => async (dispatch) => {
   }
 };
 
+export const getUserList = (accessToken) => async (dispatch) => {
+  try {
+    dispatch({ type: NEW_USER_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const { data } = await api.get("/users", config);
+    
+    console.log("ok");
+
+    dispatch({
+      type: USER_LIST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({ type: USER_LIST_FAIL, payload: error.response.data });
+  }
+};
+
 export const updateUser = (accessToken, id, userData) => async (dispatch) => {
   try {
-    dispatch({ type: USER_REQUEST });
+    dispatch({ type: NEW_USER_REQUEST });
 
     const config = {
       headers: {
@@ -110,7 +137,7 @@ export const updateUser = (accessToken, id, userData) => async (dispatch) => {
 
 export const getUserByID = (accessToken, id) => async (dispatch) => {
   try {
-    dispatch({ type: USER_REQUEST });
+    dispatch({ type: NEW_USER_REQUEST });
 
     const config = {
       headers: {
@@ -132,7 +159,7 @@ export const getUserByID = (accessToken, id) => async (dispatch) => {
 
 export const deleteUser = (accessToken, id) => async (dispatch) => {
   try {
-    dispatch({ type: USER_REQUEST });
+    dispatch({ type: NEW_USER_REQUEST });
 
     const config = {
       headers: {
