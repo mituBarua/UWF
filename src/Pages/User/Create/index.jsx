@@ -41,10 +41,9 @@ const Create = () => {
 
   const {
     user: { accessToken },
-    loading,
-    error,
-    success,
   } = useSelector((state) => state.user);
+
+  const { success, loading, error } = useSelector((state) => state.newUser);
 
   useEffect(() => {
     if (success && success.type == "user_create_success") {

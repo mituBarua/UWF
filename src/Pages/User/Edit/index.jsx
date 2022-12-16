@@ -45,15 +45,26 @@ const Edit = (props) => {
 
   const {
     user: { accessToken },
-    loading,
-    error,
-    success,
-    userInfo,
   } = useSelector((state) => state.user);
+
+  const { userInfo, success, loading, error } = useSelector(
+    (state) => state.newUser
+  );
 
   useEffect(() => {
     dispatch(getUserByID(accessToken, id));
   }, []);
+
+  useEffect(() => {
+    form.setFieldsValue({
+      title: userInfo?.title,
+      first_name: userInfo?.name,
+      last_name: userInfo?.last_name,
+      email: userInfo?.email,
+      phone: userInfo?.phone,
+      role: userInfo?.role,
+    });
+  }, [userInfo]);
 
   useEffect(() => {
     if (success && success.type == "user_update_success") {
@@ -150,7 +161,7 @@ const Edit = (props) => {
             >
               <Input disabled />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               label="Password"
               name="password"
               {...formItemLayout}
@@ -162,7 +173,7 @@ const Edit = (props) => {
               ]}
             >
               <Input.Password />
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item
               label="Phone No"
               name="phone"
