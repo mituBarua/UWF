@@ -27,7 +27,29 @@ import {
 } from "../Constants/campaignConstants";
 import { api } from "../Utils/api";
 
-export const getCampaignList = () => async (dispatch) => {
+export const getCampaignList = (accessToken) => async (dispatch) => {
+  try {
+    dispatch({ type: CAMPAIGN_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const { data } = await api.get("/campaigns", config);
+
+    dispatch({
+      type: CAMPAIGN_LIST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({ type: CAMPAIGN_LIST_FAIL, payload: error.response.data });
+  }
+};
+
+export const getWebCampaignList = () => async (dispatch) => {
   try {
     dispatch({ type: CAMPAIGN_REQUEST });
 
@@ -37,7 +59,7 @@ export const getCampaignList = () => async (dispatch) => {
       },
     };
 
-    const { data } = await api.get("/campaigns", config);
+    const { data } = await api.get("/web_campaigns", config);
 
     dispatch({
       type: CAMPAIGN_LIST_SUCCESS,

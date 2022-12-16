@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Pagination } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getCampaignList } from "../../../../Actions/campaignAction";
+import { getWebCampaignList } from "../../../../Actions/campaignAction";
 import Campaign from "../Campaign";
 import nextId from "react-id-generator";
 
@@ -15,7 +15,7 @@ const Campaigns = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    dispatch(getCampaignList());
+    dispatch(getWebCampaignList());
   }, []);
 
   useEffect(() => {

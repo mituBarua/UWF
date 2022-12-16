@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
-import { getProjectList } from "../../../../Actions/projectAction";
+import { getWebProjectList } from "../../../../Actions/projectAction";
 import Project from "../Project/Project";
 import nextId from "react-id-generator";
 
@@ -14,7 +14,7 @@ const Projects = () => {
   const [postPerPage, setPostPerPage] = useState(8);
   const [list, setList] = useState([]);
   useEffect(() => {
-    dispatch(getProjectList());
+    dispatch(getWebProjectList());
   }, []);
   useEffect(() => {
     setTotal(projectList?.length);

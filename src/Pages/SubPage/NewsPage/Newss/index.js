@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getNewsList } from "../../../../Actions/newsAction";
+import { getWebNewsList } from "../../../../Actions/newsAction";
 import { Pagination } from "antd";
 import News from "../News";
 
@@ -14,7 +14,7 @@ const Newss = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    dispatch(getNewsList());
+    dispatch(getWebNewsList());
   }, []);
   useEffect(() => {
     setTotal(newsList?.length);

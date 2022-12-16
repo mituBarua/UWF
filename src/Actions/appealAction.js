@@ -27,17 +27,41 @@ import {
 } from "../Constants/appealConstants";
 import { api } from "../Utils/api";
 
-export const getAppealList = () => async (dispatch) => {
+export const getAppealList = (accessToken) => async (dispatch) => {
   try {
     dispatch({ type: APPEAL_REQUEST });
 
     const config = {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+
       },
     };
 
     const { data } = await api.get("/appeals", config);
+
+    dispatch({
+      type: APPEAL_LIST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({ type: APPEAL_LIST_FAIL, payload: error.response.data });
+  }
+};
+
+export const getWebAppealList = () => async (dispatch) => {
+  try {
+    dispatch({ type: APPEAL_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+       
+      },
+    };
+
+    const { data } = await api.get("/web_appeals", config);
 
     dispatch({
       type: APPEAL_LIST_SUCCESS,

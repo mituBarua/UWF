@@ -27,14 +27,14 @@ import {
 } from "../Constants/projectConstants";
 import { api } from "../Utils/api";
 
-export const getProjectList = () => async (dispatch) => {
+export const getProjectList = (accessToken) => async (dispatch) => {
   try {
     dispatch({ type: PROJECT_REQUEST });
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-       
+        Authorization: `Bearer ${accessToken}`,
       },
     };
 
@@ -49,7 +49,27 @@ export const getProjectList = () => async (dispatch) => {
   }
 };
 
+export const getWebProjectList = () => async (dispatch) => {
+  try {
+    dispatch({ type: PROJECT_REQUEST });
 
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+       
+      },
+    };
+
+    const { data } = await api.get("/web_projects", config);
+  
+    dispatch({
+      type: PROJECT_LIST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({ type: PROJECT_LIST_FAIL, payload: error.response.data });
+  }
+};
 export const getProjectByID = (accessToken, id) => async (dispatch) => {
   try {
     dispatch({ type: PROJECT_REQUEST });

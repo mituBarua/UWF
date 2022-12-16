@@ -47,7 +47,25 @@ export const getNewsList = (accessToken) => async (dispatch) => {
     dispatch({ type: NEWS_LIST_FAIL, payload: error.response.data });
   }
 };
+export const getWebNewsList = () => async (dispatch) => {
+  try {
+    dispatch({ type: NEWS_REQUEST });
 
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        },
+    };
+
+    const { data } = await api.get("/web_news", config);
+    dispatch({
+      type: NEWS_LIST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({ type: NEWS_LIST_FAIL, payload: error.response.data });
+  }
+};
 export const getNewsByID = (accessToken, id) => async (dispatch) => {
   try {
     dispatch({ type: NEWS_REQUEST });

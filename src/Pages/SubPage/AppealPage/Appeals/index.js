@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { Pagination } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getAppealList } from "../../../../Actions/appealAction";
+import { getWebAppealList } from "../../../../Actions/appealAction";
 import Appeal from "../Appeal";
 const Appeals = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Appeals = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    dispatch(getAppealList());
+    dispatch(getWebAppealList());
   }, []);
   useEffect(() => {
     setTotal(appealList?.length);
