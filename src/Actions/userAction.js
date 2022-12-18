@@ -100,9 +100,7 @@ export const getUserList = (accessToken) => async (dispatch) => {
     };
 
     const { data } = await api.get("/users", config);
-    
-    console.log("ok");
-
+  
     dispatch({
       type: USER_LIST_SUCCESS,
       payload: data.data,

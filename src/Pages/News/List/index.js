@@ -46,14 +46,14 @@ const List = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      width:'20%',
+      width: "20%",
     },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      width:'20%',
-      render:(des)=>des.slice(0,50)
+      width: "20%",
+      render: (des) => des.slice(0, 50),
     },
     {
       title: "Start Date",
@@ -90,7 +90,7 @@ const List = () => {
         let text = isActive == "1" ? "Active" : "Inactive";
         let colors = {
           1: "green",
-          2: "yellow",
+          0: "orange",
         };
         return (
           <Tag color={colors[isActive]} key={isActive}>
@@ -108,7 +108,11 @@ const List = () => {
             <DatabaseFilled onClick={() => navigate(`/news/${id}`)} />
             <EditFilled onClick={() => navigate(`/news/edit/${id}`)} />
             <DeleteFilled
-              onClick={() => dispatch(deleteNews(accessToken, id))}
+              onClick={() => {
+                if (window.confirm("Are you sure you want to delete?")) {
+                  dispatch(deleteNews(accessToken, id));
+                }
+              }}
             />
           </>
         );
