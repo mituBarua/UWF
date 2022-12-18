@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Form, Input, Button, Upload, Card } from "antd";
+import { Form, Input, Button, Upload, Card, Image } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -49,6 +49,8 @@ const Edit = () => {
     (state) => state.volunteer
   );
 
+  const [profilePic, setProfilePic] = useState("");
+
   useEffect(() => {
     dispatch(getVolunteerByID(accessToken, id));
   }, []);
@@ -62,6 +64,7 @@ const Edit = () => {
       address: volunteer?.address,
       additional_note: volunteer?.additional_note,
     });
+    setProfilePic(volunteer?.profile_picture);
   }, [volunteer]);
 
   const [fileList, setFileList] = useState([]);
@@ -142,6 +145,13 @@ const Edit = () => {
             style={{ marginBottom: 10 }}
             className="resume__basic"
           >
+            <Form.Item {...formItemLayout} style={{ textAlign: "center" }}>
+              <Image
+                src={profilePic}
+                alt="Profile Picture"
+                style={{ width: 200, height: 200, borderRadius: 100 }}
+              />
+            </Form.Item>
             <Form.Item
               label="First Name"
               name="first_name"
@@ -233,17 +243,6 @@ const Edit = () => {
               label="Profile Picture"
               name="profie_picture"
               {...formItemLayout}
-              rules={[
-                {
-                  validator: (_, value) => {
-                    if (fileList.length > 0) {
-                      return Promise.resolve();
-                    } else {
-                      return Promise.reject("Please upload profile picture");
-                    }
-                  },
-                },
-              ]}
             >
               <Upload {...props} accept={mediaList["image"]}>
                 <Button icon={<UploadOutlined />}>Select File</Button>
