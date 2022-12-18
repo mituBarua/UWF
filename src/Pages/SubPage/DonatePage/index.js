@@ -63,7 +63,8 @@ const DonatePage = () => {
   return (
     <div>
       <HeaderMenu />
-<br/>
+      <Banner name="Donate" />
+
       <Row>
         <Col md="3"></Col>
         <Col md="6">
@@ -97,6 +98,7 @@ const DonatePage = () => {
         </Col>
         <Col md="3"></Col>
       </Row>
+      <br/>
     </div>
   );
 };
