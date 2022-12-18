@@ -85,7 +85,7 @@ const View = () => {
   const onMediaSubmit = (fieldsValue) => {
     const data = new FormData();
     data.append("type", typeList[mediaType]);
-    data.append("model_name", "Campaign");
+    data.append("model_name", "Appeal");
     data.append("model_id", id);
 
     fileList.forEach((file) => {
@@ -101,7 +101,7 @@ const View = () => {
     data.body = p_body;
     data.serial_number = p_serial_number;
     data.model_id = id;
-    data.model_name = "Campaign";
+    data.model_name = "Appeal";
 
     dispatch(addAppealParagraph(accessToken, data));
   };

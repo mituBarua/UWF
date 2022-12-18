@@ -42,7 +42,7 @@ const ForgetPassword = () => {
         className="login-form"
         name="basic"
         labelCol={{
-          span: 8,
+          span: 9,
         }}
         wrapperCol={{
           span: 16,
@@ -52,7 +52,7 @@ const ForgetPassword = () => {
         autoComplete="off"
       >
         {" "}
-        <h2 className="text-login">Forgot Password</h2>
+        <h2 className="text-login">Forgot Password?</h2>
 
         <Form.Item
           label="Phone Number"

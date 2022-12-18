@@ -63,10 +63,10 @@ const DonatePage = () => {
   return (
     <div>
       <HeaderMenu />
-      <Banner name="Donate" />
+<br/>
       <Row>
-        <Col md="2"></Col>
-        <Col md="8">
+        <Col md="3"></Col>
+        <Col md="6">
           <div className="contact-form container">
             <div className="contact-text">
               <h3>Donation Details</h3>
@@ -77,7 +77,7 @@ const DonatePage = () => {
               <Row>
                 <Col>
                 <Form.Label htmlFor="amount">Enter Amount</Form.Label>
-                  <InputGroup className="mb-5 w-75">
+                  <InputGroup className="mb-5">
                     <InputGroup.Text>$</InputGroup.Text>
                     <Form.Control
                       aria-label="Amount (to the nearest dollar)"
@@ -95,7 +95,7 @@ const DonatePage = () => {
             </Form>
           </div>
         </Col>
-        <Col md="2"></Col>
+        <Col md="3"></Col>
       </Row>
     </div>
   );

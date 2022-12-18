@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { Carousel, Button } from "react-bootstrap";
 import bannerImg1 from "../../../assets/banner/banner.png";
+import { Link } from "react-router-dom";
 
 function Banner() {
   return (
@@ -17,12 +18,16 @@ function Banner() {
             believable.
           </p>
           <div>
+          <Link to={`/donate`}>
             <Button className="me-2 custom-btn" variant="danger">
               Donate Now
             </Button>
+            </Link>
+            <Link to={`/projects`}>
             <Button className="me-2 custom-btn-outline" variant="outline-danger">
               Learn More
             </Button>
+            </Link>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -37,12 +42,16 @@ function Banner() {
             believable.
           </p>
           <div>
+          <Link to={`/donate`}>
             <Button className="me-2 custom-btn" variant="danger">
               Donate Now
             </Button>
+            </Link>
+            <Link to={`/projects`}>
             <Button className="me-2 custom-btn-outline" variant="outline-danger">
               Learn More
             </Button>
+            </Link>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -57,12 +66,16 @@ function Banner() {
             believable.
           </p>
           <div>
+          <Link to={`/donate`}>
             <Button className="me-2 custom-btn" variant="danger">
               Donate Now
             </Button>
+            </Link>
+            <Link to={`/projects`}>
             <Button className="me-2 custom-btn-outline" variant="outline-danger">
               Learn More
             </Button>
+            </Link>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
