@@ -74,7 +74,7 @@ const List = () => {
         let text = isActive == "1" ? "Active" : "Inactive";
         let colors = {
           1: "green",
-          2: "yellow",
+          0: "orange",
         };
         return (
           <Tag color={colors[isActive]} key={isActive}>
@@ -92,7 +92,11 @@ const List = () => {
             <DatabaseFilled onClick={() => navigate(`/appeal/${id}`)} />
             <EditFilled onClick={() => navigate(`/appeal/edit/${id}`)} />
             <DeleteFilled
-              onClick={() => dispatch(deleteAppeal(accessToken, id))}
+              onClick={() => {
+                if (window.confirm("Are you sure you want to delete?")) {
+                  dispatch(deleteAppeal(accessToken, id));
+                }
+              }}
             />
           </>
         );
@@ -106,7 +110,7 @@ const List = () => {
         let text = isVerified == "1" ? "Verified" : "Unverified";
         let colors = {
           1: "green",
-          2: "yellow",
+          0: "red",
         };
         return (
           <Tag color={colors[isVerified]} key={isVerified}>

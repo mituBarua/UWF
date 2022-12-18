@@ -53,7 +53,7 @@ const View = () => {
     form.setFieldsValue({
       just_giving_donation_id: donation?.just_giving_donation_id,
       amount: donation?.amount,
-      created_at: donation?.created_at,
+      created_at: donation?.created_at.slice(0, 10),
       is_monthly: donation?.is_monthly,
       payment_ref: donation?.payment_ref,
     });

@@ -95,7 +95,7 @@ const Create = () => {
                 },
               ]}
             >
-              <Input />
+              <Input placeholder="Title" />
             </Form.Item>
 
             <Form.Item
@@ -138,10 +138,7 @@ const Create = () => {
             >
               <RangePicker
                 disabledDate={(current) => {
-                  return (
-                    moment().add(0, "days") >= current ||
-                    moment().add(1, "month") <= current
-                  );
+                  return moment().add(-1, "days") >= current;
                 }}
               />
             </Form.Item>

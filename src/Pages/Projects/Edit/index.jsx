@@ -58,6 +58,7 @@ const Edit = () => {
       title: project?.title,
       description: project?.description,
       is_active: project?.is_active,
+      is_verified: project?.is_verified,
       date: [moment(project?.start_date), moment(project?.end_date)],
     });
   }, [project]);

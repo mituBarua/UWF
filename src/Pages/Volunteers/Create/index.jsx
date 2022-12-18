@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Form, Input, Button, Upload, Card } from "antd";
+import { Form, Input, Button, Upload, Card, InputNumber } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -90,7 +90,7 @@ const Create = () => {
     const data = new FormData();
     data.append("first_name", first_name);
     data.append("last_name", last_name);
-    data.append("phone", phone);
+    data.append("phone", "+44" + phone);
     data.append("email", email);
     data.append("address", address);
     data.append("additional_note", additional_note);
@@ -159,9 +159,23 @@ const Create = () => {
                   required: true,
                   message: "Please input your phone!",
                 },
+                {
+                  validator: (_, value) => {
+                    if (value.toString().length == 8) {
+                      return Promise.resolve();
+                    } else {
+                      return Promise.reject("Please input your valid phone!");
+                    }
+                  },
+                },
               ]}
             >
-              <Input />
+              <InputNumber
+                addonBefore="+44"
+                style={{
+                  width: "100%",
+                }}
+              />
             </Form.Item>
             <Form.Item
               label="Email"
