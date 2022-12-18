@@ -91,7 +91,7 @@ const View = () => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
 
             <Form.Item
@@ -105,7 +105,7 @@ const View = () => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
             <Form.Item
               label="Phone"
@@ -118,7 +118,7 @@ const View = () => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
             <Form.Item
               label="Email"
@@ -144,7 +144,7 @@ const View = () => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
             <Form.Item
               label="Additional Note"
@@ -161,6 +161,7 @@ const View = () => {
                 rows={4}
                 placeholder="Additional Note"
                 maxLength={6}
+                disabled
               />
             </Form.Item>
           </Card>

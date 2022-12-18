@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { DatabaseFilled } from "@ant-design/icons";
-import ModalView from "../View/index2";
+import ModalView from "../View";
 
 const List = () => {
   const dispatch = useDispatch();
@@ -109,7 +109,7 @@ const List = () => {
   }, []);
   return (
     <>
-      <div style={{width:'90%'}}>
+      <div style={{ width: "90%" }}>
         {isModalOpen.isOpen && (
           <ModalView {...isModalOpen} handleCancel={handleCancel} />
         )}
