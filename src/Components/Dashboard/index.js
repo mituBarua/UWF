@@ -12,6 +12,8 @@ import {
   SecurityScanOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
+import { Dropdown, Space } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -81,7 +83,7 @@ const Dashboard = ({ children }) => {
   const {
     user: {
       dashboard: {
-        profile: { role },
+        profile: { role, name, last_name },
       },
     },
   } = useSelector((state) => state.user);
@@ -94,6 +96,34 @@ const Dashboard = ({ children }) => {
   const selectedMenuItem = menuItems.filter(
     ({ label }) => location.pathname.search(label.toLowerCase()) > 0
   );
+
+  const items = [
+    {
+      label: (
+        <a
+          onClick={() => {
+            navigate("/profile");
+          }}
+        >
+          Profile
+        </a>
+      ),
+      key: "0",
+    },
+    {
+      label: (
+        <a
+          onClick={() => {
+            dispatch(logoutUser());
+            navigate("/login");
+          }}
+        >
+          Logout
+        </a>
+      ),
+      key: "1",
+    },
+  ];
 
   return (
     <Layout
@@ -134,14 +164,18 @@ const Dashboard = ({ children }) => {
           )}
           <div className="header-menu">
             <a href="#">{role}</a>
-            <a
-              onClick={() => {
-                dispatch(logoutUser());
-                navigate("/login");
+            <Dropdown
+              menu={{
+                items,
               }}
+              trigger={["click"]}
             >
-              Logout
-            </a>
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  {name + " " + last_name} <UserOutlined />
+                </Space>
+              </a>
+            </Dropdown>
           </div>
         </Header>
         <Content

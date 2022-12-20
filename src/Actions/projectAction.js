@@ -82,7 +82,7 @@ export const getProjectByID = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/project/${id}`, config);
-    // console.table(data.data);
+   
     dispatch({
       type: PROJECT_BY_ID_SUCCESS,
       payload: data.data,
@@ -102,7 +102,7 @@ export const getProjectDataByID = (id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/project/${id}`, config);
-    // console.table(data.data);
+   
     dispatch({
       type: PROJECT_BY_ID_SUCCESS,
       payload: data.data,

@@ -75,7 +75,7 @@ import Contact from "./Pages/SubPage/ContactPage";
 import LandingPage from "./Pages/LandingPage";
 import NotFound from "./Pages/Shared/NotFound";
 import Thankyou from "./Pages/SubPage/ThankyouPage";
-
+import Profile from "./Pages/Profile";
 function App() {
   // disable right click
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -100,6 +100,7 @@ function App() {
           }
         />
         <Route path="/login" exact element={<Login />} />
+       
         <Route path="/forgetPassword" exact element={<ForgetPassword />} />
         <Route path="/resetPassword" exact element={<ResetPassword />} />
         <Route path="/register" exact element={<Register />} />
@@ -120,6 +121,17 @@ function App() {
         <Route path="/news" exact element={<NewsPage />} />
         <Route path="/news-details/:id" exact element={<NewsDetails />} />
         <Route path="/project-details/:id" exact element={<ProjectDetails />} />
+        <Route
+          path="/profile"
+          exact
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard>
+                <Profile />
+              </Dashboard>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/user/list"
           exact

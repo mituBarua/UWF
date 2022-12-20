@@ -66,7 +66,7 @@ const List = () => {
       key: "end_date",
     },
     {
-      title: "Verify",
+      title: "Verified",
       dataIndex: "is_verified",
       key: "is_verified",
       render: (isVerified) => {

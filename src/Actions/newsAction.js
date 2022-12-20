@@ -78,7 +78,7 @@ export const getNewsByID = (accessToken, id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/news/${id}`, config);
-    // console.table(data.data);
+    
     dispatch({
       type: NEWS_BY_ID_SUCCESS,
       payload: data.data,
@@ -99,7 +99,7 @@ export const getNewsDataByID = (id) => async (dispatch) => {
     };
 
     const { data } = await api.get(`/news/${id}`, config);
-    // console.table(data.data);
+   
     dispatch({
       type: NEWS_BY_ID_SUCCESS,
       payload: data.data,
