@@ -200,6 +200,7 @@ export const addProjectMedia =
       };
 
       const { data } = await api.post("/media", mediaData, config);
+     
       dispatch({
         type: PROJECT_MEDIA_SUCCESS,
         payload: {

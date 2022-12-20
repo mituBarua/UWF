@@ -55,11 +55,11 @@ const MediaList = (props) => {
       <Row gutter={16}>
         {project?.media_list.map(({ url, id, type }) => (
           <Col key={nextId()} span={8}>
-            <Card title={`Media ${id} ${type}`} bordered={false}>
+            <Card style={{width:'300px',height:'250px'}}bordered={false}>
               {type == "Image" && <Image src={url} />}
               {type != "Image" && (
                 <>
-                  <iframe src={url} width="200" height="300" />
+                  <iframe src={url} height="250" />
                   <a href={url} target="_blank">
                     Read more
                   </a>

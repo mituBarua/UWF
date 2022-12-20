@@ -61,6 +61,7 @@ const Edit = () => {
       is_verified: campaign?.is_verified,
       date: [moment(campaign?.start_date), moment(campaign?.end_date)],
     });
+   
   }, [campaign]);
 
   useEffect(() => {
