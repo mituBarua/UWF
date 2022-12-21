@@ -161,7 +161,11 @@ const Create = () => {
                 },
                 {
                   validator: (_, value) => {
-                    if (value.toString().length == 8) {
+                    const re = /^[0-9\b]+$/;
+                    if (
+                      value.toString().length == 8 &&
+                      re.test(value.toString())
+                    ) {
                       return Promise.resolve();
                     } else {
                       return Promise.reject("Please input your valid phone!");

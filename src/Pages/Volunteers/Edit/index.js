@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Form, Input, Button, Upload, Card, Image } from "antd";
+import { Form, Input, InputNumber, Button, Upload, Card, Image } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -59,7 +59,7 @@ const Edit = () => {
     form.setFieldsValue({
       first_name: volunteer?.first_name,
       last_name: volunteer?.last_name,
-      phone: volunteer?.phone,
+      phone: volunteer?.phone.slice(3, 11),
       email: volunteer?.email,
       address: volunteer?.address,
       additional_note: volunteer?.additional_note,
@@ -113,7 +113,7 @@ const Edit = () => {
     const data = new FormData();
     data.append("first_name", first_name);
     data.append("last_name", last_name);
-    data.append("phone", phone);
+    data.append("phone", "+44" + phone);
     data.append("email", email);
     data.append("address", address);
     data.append("additional_note", additional_note);
@@ -187,9 +187,27 @@ const Edit = () => {
                   required: true,
                   message: "Please input your phone!",
                 },
+                {
+                  validator: (_, value) => {
+                    const re = /^[0-9\b]+$/;
+                    if (
+                      value.toString().length == 8 &&
+                      re.test(value.toString())
+                    ) {
+                      return Promise.resolve();
+                    } else {
+                      return Promise.reject("Please input your valid phone!");
+                    }
+                  },
+                },
               ]}
             >
-              <Input />
+              <InputNumber
+                addonBefore="+44"
+                style={{
+                  width: "100%",
+                }}
+              />
             </Form.Item>
             <Form.Item
               label="Email"

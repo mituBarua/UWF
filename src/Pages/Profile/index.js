@@ -44,7 +44,6 @@ const Index = () => {
       last_name: profile?.last_name,
       phone: profile?.phone,
       email: profile?.email,
-      
     });
   }, [profile]);
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { Select, Form, Input, Button, Card } from "antd";
+import { Select, Form, Input, InputNumber, Button, Card } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -57,6 +57,7 @@ const Create = () => {
   }, [loading, error, success]);
 
   const onSubmit = (fieldsValue) => {
+    fieldsValue.phone = "+44" + fieldsValue.phone;
     dispatch(createUser(accessToken, fieldsValue));
   };
 
@@ -154,17 +155,35 @@ const Create = () => {
               <Input.Password />
             </Form.Item>
             <Form.Item
-              label="Phone No"
+              label="Phone"
               name="phone"
               {...formItemLayout}
               rules={[
                 {
                   required: true,
-                  message: "Please input your phone no!",
+                  message: "Please input your phone!",
+                },
+                {
+                  validator: (_, value) => {
+                    const re = /^[0-9\b]+$/;
+                    if (
+                      value.toString().length == 8 &&
+                      re.test(value.toString())
+                    ) {
+                      return Promise.resolve();
+                    } else {
+                      return Promise.reject("Please input your valid phone!");
+                    }
+                  },
                 },
               ]}
             >
-              <Input />
+              <InputNumber
+                addonBefore="+44"
+                style={{
+                  width: "100%",
+                }}
+              />
             </Form.Item>
             <Form.Item
               label="Role"
