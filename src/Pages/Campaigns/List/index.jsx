@@ -65,23 +65,6 @@ const List = () => {
       key: "end_date",
     },
     {
-      title: "Verified",
-      dataIndex: "is_verified",
-      key: "is_verified",
-      render: (isVerified) => {
-        let text = isVerified == "1" ? "Verified" : "Unverified";
-        let colors = {
-          1: "green",
-          0: "red",
-        };
-        return (
-          <Tag color={colors[isVerified]} key={isVerified}>
-            {text.toUpperCase()}
-          </Tag>
-        );
-      },
-    },
-    {
       title: "Active",
       dataIndex: "is_active",
       key: "is_active",
@@ -93,6 +76,23 @@ const List = () => {
         };
         return (
           <Tag color={colors[isActive]} key={isActive}>
+            {text.toUpperCase()}
+          </Tag>
+        );
+      },
+    },
+    {
+      title: "Verified",
+      dataIndex: "is_verified",
+      key: "is_verified",
+      render: (isVerified) => {
+        let text = isVerified == "1" ? "Verified" : "Unverified";
+        let colors = {
+          1: "green",
+          0: "red",
+        };
+        return (
+          <Tag color={colors[isVerified]} key={isVerified}>
             {text.toUpperCase()}
           </Tag>
         );
