@@ -10,9 +10,9 @@ import {
   DatabaseOutlined,
   GiftOutlined,
   SecurityScanOutlined,
+  CaretDownOutlined
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
-import { Dropdown, Space } from "antd";
+import { Menu, Dropdown, Icon, Layout } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -83,7 +83,7 @@ const Dashboard = ({ children }) => {
   const {
     user: {
       dashboard: {
-        profile: { role, name, last_name,email },
+        profile: { role, name, last_name, email },
       },
     },
   } = useSelector((state) => state.user);
@@ -97,33 +97,16 @@ const Dashboard = ({ children }) => {
     ({ label }) => location.pathname.search(label.toLowerCase()) > 0
   );
 
-  const items = [
-    {
-      label: (
-        <a
-          onClick={() => {
-            navigate("/profile");
-          }}
-        >
-          Profile
-        </a>
-      ),
-      key: "0",
-    },
-    {
-      label: (
-        <a
-          onClick={() => {
-            dispatch(logoutUser());
-            navigate("/login");
-          }}
-        >
-          Logout
-        </a>
-      ),
-      key: "1",
-    },
-  ];
+  const dropdownMenu = (
+    <Menu>
+      <Menu.Item key="0">
+        <a onClick={(e) => navigate("/profile")}>Profile</a>
+      </Menu.Item>
+      <Menu.Item key="1">
+        <a onClick={(e) => dispatch(logoutUser())}>Logout</a>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <Layout
@@ -164,16 +147,10 @@ const Dashboard = ({ children }) => {
           )}
           <div className="header-menu">
             <a href="#">{role}</a>
-            <Dropdown
-              menu={{
-                items,
-              }}
-              trigger={["click"]}
-            >
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
-                  {email} <UserOutlined />
-                </Space>
+       
+            <Dropdown overlay={dropdownMenu} trigger={["click"]}>
+              <a className="ant-dropdown-link" href="#">
+              {email}  <CaretDownOutlined />
               </a>
             </Dropdown>
           </div>
