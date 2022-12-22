@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { clearErrors, loginUser } from "../../../Actions/userAction";
 import { toast } from "react-toastify";
 import "./style.css";
+import logo from "../../../assets/logo.png"
 const Login = () => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, user } = useSelector(
@@ -50,8 +51,11 @@ const Login = () => {
         onFinish={onSubmit}
         autoComplete="off"
       >
-        {" "}
-        <h2 className="text-login">Login</h2>
+      
+        <div className="text-center">
+      <img src={logo} alt="logo" style={{width:'120px',height:'120px'}}/>
+      </div>
+        <h3 className="text-login">Login</h3>
         <Form.Item
           label="Email"
           name="email"

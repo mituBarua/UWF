@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { registerUser } from "../../../Actions/userAction";
 import { toast } from "react-toastify";
-
+import logo from "../../../assets/logo.png"
 const Register = () => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, user } = useSelector(
@@ -49,7 +49,10 @@ const Register = () => {
         //onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-       <h2 className="text-login">Register</h2>
+       <div className="text-center">
+      <img src={logo} alt="logo" style={{width:'90px',height:'90px'}}/>
+      </div>
+       <h3 className="text-login">Register</h3>
         <Form.Item
           label="Username"
           name="name"
