@@ -10,6 +10,11 @@
     color: white;
     transition: 0.3s;
 }
+.gallery-btn:active{
+    background-color: #c1272d;
+    color: white;
+    transition: 0.3s;
+}
 .category-btn{
     display: flex;
     justify-content: space-around;

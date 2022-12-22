@@ -83,7 +83,7 @@ const Dashboard = ({ children }) => {
   const {
     user: {
       dashboard: {
-        profile: { role, name, last_name },
+        profile: { role, name, last_name,email },
       },
     },
   } = useSelector((state) => state.user);
@@ -172,7 +172,7 @@ const Dashboard = ({ children }) => {
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
-                  {name + " " + last_name} <UserOutlined />
+                  {email} <UserOutlined />
                 </Space>
               </a>
             </Dropdown>
