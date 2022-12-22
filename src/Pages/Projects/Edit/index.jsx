@@ -61,6 +61,7 @@ const Edit = () => {
       is_verified: project?.is_verified,
       date: [moment(project?.start_date), moment(project?.end_date)],
     });
+  
   }, [project]);
 
   useEffect(() => {
@@ -78,6 +79,7 @@ const Edit = () => {
     data.title = fieldsValue.title;
     data.description = fieldsValue.description;
     data.is_active = fieldsValue.is_active == true ? 1 : 0;
+    data.is_verified = fieldsValue.is_verified == true ? 1 : 0;
     data.start_date = moment(fieldsValue.date[0]).format("YYYY-MM-DD");
     data.end_date = moment(fieldsValue.date[1]).format("YYYY-MM-DD");
 

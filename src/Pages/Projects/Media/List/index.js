@@ -41,6 +41,7 @@ const MediaList = (props) => {
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
+      window.location.reload();
     }
   }, [loading, error, success]);
 
@@ -67,7 +68,12 @@ const MediaList = (props) => {
               )}
             </Card>
             <br />
-            <Button type="danger" block onClick={() => handleDelete(id)}>
+            <Button type="danger" block onClick={() => {
+             
+              if (window.confirm("Are you sure you want to delete?")) {
+                  dispatch(handleDelete(id));
+                }
+              }}>
               Delete
             </Button>
           </Col>

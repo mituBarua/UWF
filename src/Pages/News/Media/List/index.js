@@ -39,11 +39,15 @@ const MediaList = (props) => {
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
+      window.location.reload();
     }
   }, [loading, error, success]);
 
   const handleDelete = (idx) => {
-    dispatch(deleteNewsMedia(accessToken, idx, id));
+    if (window.confirm("Are you sure you want to delete?")) {
+      dispatch(deleteNewsMedia(accessToken, idx, id));
+    }
+  
   };
 
   if (loading) return <Spinner />;

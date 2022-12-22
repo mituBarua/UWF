@@ -57,7 +57,7 @@ const Index = () => {
       title: userInfo?.title,
       first_name: userInfo?.name,
       last_name: userInfo?.last_name,
-      phone: userInfo?.phone,
+      phone: userInfo?.phone.slice(3, 11),
       email: userInfo?.email,
       role: userInfo?.role,
     });
@@ -75,7 +75,7 @@ const Index = () => {
   }, [loading, error, success]);
 
   const onSubmit = (fieldsValue) => {
-    // fieldsValue.phone = "+44" + fieldsValue.phone;
+    fieldsValue.phone = "+44" + fieldsValue.phone;
     dispatch(updateUser(accessToken, profile.id, fieldsValue));
   };
 
@@ -107,7 +107,7 @@ const Index = () => {
               <Input />
             </Form.Item>
             <Form.Item
-              label="Fist Name"
+              label="First Name"
               name="first_name"
               {...formItemLayout}
               rules={[
@@ -133,7 +133,7 @@ const Index = () => {
             >
               <Input />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               label="Phone"
               name="phone"
               {...formItemLayout}
@@ -145,8 +145,8 @@ const Index = () => {
               ]}
             >
               <Input />
-            </Form.Item>
-            {/* <Form.Item
+            </Form.Item> */}
+            <Form.Item
               label="Phone"
               name="phone"
               {...formItemLayout}
@@ -176,7 +176,7 @@ const Index = () => {
                   width: "100%",
                 }}
               />
-            </Form.Item> */}
+            </Form.Item>
             <Form.Item label="Email" name="email" {...formItemLayout}>
               <Input disabled />
             </Form.Item>

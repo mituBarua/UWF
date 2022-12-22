@@ -42,11 +42,14 @@ const ParagraphList = (props) => {
     } else if (error) {
       toast.error(error.message);
       dispatch(clearErrors());
+      window.location.reload();
     }
   }, [loading, error, success]);
 
   const handleDelete = (idx) => {
-    dispatch(deleteNewsParagraph(accessToken, idx));
+    if (window.confirm("Are you sure you want to delete?")) {
+      dispatch(deleteNewsParagraph(accessToken, idx));
+    }
   };
 
   const genExtra = (idx) => (
