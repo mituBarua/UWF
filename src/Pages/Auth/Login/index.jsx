@@ -84,12 +84,7 @@ const Login = () => {
         >
           <Input.Password />
         </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
+       <div className="d-flex align-items-center flex-column">
           <Button className="login-btn" htmlType="submit">
             Login
           </Button>
@@ -101,7 +96,7 @@ const Login = () => {
           <Link to="/forgetPassword" relative="path">
             Forgot Password?
           </Link>
-        </Form.Item>
+          </div>
       </Form>
     </div>
   );

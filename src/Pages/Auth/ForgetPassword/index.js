@@ -85,17 +85,13 @@ const ForgetPassword = () => {
             }}
           />
         </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
+      <div className="d-flex justify-content-center">
           <Button className="login-btn" htmlType="submit">
             Submit
           </Button>
+          </div>
           <br />
-        </Form.Item>
+       
       </Form>
     </div>
   );

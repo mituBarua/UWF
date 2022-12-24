@@ -58,8 +58,8 @@ const List = () => {
           role == "SuperAdmin"
             ? "Super Admin"
             : role == "RegisteredUser"
-            ? "Registered User"
-            : role;
+              ? "Registered User"
+              : role;
         let colors = {
           SuperAdmin: "red",
           Admin: "blue",
@@ -86,7 +86,13 @@ const List = () => {
           <>
             <EditFilled onClick={() => navigate(`/user/edit/${id}`)} />
             <DeleteFilled
-              onClick={() => dispatch(deleteUser(accessToken, id))}
+              onClick={() => {
+
+                if (window.confirm("Are you sure you want to delete?")) {
+                  dispatch(deleteUser(accessToken, id));
+                }
+              }
+              }
             />
           </>
         );

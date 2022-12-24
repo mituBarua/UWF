@@ -94,12 +94,7 @@ const Register = () => {
         >
           <Input.Password />
         </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
+      <div className="d-flex flex-column align-items-center">
           <Button className="login-btn" htmlType="submit">
             Register
           </Button>
@@ -107,7 +102,7 @@ const Register = () => {
           <Link to="/login" relative="path">
             Already Registered?
           </Link>
-        </Form.Item>
+          </div>
       </Form>
     </div>
   );
