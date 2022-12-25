@@ -3,7 +3,7 @@ import { Button, Form, Input, Spin } from "antd";
 import Spinner from "../../../Components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import logo from "../../../assets/logo.png"
 import { clearErrors, ChangePassword } from "../../../Actions/resetPasswordAction";
 import { toast } from "react-toastify";
 import "./style.css";
@@ -51,7 +51,9 @@ const ResetPassword = () => {
         //onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        {" "}
+       <div className="text-center">
+      <img src={logo} alt="logo" style={{width:'120px',height:'120px'}}/>
+      </div>
         <h2 className="text-login">Reset Password</h2>
 
         <Form.Item
@@ -78,19 +80,15 @@ const ResetPassword = () => {
         >
           <Input.Password />
         </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
+       <div className="d-flex justify-content-center">
           <Button className="login-btn" htmlType="submit">
             Submit
           </Button>
+           </div>
           <br />
         
 
-        </Form.Item>
+      
       </Form>
     </div>
   );

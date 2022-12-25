@@ -51,16 +51,16 @@ export const registerUser = (userData) => async (dispatch) => {
     };
 
     const { data } = await api.post(
-      "/authaccount/registration",
+      "/signup",
       userData,
       config
     );
 
-    if (data.message == "success")
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: data });
-    else dispatch({ type: REGISTER_USER_FAIL, payload: data });
+
+    dispatch({ type: REGISTER_USER_SUCCESS, payload:  {}});
+
   } catch (error) {
-    dispatch({ type: REGISTER_USER_FAIL, payload: error });
+    dispatch({ type: REGISTER_USER_FAIL, payload: error.response.data });
   }
 };
 
@@ -100,7 +100,7 @@ export const getUserList = (accessToken) => async (dispatch) => {
     };
 
     const { data } = await api.get("/users", config);
-  
+
     dispatch({
       type: USER_LIST_SUCCESS,
       payload: data.data,

@@ -81,7 +81,13 @@ const List = () => {
             <DatabaseFilled onClick={() => navigate(`/volunteer/${id}`)} />
             <EditFilled onClick={() => navigate(`/volunteer/edit/${id}`)} />
             <DeleteFilled
-              onClick={() => dispatch(deleteVolunteer(accessToken, id))}
+              onClick={() => {
+                if (window.confirm("Are you sure you want to delete?")) {
+                  dispatch(deleteVolunteer(accessToken, id))
+                }
+              }
+
+              }
             />
           </>
         );

@@ -3,7 +3,7 @@ import { Button, Form, InputNumber, Spin,Image } from "antd";
 import Spinner from "../../../Components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import {
   clearErrors,
   ForgotPassword,
@@ -85,13 +85,16 @@ const ForgetPassword = () => {
             }}
           />
         </Form.Item>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex align-items-center flex-column">
           <Button className="login-btn" htmlType="submit">
             Submit
           </Button>
-          </div>
+         
           <br />
-       
+          <Link to="/login" relative="path">
+            Back to Login
+          </Link>
+          </div>
       </Form>
     </div>
   );

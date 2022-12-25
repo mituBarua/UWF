@@ -9,7 +9,7 @@ const Project = ({ projectList }) => {
       <Card>
         {media_list[0]?.type != "Image" && <iframe src={media_list[0]?.url} />}
         {media_list[0]?.type == "Image" && (
-          <Card.Img variant="top" src={media_list[0]?.url} />
+          <Card.Img loading="lazy" variant="top" src={media_list[0]?.url} />
         )}
         <Card.Body>
           <Card.Title>{title.slice(0, 30)}</Card.Title>

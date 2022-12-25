@@ -14,6 +14,7 @@ export const userReducer = (
   state = {
     loading: false,
     isAuthenticated: false,
+    isRegistered:false,
     user: {},
   },
   { type, payload }
@@ -30,10 +31,17 @@ export const userReducer = (
         loading: true,
       };
     case LOGIN_USER_SUCCESS:
-    case REGISTER_USER_SUCCESS:
+
       return {
         loading: false,
         isAuthenticated: true,
+        user: payload,
+      };
+    case REGISTER_USER_SUCCESS:
+      return {
+        loading: false,
+        isAuthenticated: false,
+        isRegistered: true,
         user: payload,
       };
     case LOGIN_USER_FAIL:

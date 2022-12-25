@@ -71,7 +71,7 @@ const DonatePage = () => {
           <div className="contact-form container">
             <div className="contact-text">
               <h3>Donation Details</h3>
-              <p>Give your hands spread to Others</p>
+              <p>Give your hands spread to others</p>
             </div>
 
             <Form className="form-style" onSubmit={handleSubmit}>
@@ -79,7 +79,7 @@ const DonatePage = () => {
                 <Col>
                 <Form.Label htmlFor="amount">Enter Amount</Form.Label>
                   <InputGroup className="mb-5">
-                    <InputGroup.Text>$</InputGroup.Text>
+                    <InputGroup.Text>£</InputGroup.Text>
                     <Form.Control
                       aria-label="Amount (to the nearest dollar)"
                       name="amount"
