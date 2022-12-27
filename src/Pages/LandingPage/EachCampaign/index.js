@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import "./style.css";
 
 const EachCampaign = ({ campaignList }) => {
@@ -10,6 +11,7 @@ const EachCampaign = ({ campaignList }) => {
   return (
     <div className="campaign-list">
       <Card>
+    
         <Card.Img
           variant="top"
           className="campaign-img"
